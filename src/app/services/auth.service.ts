@@ -28,7 +28,7 @@ export class AuthService {
         response => {
           const token = response.headers.get('authorization');
           if (token !== null) {
-            localStorage.setItem('access_token', token.replace('Bearer', ''));
+            localStorage.setItem('access_token', token.replace('Bearer ', ''));
             this.router.navigate(['dashboard']);
           }
         }
