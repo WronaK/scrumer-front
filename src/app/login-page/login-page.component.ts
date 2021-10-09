@@ -1,5 +1,6 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login-page',
@@ -12,7 +13,9 @@ export class LoginPageComponent {
   emailFC!: FormControl;
   passwordFC!: FormControl;
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
     this.initForm();
   }
 
@@ -31,6 +34,6 @@ export class LoginPageComponent {
   }
 
   goToRegistration() {
-
+    this.router.navigate(['registration']);
   }
 }

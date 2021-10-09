@@ -25,6 +25,8 @@
 
     &:hover {
       cursor: pointer;
+      filter: brightness(60%);
+      color: $detail-color;
     }
   }
 
@@ -40,7 +42,6 @@
     grid-row-start: 2;
     background-image: url("../registration.jpg");
     border-radius: 0 0 0 10px;
-
   }
 
   form {
