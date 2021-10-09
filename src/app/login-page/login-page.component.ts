@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
 
 @Component({
   selector: 'app-login-page',
@@ -14,8 +15,8 @@ export class LoginPageComponent {
   passwordFC!: FormControl;
 
   constructor(
-    private router: Router
-  ) {
+    private router: Router,
+    private authService: AuthService) {
     this.initForm();
   }
 
@@ -30,7 +31,10 @@ export class LoginPageComponent {
   }
 
   singIn() {
-
+    this.authService.signIn({
+      email: this.emailFC.value,
+      password: this.passwordFC.value
+    })
   }
 
   goToRegistration() {

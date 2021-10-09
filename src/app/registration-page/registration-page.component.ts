@@ -3,6 +3,8 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {FormGroupErrorMatcher} from "../../form.group.error.matcher";
 import {PasswordValidator} from "../../password.validator";
 import {Router} from "@angular/router";
+import {AuthService} from "../services/auth.service";
+import {DataRegistration} from "../model/data.registration";
 
 @Component({
   selector: 'app-registration-page',
@@ -21,8 +23,8 @@ export class RegistrationPageComponent {
   errorMatcher = new FormGroupErrorMatcher('incorrectPassword');
 
   constructor(
-    private router: Router
-  ) {
+    private router: Router,
+    private authService: AuthService) {
     this.initForm();
   }
 
@@ -51,6 +53,15 @@ export class RegistrationPageComponent {
   }
 
   signUp() {
-
+    this.authService.signUp({
+      name: this.nameFC.value,
+      surname: this.surnameFC.value,
+      email: this.emailFC.value,
+      password: this.passwordFC.value,
+    } as DataRegistration).subscribe(
+      () => this.goToLogin(), (err) => {
+        this.error = err.err, this.passwordFC.reset(), this.repeatPasswordFC.reset();
+      }
+    )
   }
 }
