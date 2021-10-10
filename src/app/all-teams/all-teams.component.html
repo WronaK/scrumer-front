@@ -2,7 +2,7 @@
   <div class="header-card" *ngIf="isDashboard">MY TEAMS</div>
   <div class="header-card"  *ngIf="!isDashboard">ALL TEAMS</div>
   <div class="content">
-    <div  class="p" *ngFor="let team of teams">
+    <div  class="p" *ngFor="let team of teams" (click)="goToTeam(team.id)">
       <div class="text">{{team.name}}</div>
     </div>
     <div  class="p example">

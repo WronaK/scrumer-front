@@ -7,6 +7,7 @@ import {CreateTask} from "../model/create.task";
 import {Team} from "../model/team";
 import {JoinTeams} from "../model/join.teams";
 import {CreateProject} from "../model/create.project";
+import {Task} from "../model/task";
 
 @Injectable({
   providedIn: 'root'

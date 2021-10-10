@@ -3,7 +3,7 @@
   <div class="header-card"  *ngIf="!isDashboard">ALL PROJECTS</div>
 
   <div class="content">
-    <div  class="p" *ngFor="let project of projects">
+    <div  class="p" *ngFor="let project of projects" (click)="goToProject(project.id)">
       <div class="text">{{project.name}}</div>
     </div>
     <div  class="p example">

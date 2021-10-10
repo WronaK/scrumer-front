@@ -35,6 +35,21 @@ import { AddTeamComponent } from './add-team/add-team.component';
 import { JoinTeamComponent } from './join-team/join-team.component';
 import {MatListModule} from "@angular/material/list";
 import { DialogComponent } from './dialog/dialog.component';
+import { ProjectComponent } from './project/project.component';
+import {MatTabsModule} from "@angular/material/tabs";
+import { ProductBacklogComponent } from './product-backlog/product-backlog.component';
+import { MenuTasksComponent } from './menu-tasks/menu-tasks.component';
+import { ShowTaskFromProductBacklogComponent } from './show-task-from-product-backlog/show-task-from-product-backlog.component';
+import { InformationProjectComponent } from './information-project/information-project.component';
+import { TeamsComponent } from './teams/teams.component';
+import { MenuProjectComponent } from './menu-project/menu-project.component';
+import { AddTeamsComponent } from './add-teams/add-teams.component';
+import { AddTaskToProductBacklogComponent } from './add-task-to-product-backlog/add-task-to-product-backlog.component';
+import { RemoveTaskComponent } from './remove-task/remove-task.component';
+import { MoveTaskComponent } from './move-task/move-task.component';
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatTableModule} from "@angular/material/table";
+import {PipesModule} from "./pipes/pipes.module";
 
 @NgModule({
   declarations: [
@@ -53,7 +68,18 @@ import { DialogComponent } from './dialog/dialog.component';
     SimpleDialogComponent,
     AddTeamComponent,
     JoinTeamComponent,
-    DialogComponent
+    DialogComponent,
+    ProjectComponent,
+    ProductBacklogComponent,
+    MenuTasksComponent,
+    ShowTaskFromProductBacklogComponent,
+    InformationProjectComponent,
+    TeamsComponent,
+    MenuProjectComponent,
+    AddTeamsComponent,
+    AddTaskToProductBacklogComponent,
+    RemoveTaskComponent,
+    MoveTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -73,7 +99,11 @@ import { DialogComponent } from './dialog/dialog.component';
     MatSelectModule,
     MatOptionModule,
     MatDialogModule,
-    MatListModule
+    MatListModule,
+    MatTabsModule,
+    MatPaginatorModule,
+    MatTableModule,
+    PipesModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
