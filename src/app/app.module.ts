@@ -16,6 +16,12 @@ import {AuthInterceptor} from "./services/auth.interceptor";
 import { MainLayoutComponent } from './main-layout/main-layout.component';
 import { HeaderComponent } from './header/header.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import {MatGridListModule} from "@angular/material/grid-list";
+import { AllProjectsComponent } from './all-projects/all-projects.component';
+import {MatIconModule} from "@angular/material/icon";
+import {MatExpansionModule} from "@angular/material/expansion";
+import { AllTeamsComponent } from './all-teams/all-teams.component';
+import { MyTasksComponent } from './my-tasks/my-tasks.component';
 
 @NgModule({
   declarations: [
@@ -24,19 +30,25 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     RegistrationPageComponent,
     MainLayoutComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    AllProjectsComponent,
+    AllTeamsComponent,
+    MyTasksComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatCardModule,
-    MatButtonModule,
-    MatFormFieldModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatCardModule,
+        MatButtonModule,
+        MatFormFieldModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MatGridListModule,
+        MatIconModule,
+        MatExpansionModule
+    ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,

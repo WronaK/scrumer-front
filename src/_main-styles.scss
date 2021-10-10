@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
-$primary-color: #1A1719;
-$secondary-color: #607D7F;
-$spot-color: #63B1B3;
-$detail-color: #F1ECEE;
-$secondary-detail-color: #2ECDEC;
+$primary-color: #4B4453;
+$secondary-color: #00896F;
+$spot-color: #FFF6FF;
+$detail-color: #00C0A3;
+$secondary-detail-color: #845EC2;
+$secondary-spot-color: #B0A8B9;
 
 html, body {
   height: 100%;
@@ -50,7 +51,7 @@ html, body {
       display: flex;
       justify-content: center;
       align-items: center;
-      color: $primary-color;
+      color: $secondary-detail-color;
       font-size: 1.2em;
       background: $spot-color;
     }

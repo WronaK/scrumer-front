@@ -2,7 +2,7 @@
 
 .top-bar {
   height: 100vh;
-  width: 100px;
+  width: 120px;
   background: $secondary-detail-color;
   flex-shrink: 0;
 
@@ -28,12 +28,12 @@
     height: 90%;
 
     .item {
-      font-size: 0.9em;
-      width: 80px;
-      height: 50px;
+      font-weight: bold;
+      width: 100px;
+      height: 60px;
       margin-top: 1em;
       background: $primary-color;
-      color: $secondary-detail-color;
+      color: $detail-color;
       border-radius: 5px;
       display: flex;
       justify-content: center;
@@ -43,16 +43,14 @@
 
       &:last-child {
         color: $primary-color;
+        background: $detail-color;
       }
 
       &:hover {
         cursor: pointer;
-        background-color: $detail-color;
+        background-color: $secondary-spot-color;
+        color: $primary-color;
       }
-    }
-
-    .user {
-      background-color: $detail-color;
     }
   }
 }
