@@ -6,11 +6,14 @@ import {MainLayoutComponent} from "./main-layout/main-layout.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {AuthGuard} from "./services/auth.guard";
 import {MyProjectsComponent} from "./my-projects/my-projects.component";
+import {MyTeamsComponent} from "./my-teams/my-teams.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      { path: 'my-projects', component: MyProjectsComponent, canActivate: [AuthGuard] }
+      { path: 'my-projects', component: MyProjectsComponent, canActivate: [AuthGuard] },
+      { path: 'my-teams', component: MyTeamsComponent, canActivate: [AuthGuard] }
+
     ]
   },
   { path: 'login', component: LoginPageComponent},

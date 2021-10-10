@@ -31,6 +31,10 @@ import {MatSelectModule} from "@angular/material/select";
 import {MatOptionModule} from "@angular/material/core";
 import { SimpleDialogComponent } from './simple-dialog/simple-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
+import { AddTeamComponent } from './add-team/add-team.component';
+import { JoinTeamComponent } from './join-team/join-team.component';
+import {MatListModule} from "@angular/material/list";
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +50,10 @@ import {MatDialogModule} from "@angular/material/dialog";
     MyProjectsComponent,
     MyTeamsComponent,
     AddProjectComponent,
-    SimpleDialogComponent
+    SimpleDialogComponent,
+    AddTeamComponent,
+    JoinTeamComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +72,8 @@ import {MatDialogModule} from "@angular/material/dialog";
     MatStepperModule,
     MatSelectModule,
     MatOptionModule,
-    MatDialogModule
+    MatDialogModule,
+    MatListModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
