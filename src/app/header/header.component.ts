@@ -44,11 +44,11 @@ export class HeaderComponent implements OnInit {
   }
 
   toYourTeams() {
-    this.router.navigate(['your-teams']);
+    this.router.navigate(['my-teams']);
   }
 
   toYourProjects() {
-    this.router.navigate(['your-projects']);
+    this.router.navigate(['my-projects']);
   }
 
   toChat() {

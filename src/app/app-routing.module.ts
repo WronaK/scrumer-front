@@ -5,10 +5,12 @@ import {RegistrationPageComponent} from "./registration-page/registration-page.c
 import {MainLayoutComponent} from "./main-layout/main-layout.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
 import {AuthGuard} from "./services/auth.guard";
+import {MyProjectsComponent} from "./my-projects/my-projects.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
-      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]}
+      { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
+      { path: 'my-projects', component: MyProjectsComponent, canActivate: [AuthGuard] }
     ]
   },
   { path: 'login', component: LoginPageComponent},

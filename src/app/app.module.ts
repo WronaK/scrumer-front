@@ -22,6 +22,15 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatExpansionModule} from "@angular/material/expansion";
 import { AllTeamsComponent } from './all-teams/all-teams.component';
 import { MyTasksComponent } from './my-tasks/my-tasks.component';
+import { MyProjectsComponent } from './my-projects/my-projects.component';
+import { MyTeamsComponent } from './my-teams/my-teams.component';
+import {MatToolbarModule} from "@angular/material/toolbar";
+import { AddProjectComponent } from './add-project/add-project.component';
+import {MatStepperModule} from "@angular/material/stepper";
+import {MatSelectModule} from "@angular/material/select";
+import {MatOptionModule} from "@angular/material/core";
+import { SimpleDialogComponent } from './simple-dialog/simple-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -33,22 +42,31 @@ import { MyTasksComponent } from './my-tasks/my-tasks.component';
     DashboardComponent,
     AllProjectsComponent,
     AllTeamsComponent,
-    MyTasksComponent
+    MyTasksComponent,
+    MyProjectsComponent,
+    MyTeamsComponent,
+    AddProjectComponent,
+    SimpleDialogComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatCardModule,
-        MatButtonModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        HttpClientModule,
-        MatGridListModule,
-        MatIconModule,
-        MatExpansionModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    MatGridListModule,
+    MatIconModule,
+    MatExpansionModule,
+    MatToolbarModule,
+    MatStepperModule,
+    MatSelectModule,
+    MatOptionModule,
+    MatDialogModule
+  ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
