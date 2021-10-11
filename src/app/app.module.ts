@@ -50,6 +50,19 @@ import { MoveTaskComponent } from './move-task/move-task.component';
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatTableModule} from "@angular/material/table";
 import {PipesModule} from "./pipes/pipes.module";
+import { TeamComponent } from './team/team.component';
+import { SprintBacklogComponent } from './sprint-backlog/sprint-backlog.component';
+import { MenuTeamComponent } from './menu-team/menu-team.component';
+import { ProjectsComponent } from './projects/projects.component';
+import { InformationTeamComponent } from './information-team/information-team.component';
+import { MembersTeamComponent } from './members-team/members-team.component';
+import { TaskStatesComponent } from './task-states/task-states.component';
+import { DividedIntoTasksComponent } from './divided-into-tasks/divided-into-tasks.component';
+import { ShowTaskFromSprintBacklogComponent } from './show-task-from-sprint-backlog/show-task-from-sprint-backlog.component';
+import { JoinProjectComponent } from './join-project/join-project.component';
+import { AddMembersComponent } from './add-members/add-members.component';
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {MatMenuModule} from "@angular/material/menu";
 
 @NgModule({
   declarations: [
@@ -79,7 +92,18 @@ import {PipesModule} from "./pipes/pipes.module";
     AddTeamsComponent,
     AddTaskToProductBacklogComponent,
     RemoveTaskComponent,
-    MoveTaskComponent
+    MoveTaskComponent,
+    TeamComponent,
+    SprintBacklogComponent,
+    MenuTeamComponent,
+    ProjectsComponent,
+    InformationTeamComponent,
+    MembersTeamComponent,
+    TaskStatesComponent,
+    DividedIntoTasksComponent,
+    ShowTaskFromSprintBacklogComponent,
+    JoinProjectComponent,
+    AddMembersComponent
   ],
   imports: [
     BrowserModule,
@@ -103,7 +127,9 @@ import {PipesModule} from "./pipes/pipes.module";
     MatTabsModule,
     MatPaginatorModule,
     MatTableModule,
-    PipesModule
+    PipesModule,
+    DragDropModule,
+    MatMenuModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
