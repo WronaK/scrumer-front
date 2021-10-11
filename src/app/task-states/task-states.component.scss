@@ -35,7 +35,7 @@
   }
 
   .status-name {
-    background: $detail-color;
+    background: $secondary-detail-color;
     font-size: 1.2em;
     line-height: 1.2em;
     min-height: 60px;
@@ -47,7 +47,7 @@
   }
 
   .task-card-content {
-    background-color: $secondary-color;
+    background-color: $secondary-spot-color;
     padding: 10px;
     margin-top: 10px;
     border-radius: 5px;
@@ -58,7 +58,7 @@
       align-items: center;
       font-weight: bold;
       font-size: 18px;
-      color: $detail-color;
+      color: $primary-color;
     }
 
     .task-card-body {
@@ -73,7 +73,7 @@
         bottom: 0;
         height: 50%;
         width: 100%;
-        background: linear-gradient(to bottom, rgba($secondary-color, 0) 0%, rgba($secondary-color, 0.8) 50%, $secondary-color 100%);
+        background: linear-gradient(to bottom, rgba($secondary-spot-color, 0) 0%, rgba($secondary-spot-color, 0.8) 50%, $secondary-spot-color 100%);
 
       }
     }

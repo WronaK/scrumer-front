@@ -24,16 +24,46 @@ mat-toolbar {
 }
 
 .projects-list {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  margin: 1em;
   display: flex;
   flex-wrap: wrap;
-  .project {
-    background: $secondary-color;
-    height: 30vh;
-    width: 16vw;
+  flex-direction: row;
+  .project-card {
+    width: 350px;
+    height: 200px;
+
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+    background: url("../../assets/project-1.jpg");
+    background-size: cover;
     border-radius: 5%;
+    box-shadow: 0 2px 2px black;
     margin: 0.5em;
+
+    &:hover {
+      opacity: 60%;
+      cursor: pointer;
+    }
+
+    .text {
+      line-height: 1.5em;
+      font-size: 1.2em;
+      background: white;
+      color: $primary-color;
+      opacity: 50%;
+      height: 2em;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 2px 2px black;
+    }
+
   }
+
+
 }
+
+

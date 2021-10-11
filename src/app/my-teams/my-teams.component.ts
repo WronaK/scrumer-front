@@ -6,6 +6,7 @@ import {TeamsService} from "../services/teams.service";
 import {AddTeamComponent} from "../add-team/add-team.component";
 import {JoinTeamComponent} from "../join-team/join-team.component";
 import {TeamsSubscribeService} from "../services/teams-subscribe.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-teams',
@@ -18,7 +19,8 @@ export class MyTeamsComponent implements OnInit {
   constructor(
     private teamsService: TeamsService,
     private teasSubscribeService: TeamsSubscribeService,
-    private dialog: MatDialog) { }
+    private dialog: MatDialog,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getTeams();
@@ -59,5 +61,9 @@ export class MyTeamsComponent implements OnInit {
             this.teasSubscribeService.uploadTeams()
           }
         )).subscribe();
+  }
+
+  goToTeam(id: number) {
+    this.router.navigate(['team/' + id]);
   }
 }

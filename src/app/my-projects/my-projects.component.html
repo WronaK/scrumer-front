@@ -7,8 +7,8 @@
   </mat-toolbar>
 
   <div class="projects-list">
-    <div class="project" *ngFor="let project of projects">
-      {{project.name}}
+    <div class="project-card" *ngFor="let project of projects" (click)="goToProject(project.id)">
+      <div class="text">{{project.name}}</div>
     </div>
   </div>
 </div>

@@ -5,6 +5,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ProjectsSubscribeService} from "../services/projects-subscribe.service";
 import {tap} from "rxjs/operators";
 import {AddProjectComponent} from "../add-project/add-project.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-my-projects',
@@ -16,7 +17,8 @@ export class MyProjectsComponent implements OnInit {
   constructor(
     private projectsService: ProjectsService,
     private dialog: MatDialog,
-    private projectsSubscribeService: ProjectsSubscribeService) { }
+    private projectsSubscribeService: ProjectsSubscribeService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.getProjects();
@@ -41,5 +43,9 @@ export class MyProjectsComponent implements OnInit {
           this.projectsSubscribeService.uploadProject()
         })
       ).subscribe();
+  }
+
+  goToProject(id: number): void {
+    this.router.navigate(['project/' + id]);
   }
 }

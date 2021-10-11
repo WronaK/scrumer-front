@@ -2,7 +2,7 @@
 
 .task {
   padding: 1em;
-  background-color: $secondary-color;
+  background-color: $secondary-spot-color;
   border-radius: 0;
 
   .header {
@@ -19,7 +19,7 @@
     flex-direction: column;
 
     .mat-input-element:disabled {
-      color: $secondary-spot-color !important;
+      color: $primary-color !important;
     }
   }
 }

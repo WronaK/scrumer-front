@@ -63,6 +63,7 @@ import { JoinProjectComponent } from './join-project/join-project.component';
 import { AddMembersComponent } from './add-members/add-members.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatMenuModule} from "@angular/material/menu";
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import {MatMenuModule} from "@angular/material/menu";
     DividedIntoTasksComponent,
     ShowTaskFromSprintBacklogComponent,
     JoinProjectComponent,
-    AddMembersComponent
+    AddMembersComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,

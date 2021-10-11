@@ -8,8 +8,8 @@
   </mat-toolbar>
 
   <div class="teams-list">
-    <div class="team" *ngFor="let team of teams">
-      {{team.name}}
+    <div class="team-card" *ngFor="let team of teams" (click)="goToTeam(team.id)">
+      <div class="text">{{team.name}}</div>
     </div>
   </div>
 </div>
