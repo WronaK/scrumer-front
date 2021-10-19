@@ -1,6 +1,9 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
 import {Task} from "../model/task";
+import {Observable} from "rxjs";
+import {tap} from "rxjs/operators";
+import {TaskService} from "../services/task.service";
 
 @Component({
   selector: 'app-my-tasks',
@@ -15,10 +18,21 @@ export class MyTasksComponent implements OnInit {
   @ViewChild('bodyText') bodyText!: ElementRef<HTMLElement>;
 
   constructor(private router: Router,
-              private renderer: Renderer2) { }
+              private renderer: Renderer2,
+              private tasksService: TaskService) { }
 
   ngOnInit(): void {
+    this.getSubtasks().subscribe();
     this.displayElement();
+  }
+
+
+  getSubtasks(): Observable<Task[]> {
+    return this.tasksService.getSubtasks().pipe(
+      tap(subtasks => {
+        this.tasks = subtasks;
+      })
+    )
   }
 
   displayElement() {
