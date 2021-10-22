@@ -64,6 +64,8 @@ import { AddMembersComponent } from './add-members/add-members.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {MatMenuModule} from "@angular/material/menu";
 import { ChatComponent } from './chat/chat.component';
+import { NewConversationComponent } from './new-conversation/new-conversation.component';
+import { AddNewChannelComponent } from './add-new-channel/add-new-channel.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +107,9 @@ import { ChatComponent } from './chat/chat.component';
     ShowTaskFromSprintBacklogComponent,
     JoinProjectComponent,
     AddMembersComponent,
-    ChatComponent
+    ChatComponent,
+    NewConversationComponent,
+    AddNewChannelComponent
   ],
   imports: [
     BrowserModule,

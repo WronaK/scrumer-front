@@ -1,0 +1,10 @@
+<app-dialog>
+  <h2 title>Create new conversation</h2>
+  <form content [formGroup]="newConversationForm">
+    <mat-form-field>
+      <mat-label>Enter email: </mat-label>
+      <input [formControl]="emailRecipient" matInput />
+    </mat-form-field>
+  </form>
+  <button mat-raised-button (click)="createConversation()" [disabled]="newConversationForm.valid">Create conversation</button>
+</app-dialog>
