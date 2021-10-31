@@ -7,7 +7,7 @@ import {CreateChannels} from "../model/create.channels";
 })
 export class ChatService {
 
-  private url = 'api/chat/';
+  private url = '/api/channels/';
   constructor(private http: HttpClient) { }
 
   createNewConversation(email: String) {

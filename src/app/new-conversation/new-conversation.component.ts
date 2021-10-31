@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {MatDialogRef} from "@angular/material/dialog";
+import {ChatService} from "../services/chat.service";
 
 @Component({
   selector: 'app-new-conversation',
@@ -10,7 +12,10 @@ export class NewConversationComponent implements OnInit {
   newConversationForm!: FormGroup;
   emailRecipient!: FormControl;
 
-  constructor() {
+  constructor(
+    private dialogRef: MatDialogRef<NewConversationComponent>,
+    private chatService: ChatService
+  ) {
     this.emailRecipient = new FormControl('', Validators.required);
     this.newConversationForm = new FormGroup({
       emailRecipient: this.emailRecipient
@@ -21,6 +26,7 @@ export class NewConversationComponent implements OnInit {
   }
 
   createConversation() {
-
+    this.chatService.createNewConversation(this.emailRecipient.value)
+      .subscribe(() => this.dialogRef.close());
   }
 }

@@ -4,8 +4,8 @@
       NAME SURNAME
     </div>
     <div class="content">
-      <div *ngFor="let chatMessage of webSocketService.chatMessages" [ngClass]="chatMessage.senderEmail == user.email? 'my' : 'other'">
-        {{chatMessage.message}}
+      <div *ngFor="let chatMessage of webSocketService.chatMessages" [ngClass]="chatMessage.senderEmail === user.email? 'my' : 'other'">
+        {{chatMessage.content}}
       </div>
     </div>
     <div class="send">
@@ -57,7 +57,7 @@
 
     </div>
     <div class="new">
-      <button mat-raised-button>Start a new conversation</button>
+      <button mat-raised-button (click)="createNewConversation()">Start a new conversation</button>
     </div>
   </div>
 </div>

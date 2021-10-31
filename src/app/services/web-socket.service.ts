@@ -1,5 +1,10 @@
-import { Injectable } from '@angular/core';
-import {ChatMessageDto} from "../model/ChatMessageDto";
+import {Injectable} from '@angular/core';
+import {MessageDto} from "../model/message.dto";
+
+import * as Stomp from 'stompjs';
+import * as SockJS from 'sockjs-client';
+import {LoginUser} from "../model/login.user";
+import {AuthService} from "./auth.service";
 
 @Injectable({
   providedIn: 'root'
@@ -7,33 +12,51 @@ import {ChatMessageDto} from "../model/ChatMessageDto";
 export class WebSocketService {
 
   webSocket!: WebSocket;
-  chatMessages: ChatMessageDto[] = [];
+  chatMessages: MessageDto[] = [];
+  stompClient: any
+  disabled = true;
+  user!: LoginUser;
 
-  constructor() { }
+  constructor(
+    private authService: AuthService
+  ) {
+    this.authService.getUserData().subscribe(user => {
+      this.user = user;
+    });  }
+
+  setConnected(connected: boolean) {
+    this.disabled = !connected;
+  }
 
   public openWebSocket() {
-    this.webSocket = new WebSocket('ws://localhost:8080/api/test-chat');
+    this.webSocket =  new SockJS('/api/test')
+    this.stompClient = Stomp.over(this.webSocket);
+    const _this = this;
 
-    this.webSocket.onopen = (event) => {
-      console.log('Open: ', event);
-    };
 
-    this.webSocket.onmessage = (event) => {
-      const chatMessageDto = JSON.parse(event.data);
-      this.chatMessages.push(chatMessageDto);
-    };
+    this.stompClient.connect({}, (frame: any) => {
+      _this.setConnected(true);
+      console.log('Connected: ' + frame);
 
-    this.webSocket.onclose = (event) => {
-      console.log('Close: ', event);
-    };
+      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/messages`, (message: any) => {
+        const notification = JSON.parse(message.body);
+        console.log("Receiving the message")
+      } )
+    });
   }
 
-  public sendMessage(message: ChatMessageDto) {
-    this.webSocket.send(JSON.stringify(message));
-    console.log(message);
+  disconnect() {
+    if (this.stompClient != null) {
+      this.stompClient.disconnect();
+    }
+
+    this.setConnected(false);
+    console.log('Disconnected!');
   }
 
-  public closeWebSocket() {
-    this.webSocket.close();
+  public sendMessage(message: MessageDto) {
+    this.stompClient.send(
+      '/api/app/chat', {}, JSON.stringify(message));
+    this.chatMessages.push(message)
   }
 }

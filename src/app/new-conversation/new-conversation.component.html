@@ -6,5 +6,5 @@
       <input [formControl]="emailRecipient" matInput />
     </mat-form-field>
   </form>
-  <button mat-raised-button (click)="createConversation()" [disabled]="newConversationForm.valid">Create conversation</button>
+  <button action mat-raised-button (click)="createConversation()">Create conversation</button>
 </app-dialog>
