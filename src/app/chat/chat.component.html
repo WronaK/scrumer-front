@@ -1,10 +1,10 @@
 <div class="container">
   <div class="chat">
     <div class="name">
-      NAME SURNAME
+      {{activeChannelName}}
     </div>
     <div class="content">
-      <div *ngFor="let chatMessage of webSocketService.chatMessages" [ngClass]="chatMessage.senderEmail === user.email? 'my' : 'other'">
+      <div *ngFor="let chatMessage of webSocketService.chatMessages" [ngClass]="chatMessage.senderId === user.id? 'my' : 'other'">
         {{chatMessage.content}}
       </div>
     </div>
@@ -23,38 +23,13 @@
       <input matInput placeholder="Search"/>
     </div>
     <div class="users">
-      <div class="user">
+      <div class="user" *ngFor="let channel of channels" (click)="setActiveChannel(channel.idChannel, channel.channelName)">
         <div class="img-user">
           <div class="img-u"></div>
         </div>
-        <div class="user-name">NAME SURNAME</div>
-        <div class="content-message">Hello! How are you?</div>
+        <div class="user-name">{{channel.channelName}}</div>
+        <div class="content-message">{{channel.lastMessage}}</div>
       </div>
-      <div class="user">
-        <div class="img-user">
-          <div class="img-u"></div>
-        </div>
-        <div class="user-name">NAME SURNAME</div>
-        <div class="content-message">Hello! How are you?</div>
-      </div>
-      <div class="user">
-        <div class="img-user">
-          <div class="img-u"></div>
-
-        </div>
-        <div class="user-name">NAME SURNAME</div>
-        <div class="content-message">Hello! How are you?</div>
-      </div>
-      <div class="user">
-        <div class="img-user">
-          <div class="img-u"></div>
-
-        </div>
-        <div class="user-name">NAME SURNAME</div>
-        <div class="content-message">Hello! How are you?</div>
-      </div>
-
-
     </div>
     <div class="new">
       <button mat-raised-button (click)="createNewConversation()">Start a new conversation</button>

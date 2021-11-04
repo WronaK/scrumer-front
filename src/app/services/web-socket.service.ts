@@ -40,7 +40,7 @@ export class WebSocketService {
 
       _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/messages`, (message: any) => {
         const notification = JSON.parse(message.body);
-        console.log("Receiving the message")
+        console.log("Receiving the message: " + message.body)
       } )
     });
   }
@@ -55,6 +55,7 @@ export class WebSocketService {
   }
 
   public sendMessage(message: MessageDto) {
+    console.log("send");
     this.stompClient.send(
       '/api/app/chat', {}, JSON.stringify(message));
     this.chatMessages.push(message)

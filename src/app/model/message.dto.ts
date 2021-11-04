@@ -1,11 +1,13 @@
 export class MessageDto {
   channelId: number;
   content: string;
-  senderEmail: string
+  senderId: number;
+  senderName: string;
 
-  constructor(channelId: number, content: string, senderEmail: string) {
-    this.channelId = channelId;
+  constructor(channelId: number, content: string, senderId: number, senderName: string) {
+    this.channelId = channelId ;
     this.content = content;
-    this.senderEmail = senderEmail
+    this.senderId = senderId;
+    this.senderName = senderName
   }
 }

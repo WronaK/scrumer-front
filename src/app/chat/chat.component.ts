@@ -6,6 +6,9 @@ import {AuthService} from "../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NewConversationComponent} from "../new-conversation/new-conversation.component";
 import {MessageDto} from "../model/message.dto";
+import {Channel} from "../model/channel";
+import {ChannelsSubscribeService} from "../services/channels-subscribe.service";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-chat',
@@ -17,18 +20,27 @@ export class ChatComponent implements OnInit, OnDestroy {
   user!: LoginUser;
   messageForm: FormGroup;
   messageInput: FormControl;
+  channels: Channel[] = [];
+  activeChannelName!: string;
+  activeChannelId!: number;
 
   constructor(
     public webSocketService: WebSocketService,
     public authService: AuthService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private channelsSubscribe: ChannelsSubscribeService
   ) {
     this.getUserData();
-
+    this.getChannels();
     this.messageInput = new FormControl('', Validators.required);
     this.messageForm = new FormGroup({
       messageInput: this.messageInput
     })
+  }
+
+  getChannels() {
+    this.channelsSubscribe.uploadChannels();
+    this.channelsSubscribe.getChannels().pipe(tap(channels => this.channels = channels)).subscribe();
   }
 
   ngOnInit(): void {
@@ -40,9 +52,12 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   sendMessage() {
-    const messageDto = new MessageDto(54, this.messageInput.value, this.user.email);
-    this.webSocketService.sendMessage(messageDto);
-    this.messageForm.reset();
+    console.log(this.activeChannelId)
+    if (this.activeChannelId != null) {
+      const messageDto = new MessageDto(this.activeChannelId, this.messageInput.value, this.user.id, this.user.name + " " + this.user.surname);
+      this.webSocketService.sendMessage(messageDto);
+      this.messageForm.reset();
+    }
   }
 
   getUserData() {
@@ -55,9 +70,17 @@ export class ChatComponent implements OnInit, OnDestroy {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    this.dialog.open(NewConversationComponent, dialogConfig);
-
-    //to do update conversation
+    this.dialog.open(NewConversationComponent, dialogConfig)
+      .afterClosed()
+      .pipe(
+        tap(() => {
+          this.channelsSubscribe.uploadChannels()
+        })
+      ).subscribe()
   }
 
+  setActiveChannel(id: number, name: string) {
+    this.activeChannelId = id;
+    this.activeChannelName = name;
+  }
 }
