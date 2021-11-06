@@ -1,4 +1,4 @@
-export class MessageDto {
+export class CreateMessageCommand {
   channelId: number;
   content: string;
   senderId: number;

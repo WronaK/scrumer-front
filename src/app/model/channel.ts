@@ -3,4 +3,5 @@ export interface Channel {
   channelName: string,
   lastMessage: string,
   channelType: string
+  numberNewMessage: number,
 }

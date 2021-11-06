@@ -1,5 +1,4 @@
 export interface ChatNotification {
   channelId: number,
-  senderId: number,
-  senderName: string
+  messageId: string
 }

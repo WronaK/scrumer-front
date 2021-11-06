@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MatDialogRef} from "@angular/material/dialog";
-import {ChatService} from "../services/chat.service";
 import {CreateChannel} from "../model/createChannel";
+import {ChannelsService} from "../services/channels.service";
 
 @Component({
   selector: 'app-new-conversation',
@@ -20,7 +20,7 @@ export class NewConversationComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<NewConversationComponent>,
-    private chatService: ChatService
+    private channelService: ChannelsService
   ) {
     this.emailRecipient = new FormControl('', Validators.required);
     this.channelName = new FormControl('');
@@ -44,10 +44,10 @@ export class NewConversationComponent implements OnInit {
     let channelCommand = new CreateChannel(this.channelName.value, this.members, channelType);
     console.log(channelCommand);
 
-    if (this.emailRecipient != null) {
+    if (this.emailRecipient.value != null) {
       this.members.push(this.emailRecipient.value)
     }
-    this.chatService.createNewChannel(channelCommand).subscribe(
+    this.channelService.createNewChannel(channelCommand).subscribe(
       () => this.dialogRef.close()
     )
 

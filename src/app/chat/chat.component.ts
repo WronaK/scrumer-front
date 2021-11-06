@@ -5,10 +5,10 @@ import {LoginUser} from "../model/login.user";
 import {AuthService} from "../services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NewConversationComponent} from "../new-conversation/new-conversation.component";
-import {MessageDto} from "../model/message.dto";
-import {Channel} from "../model/channel";
+import {CreateMessageCommand} from "../model/createMessageCommand";
 import {ChannelsSubscribeService} from "../services/channels-subscribe.service";
 import {tap} from "rxjs/operators";
+import {ChannelsService} from "../services/channels.service";
 
 @Component({
   selector: 'app-chat',
@@ -20,7 +20,6 @@ export class ChatComponent implements OnInit, OnDestroy {
   user!: LoginUser;
   messageForm: FormGroup;
   messageInput: FormControl;
-  channels: Channel[] = [];
   activeChannelName!: string;
   activeChannelId!: number;
 
@@ -28,19 +27,14 @@ export class ChatComponent implements OnInit, OnDestroy {
     public webSocketService: WebSocketService,
     public authService: AuthService,
     private dialog: MatDialog,
-    private channelsSubscribe: ChannelsSubscribeService
+    private channelsSubscribe: ChannelsSubscribeService,
+    private channelService: ChannelsService
   ) {
     this.getUserData();
-    this.getChannels();
     this.messageInput = new FormControl('', Validators.required);
     this.messageForm = new FormGroup({
       messageInput: this.messageInput
     })
-  }
-
-  getChannels() {
-    this.channelsSubscribe.uploadChannels();
-    this.channelsSubscribe.getChannels().pipe(tap(channels => this.channels = channels)).subscribe();
   }
 
   ngOnInit(): void {
@@ -54,7 +48,8 @@ export class ChatComponent implements OnInit, OnDestroy {
   sendMessage() {
     console.log(this.activeChannelId)
     if (this.activeChannelId != null) {
-      const messageDto = new MessageDto(this.activeChannelId, this.messageInput.value, this.user.id, this.user.name + " " + this.user.surname);
+      const messageDto = new CreateMessageCommand(this.activeChannelId, this.messageInput.value, this.user.id, this.user.name + " " + this.user.surname);
+      this.webSocketService.setLastMessage(messageDto.content);
       this.webSocketService.sendMessage(messageDto);
       this.messageForm.reset();
     }
@@ -82,5 +77,11 @@ export class ChatComponent implements OnInit, OnDestroy {
   setActiveChannel(id: number, name: string) {
     this.activeChannelId = id;
     this.activeChannelName = name;
+
+    this.webSocketService.activeChannelId = id;
+    this.webSocketService.clearNotificationNumberNewMessage();
+    this.webSocketService.loadsMessageActiveChannel();
+    this.channelService.clearNotification(id);
+
   }
 }

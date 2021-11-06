@@ -5,7 +5,8 @@
     </div>
     <div class="content">
       <div *ngFor="let chatMessage of webSocketService.chatMessages" [ngClass]="chatMessage.senderId === user.id? 'my' : 'other'">
-        {{chatMessage.content}}
+        <div *ngIf="chatMessage.senderId !== user.id">{{chatMessage.senderName}}</div>
+        <div>{{chatMessage.content}}</div>
       </div>
     </div>
     <div class="send">
@@ -23,12 +24,13 @@
       <input matInput placeholder="Search"/>
     </div>
     <div class="users">
-      <div class="user" *ngFor="let channel of channels" (click)="setActiveChannel(channel.idChannel, channel.channelName)">
+      <div class="user" *ngFor="let channel of webSocketService.channels" (click)="setActiveChannel(channel.idChannel, channel.channelName)">
         <div class="img-user">
           <div class="img-u"></div>
         </div>
         <div class="user-name">{{channel.channelName}}</div>
-        <div class="content-message">{{channel.lastMessage}}</div>
+        <div class="content-message" *ngIf="channel.numberNewMessage==0">{{channel.lastMessage}}</div>
+        <div class="content-message" *ngIf="channel.numberNewMessage">You have {{channel.numberNewMessage}} new messages.</div>
       </div>
     </div>
     <div class="new">
