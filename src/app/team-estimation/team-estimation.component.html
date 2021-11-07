@@ -1,0 +1,11 @@
+<div class="container">
+  <div class="header-card">Actual mark</div>
+  <mat-grid-list cols="6" rowHeight="fit">
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <app-my-card [value]="3" [my]="true"></app-my-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of teamEstimate">
+      <app-my-card [value]="v" [my]="false"></app-my-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

@@ -10,6 +10,7 @@ import {MyTeamsComponent} from "./my-teams/my-teams.component";
 import {ProjectComponent} from "./project/project.component";
 import {TeamComponent} from "./team/team.component";
 import {ChatComponent} from "./chat/chat.component";
+import {ScrumPokerComponent} from "./scrum-poker/scrum-poker.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'my-teams', component: MyTeamsComponent, canActivate: [AuthGuard] },
       { path: 'project/:id', component: ProjectComponent, canActivate: [AuthGuard] },
       { path: 'team/:id', component: TeamComponent, canActivate: [AuthGuard] },
-      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]}
+      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+      { path: 'scrum-poker/:id', component: ScrumPokerComponent, canActivate: [AuthGuard]}
     ]
   },
   { path: 'login', component: LoginPageComponent},

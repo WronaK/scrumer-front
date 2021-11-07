@@ -66,6 +66,12 @@ import {MatMenuModule} from "@angular/material/menu";
 import {ChatComponent} from './chat/chat.component';
 import {NewConversationComponent} from './new-conversation/new-conversation.component';
 import {MatRadioModule} from "@angular/material/radio";
+import { ScrumPokerComponent } from './scrum-poker/scrum-poker.component';
+import { TeamEstimationComponent } from './team-estimation/team-estimation.component';
+import { DeckOfCardsComponent } from './deck-of-cards/deck-of-cards.component';
+import { TaskViewComponent } from './task-view/task-view.component';
+import { PlanComponent } from './plan/plan.component';
+import { MyCardComponent } from './my-card/my-card.component';
 
 @NgModule({
   declarations: [
@@ -108,7 +114,13 @@ import {MatRadioModule} from "@angular/material/radio";
     JoinProjectComponent,
     AddMembersComponent,
     ChatComponent,
-    NewConversationComponent
+    NewConversationComponent,
+    ScrumPokerComponent,
+    TeamEstimationComponent,
+    DeckOfCardsComponent,
+    TaskViewComponent,
+    PlanComponent,
+    MyCardComponent
   ],
   imports: [
     BrowserModule,
