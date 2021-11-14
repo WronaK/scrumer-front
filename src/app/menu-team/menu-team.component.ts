@@ -5,6 +5,7 @@ import {AddTeamComponent} from "../add-team/add-team.component";
 import {tap} from "rxjs/operators";
 import {JoinProjectComponent} from "../join-project/join-project.component";
 import {AddMembersComponent} from "../add-members/add-members.component";
+import {WebSocketService} from "../services/web-socket.service";
 
 @Component({
   selector: 'app-menu-team',
@@ -15,7 +16,8 @@ export class MenuTeamComponent {
 
   constructor(
     private dialog: MatDialog,
-    private teamDetailsService: TeamsDetailsService
+    private teamDetailsService: TeamsDetailsService,
+    private webSocketService: WebSocketService
   ) { }
 
   updateTeam() {
@@ -62,5 +64,9 @@ export class MenuTeamComponent {
         this.teamDetailsService.loadsMembers()
       })
     ).subscribe();
+  }
+
+  startSrumPoker() {
+    this.webSocketService.initScrumPoker(this.teamDetailsService.idTeam);
   }
 }

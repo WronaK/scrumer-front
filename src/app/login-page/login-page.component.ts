@@ -34,7 +34,7 @@ export class LoginPageComponent {
     this.authService.signIn({
       email: this.emailFC.value,
       password: this.passwordFC.value
-    })
+    });
   }
 
   goToRegistration() {

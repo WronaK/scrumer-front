@@ -3,6 +3,7 @@ import {HttpBackend, HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LoginUser} from "../model/login.user";
 import {DataRegistration} from "../model/data.registration";
+import {WebSocketService} from "./web-socket.service";
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +11,13 @@ import {DataRegistration} from "../model/data.registration";
 export class AuthService {
 
   private customHttpClient: HttpClient;
+  private user!: LoginUser;
 
   constructor(
     private http: HttpClient,
     private router: Router,
-    private backed: HttpBackend
+    private backed: HttpBackend,
+    private webSocketService: WebSocketService
   ) {
     this.customHttpClient = new HttpClient(backed);
   }
@@ -29,6 +32,11 @@ export class AuthService {
           const token = response.headers.get('authorization');
           if (token !== null) {
             localStorage.setItem('access_token', token.replace('Bearer ', ''));
+            this.getUserData().subscribe(user => {
+              this.user = user;
+              this.webSocketService.openWebSocket(token, user);
+
+            });
             this.router.navigate(['dashboard']);
           }
         }
@@ -50,6 +58,8 @@ export class AuthService {
 
   logout() {
     const removeToken = localStorage.removeItem('access_token');
+    // this.webSocketService.webSocket.
+    this.webSocketService.disconnect();
     if (removeToken === null) {
       this.router.navigate(['login']);
     }

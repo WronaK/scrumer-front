@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ScrumPokerService} from "../services/scrum-poker.service";
 
 @Component({
   selector: 'app-scrum-poker',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ScrumPokerComponent implements OnInit {
 
-  constructor() { }
+  userId: number[] = [];
+  constructor(private scrumPokerService: ScrumPokerService) { }
 
   ngOnInit(): void {
+    this.userId = this.scrumPokerService.userId;
   }
 
 }

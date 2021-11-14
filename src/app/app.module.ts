@@ -72,6 +72,7 @@ import { DeckOfCardsComponent } from './deck-of-cards/deck-of-cards.component';
 import { TaskViewComponent } from './task-view/task-view.component';
 import { PlanComponent } from './plan/plan.component';
 import { MyCardComponent } from './my-card/my-card.component';
+import { NotificationStartScrumPokerComponent } from './notification-start-scrum-poker/notification-start-scrum-poker.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +121,8 @@ import { MyCardComponent } from './my-card/my-card.component';
     DeckOfCardsComponent,
     TaskViewComponent,
     PlanComponent,
-    MyCardComponent
+    MyCardComponent,
+    NotificationStartScrumPokerComponent
   ],
   imports: [
     BrowserModule,

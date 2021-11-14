@@ -35,10 +35,11 @@ export class ChatComponent implements OnInit, OnDestroy {
     this.messageForm = new FormGroup({
       messageInput: this.messageInput
     })
+
   }
 
   ngOnInit(): void {
-    this.webSocketService.openWebSocket();
+    this.webSocketService.getChannels();
   }
 
   ngOnDestroy(): void {
