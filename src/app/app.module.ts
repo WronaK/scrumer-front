@@ -66,6 +66,7 @@ import {MatMenuModule} from "@angular/material/menu";
 import {ChatComponent} from './chat/chat.component';
 import {NewConversationComponent} from './new-conversation/new-conversation.component';
 import {MatRadioModule} from "@angular/material/radio";
+import {MatAutocompleteModule} from "@angular/material/autocomplete";
 
 @NgModule({
   declarations: [
@@ -136,7 +137,8 @@ import {MatRadioModule} from "@angular/material/radio";
     DragDropModule,
     MatMenuModule,
     MatRadioModule,
-    FormsModule
+    FormsModule,
+    MatAutocompleteModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
