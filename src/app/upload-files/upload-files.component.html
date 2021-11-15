@@ -1,0 +1,31 @@
+
+<input type="file" class="file-input" multiple (change)="selectFiles($event)" #fileUpload>
+<div class="file-upload">
+  <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+    <mat-icon>attach_file</mat-icon>
+  </button>
+  <span>Choose file.</span>
+</div>
+<mat-list *ngIf="files.length" >
+  <div mat-subheader>Files</div>
+  <mat-list-item *ngFor="let selectedFile of files">
+    {{selectedFile.name}}
+  </mat-list-item>
+</mat-list>
+<button mat-button *ngIf="files.length" (click)="uploadFiles()">SEND FILES</button>
+
+
+<mat-list *ngIf="progressInfos.length">
+  <div mat-subheader>Progress upload</div>
+  <mat-list-item *ngFor="let progressInfo of progressInfos" class="progress">
+    <div>{{progressInfo.fileName}}</div>
+    <mat-progress-bar mode="determinate" [value]="progressInfo.value"></mat-progress-bar>
+  </mat-list-item>
+</mat-list>
+
+<mat-list *ngIf="message.length">
+  <div mat-subheader>Result upload</div>
+  <mat-list-item *ngFor="let msg of message">
+    {{msg}}
+  </mat-list-item>
+</mat-list>

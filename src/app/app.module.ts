@@ -67,6 +67,8 @@ import {ChatComponent} from './chat/chat.component';
 import {NewConversationComponent} from './new-conversation/new-conversation.component';
 import {MatRadioModule} from "@angular/material/radio";
 import {MatAutocompleteModule} from "@angular/material/autocomplete";
+import { UploadFilesComponent } from './upload-files/upload-files.component';
+import {MatProgressBarModule} from "@angular/material/progress-bar";
 
 @NgModule({
   declarations: [
@@ -109,7 +111,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     JoinProjectComponent,
     AddMembersComponent,
     ChatComponent,
-    NewConversationComponent
+    NewConversationComponent,
+    UploadFilesComponent
   ],
   imports: [
     BrowserModule,
@@ -138,7 +141,8 @@ import {MatAutocompleteModule} from "@angular/material/autocomplete";
     MatMenuModule,
     MatRadioModule,
     FormsModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    MatProgressBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
