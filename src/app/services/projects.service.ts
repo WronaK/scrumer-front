@@ -1,13 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {UpdateProject} from "../model/update.project";
-import {ProjectDetails} from "../model/project.details";
-import {CreateTask} from "../model/create.task";
-import {Team} from "../model/team";
-import {JoinTeams} from "../model/join.teams";
-import {CreateProject} from "../model/create.project";
-import {Task} from "../model/task";
+import {JoinTeams, Team} from "../model/team";
+import {CreateTask, Task} from "../model/task";
+import {CreateProject, ProjectDetails, ProjectInformation, UpdateProject} from "../model/project";
 
 @Injectable({
   providedIn: 'root'
@@ -25,6 +21,10 @@ export class ProjectsService {
 
   getProjectById(id: number): Observable<ProjectDetails> {
     return this.http.get<ProjectDetails>(this.url + id);
+  }
+
+  getInformationAboutProject(idProject: number): Observable<ProjectInformation> {
+    return this.http.get<ProjectInformation>(this.url + idProject + "/information");
   }
 
   getProjectByIdUpdate(id: number): Observable<UpdateProject> {

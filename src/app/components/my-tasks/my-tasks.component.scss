@@ -1,0 +1,67 @@
+@import "../../../main-styles";
+@import "../../../assets/styles/scroll-panel";
+
+:host {
+  @include fullPage;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: 50px auto;
+  padding: 1em;
+  margin: 0;
+
+  .header-card {
+    display: flex;
+    align-items: center;
+    font-size: 1.3em;
+    color: $secondary-spot-color;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 260px;
+  }
+}
+
+
+.task-card-content {
+  box-shadow: 0 2px 2px black;
+
+  min-width: 180px;
+  width: 80%;
+  background-color: $secondary-spot-color;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+
+  .task-card-title {
+    font-weight: bold;
+    font-size: 18px;
+    color: $secondary-detail-color;
+  }
+
+  .task-card-body {
+    position: relative;
+    max-height: 70px;
+    overflow: hidden;
+    color: $primary-color;
+    pointer-events: none;
+
+    .fade-out-truncation {
+      position: absolute;
+      bottom: 0;
+      height: 50%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba($secondary-spot-color, 0) 0%, rgba($secondary-spot-color, 0.8) 50%, $secondary-spot-color, 100%);
+
+    }
+  }
+
+  &:hover {
+    opacity: 60%;
+    cursor: pointer;
+  }
+}

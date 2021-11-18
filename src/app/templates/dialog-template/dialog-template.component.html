@@ -1,0 +1,14 @@
+<div mat-dialog-title class="dialog-title">
+  <ng-content select="[title]"></ng-content>
+  <button mat-icon-button aria-label="close dialog" mat-dialog-close>
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<mat-dialog-content>
+  <ng-content select="[content]"></ng-content>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <ng-content select="[action]"></ng-content>
+</mat-dialog-actions>
+
+

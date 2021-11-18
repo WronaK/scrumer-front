@@ -3,9 +3,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TeamsDetailsService} from "../services/teams-details.service";
 import {TaskService} from "../services/task.service";
 import {CdkDragDrop} from "@angular/cdk/drag-drop";
-import {ShowTaskFromSprintBacklogComponent} from "../show-task-from-sprint-backlog/show-task-from-sprint-backlog.component";
-import {DividedIntoTasksComponent} from "../divided-into-tasks/divided-into-tasks.component";
-import {tap} from "rxjs/operators";
+import {ShowTaskFromSprintBacklogComponent} from "../dialog/show-task-from-sprint-backlog/show-task-from-sprint-backlog.component";
 import {ShareService} from "../services/share.service";
 import {Task} from "../model/task";
 
@@ -65,18 +63,18 @@ export class TaskStatesComponent implements OnInit {
   }
 
   divided(id: number) {
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      id: id
-    };
-    this.dialog.open(DividedIntoTasksComponent, dialogConfig)
-      .afterClosed().pipe(
-      tap(() => {
-        this.teamDetialsService.loadsSprintBacklog()
-      })
-    ).subscribe();
+    // const dialogConfig = new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.data = {
+    //   id: id
+    // };
+    // this.dialog.open(DividedIntoTasksComponent, dialogConfig)
+    //   .afterClosed().pipe(
+    //   tap(() => {
+    //     this.teamDetialsService.loadsSprintBacklog()
+    //   })
+    // ).subscribe();
   }
 
   changeStatus(id: number) {

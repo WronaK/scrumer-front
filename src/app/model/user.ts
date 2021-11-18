@@ -3,3 +3,9 @@ export interface User {
   surname: string;
   email: string;
 }
+
+export interface SuggestedUser {
+  id: number;
+  email: string;
+  username: string;
+}

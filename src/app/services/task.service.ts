@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Subtasks} from "../model/create.task";
-import {RealizeTask} from "../model/realize.task";
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {Task} from "../model/task";
+import {RealizeTask, Subtasks, Task} from "../model/task";
 
 @Injectable({
   providedIn: 'root'

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {UserFind} from "../model/userFind";
 import {HttpClient} from "@angular/common/http";
+import {SuggestedUser} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +12,7 @@ export class UsersService {
     private http: HttpClient
   ) { }
 
-  getProductOwner(name: string): Observable<UserFind[]> {
-    return this.http.get<UserFind[]>("api/users/find/" + name);
+  getSuggestedUser(name: string): Observable<SuggestedUser[]> {
+    return this.http.get<SuggestedUser[]>("api/users/find/" + name);
   }
 }

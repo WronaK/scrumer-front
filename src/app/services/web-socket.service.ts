@@ -7,10 +7,10 @@ import {LoginUser} from "../model/login.user";
 import {AuthService} from "./auth.service";
 import {MessageCommand} from "../model/messageCommand";
 import {ChannelsSubscribeService} from "./channels-subscribe.service";
-import {Channel} from "../model/channel";
 import {tap} from "rxjs/operators";
 import {ChannelsService} from "./channels.service";
 import {MessageService} from "./message.service";
+import {Channel} from "../model/chat.dto";
 
 @Injectable({
   providedIn: 'root'

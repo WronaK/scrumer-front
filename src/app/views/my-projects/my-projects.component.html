@@ -1,0 +1,12 @@
+<app-base-view-template>
+  <h2 class="header" header>MY PROJECTS</h2>
+  <div class="buttons" buttons>
+    <button mat-button class="button" (click)="addProject()">Create project</button>
+  </div>
+  <mat-grid-list class="left-side" cols="2" rowHeight="20vh" right-side>
+    <mat-grid-tile *ngFor="let project of projects">
+      <app-resource-hash (selectedItemEvent)="selectedProject(project.id)" [resource]="project"></app-resource-hash>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <app-resource-description *ngIf="indexProject!=null" [roleName]="'PRODUCT OWNER'" [resource]="projects[indexProject]" (selectedElementEvent)="goToProject(projects[indexProject].id)" right-side></app-resource-description>
+</app-base-view-template>

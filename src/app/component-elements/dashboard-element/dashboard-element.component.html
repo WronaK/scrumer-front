@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="header-card">MY {{baseName.toUpperCase()}}S</div>
+
+  <div class="content">
+    <div class="p" *ngFor="let element of resource" (click)="goToPage(element.id)">
+      <div class="text">{{element.name}}</div>
+    </div>
+    <div class="p example" (click)="createdNewElement()">
+      <div class="text">CREATE {{baseName.toUpperCase()}}</div>
+    </div>
+  </div>
+</div>

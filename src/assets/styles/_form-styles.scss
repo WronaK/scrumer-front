@@ -1,57 +1,61 @@
 @import "src/main-styles";
 
-:host {
-  @include fullPage;
+.name-button {
+  width: 80%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: $secondary-detail-color;
+  font-size: 1.2em;
+  background: $spot-color;
 }
 
-.main-container {
-  width: 90%;
-  height: 90%;
-  display: grid;
-  grid-template-rows: 1fr 1fr;
-  grid-template-columns: 1fr 1fr;
-  box-shadow: 0 3px 6px black;
-  border-radius: 10px;
+.button-click {
+  width: 20%;
+  background: $detail-color;
+  border: none;
+  border-radius: 0 0 10px 0 ;
+
+  &:hover {
+    cursor: pointer;
+    filter: brightness(70%);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0 10px 0 0 ;
+  color: $secondary-detail-color;
+  font-size: 1.2em;
+  background: $spot-color;
+}
 
 
-  .button-login,
-  .button-registration {
-    background-position: center;
-    background-size: cover;
-    @include centerElements;
-    font-size: 2em;
-    font-weight: bold;
-    text-shadow: 3px -21px 14px $secondary-color;
+.form-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 
-    &:hover {
-      cursor: pointer;
-      filter: brightness(60%);
-      color: $detail-color;
+  background: $primary-color;
+
+  mat-form-field {
+    width: 80%;
+    color: $detail-color;
+    font-size: 1.5em;
+
+    mat-label {
+      color: $spot-color;
     }
-  }
-
-  .button-login {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    background-image: url("../login.jpg");
-    border-radius: 10px 0 0 0;
-  }
-
-  .button-registration {
-    grid-column-start: 1;
-    grid-row-start: 2;
-    background-image: url("../registration.jpg");
-    border-radius: 0 0 0 10px;
-  }
-
-  form {
-    grid-column-start: 2;
-    grid-row-start: 1;
-    grid-row-end: 3;
-
-    height: 100%;
-
-    @include formFields;
-    @include beltWithButton;
   }
 }

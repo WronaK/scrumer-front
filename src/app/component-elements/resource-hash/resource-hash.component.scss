@@ -1,0 +1,30 @@
+.background {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-image: url("../../../assets/project-1.jpg");
+  border-radius: 10px;
+  box-shadow: 0 2px 2px black;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 18vh;
+
+  .foreground {
+    line-height: 1.5em;
+    font-size: 1.2em;
+    background: white;
+    color: red;
+    opacity: 50%;
+    height: 2em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 2px black;
+  }
+
+  &:hover {
+    opacity: 60%;
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,13 @@
+<mat-grid-list cols="5" rowHeight="49vh">
+  <mat-grid-tile [colspan]="3" [rowspan]="1">
+    <app-dashboard-element [resource]=projects (createdNewElementEvent)="addProject()" [baseName]="'project'"></app-dashboard-element>
+<!--    <app-all-projects></app-all-projects>-->
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="2" [rowspan]="2">
+    <app-my-tasks></app-my-tasks>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="3" [rowspan]="1">
+    <app-dashboard-element [resource]=teams (createdNewElementEvent)="addTeam()" [baseName]="'team'"></app-dashboard-element>
+<!--    <app-all-teams></app-all-teams>-->
+  </mat-grid-tile>
+</mat-grid-list>

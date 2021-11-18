@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Channel} from "../model/channel";
-import {CreateChannel} from "../model/createChannel";
 import {MessageCommand} from "../model/messageCommand";
+import {Channel, CreateChannel} from "../model/chat.dto";
 
 @Injectable({
   providedIn: 'root'

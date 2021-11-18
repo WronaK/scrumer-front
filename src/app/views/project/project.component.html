@@ -1,0 +1,23 @@
+<div class="main-container">
+
+  <mat-tab-group>
+    <mat-tab label="PRODUCT BACKLOG">
+      <div class="product-backlog">
+        <app-product-backlog></app-product-backlog>
+        <app-menu-tasks></app-menu-tasks>
+        <app-show-task-from-product-backlog *ngIf="onSelect()"></app-show-task-from-product-backlog>
+      </div>
+    </mat-tab>
+    <mat-tab label="PROJECT DETAILS">
+      <div class="project-details">
+        <app-information-card *ngIf="project"
+          [resourceName]="'project'"
+          [roleName]="'Scrum Master'"
+          [resource]="project"></app-information-card>
+        <app-menu-project></app-menu-project>
+        <app-teams></app-teams>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+
+</div>

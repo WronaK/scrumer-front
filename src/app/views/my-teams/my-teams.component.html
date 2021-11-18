@@ -1,0 +1,15 @@
+<app-base-view-template>
+  <h2 class="header" header>MY TEAMS</h2>
+  <div class="buttons" buttons>
+    <button mat-button class="button" (click)="addTeam()">Create team</button>
+    <button mat-button class="button" (click)="joinTeam()">Join team</button>
+  </div>
+  <mat-grid-list class="left-side" cols="2" rowHeight="20vh" right-side>
+    <mat-grid-tile *ngFor="let team of teams">
+      <app-resource-hash (selectedItemEvent)="selectedTeam(team.id)" [resource]="team"></app-resource-hash>
+    </mat-grid-tile>
+  </mat-grid-list>
+  <app-resource-description *ngIf="indexTeam!=null" [roleName]="'SCRUM MASTER'" [resource]="teams[indexTeam]" (selectedElementEvent)="goToTeam(teams[indexTeam].id)" right-side></app-resource-description>
+
+</app-base-view-template>
+
