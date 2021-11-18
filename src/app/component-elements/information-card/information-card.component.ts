@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {ResourceInformation} from "../../model/resource";
 import {FormControl} from "@angular/forms";
+import {UploadsService} from "../../services/uploads.service";
+import {HttpResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-information-card',
@@ -18,6 +20,8 @@ export class InformationCardComponent implements OnInit {
   @Input()
   roleName!: string;
 
+  imgUrl: any;
+
   name!: FormControl;
   description!: FormControl;
   accessCode!: FormControl;
@@ -25,7 +29,11 @@ export class InformationCardComponent implements OnInit {
 
   disabled = true;
 
-  constructor() {
+  image!: File;
+
+  constructor(
+    private uploadService: UploadsService
+  ) {
     this.initForm();
   }
 
@@ -38,6 +46,10 @@ export class InformationCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.setData();
+    this.uploadService.getProjectCover(this.resource.id).subscribe(
+      res => {
+        this.createImage(res)
+      });
   }
 
   setData(): void {
@@ -47,4 +59,30 @@ export class InformationCardComponent implements OnInit {
     this.username.setValue(this.resource.username);
   }
 
+  selectFiles(event: any): void {
+    this.image = event.target.files[0];
+
+    if(this.image) {
+      this.uploadService.upload(this.resource.id, this.image).subscribe(
+        event => {
+          if (event instanceof HttpResponse) {
+            this.createImage(this.image)
+          }
+        }
+      )
+    }
+
+  }
+
+  createImage(image: Blob) {
+    if (image && image.size > 0) {
+      let reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        this.imgUrl = reader.result;
+      }, false);
+
+      reader.readAsDataURL(image);
+    }
+  }
 }

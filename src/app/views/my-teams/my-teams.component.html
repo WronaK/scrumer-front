@@ -9,7 +9,7 @@
       <app-resource-hash (selectedItemEvent)="selectedTeam(team.id)" [resource]="team"></app-resource-hash>
     </mat-grid-tile>
   </mat-grid-list>
-  <app-resource-description *ngIf="indexTeam!=null" [roleName]="'SCRUM MASTER'" [resource]="teams[indexTeam]" (selectedElementEvent)="goToTeam(teams[indexTeam].id)" right-side></app-resource-description>
+  <app-resource-description *ngIf="indexTeam!=null" [resourceName]="'team'" [roleName]="'SCRUM MASTER'" [resource]="teams[indexTeam]" (selectedElementEvent)="goToTeam(teams[indexTeam].id)" right-side></app-resource-description>
 
 </app-base-view-template>
 

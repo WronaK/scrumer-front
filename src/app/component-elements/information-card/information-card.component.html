@@ -1,3 +1,9 @@
+<div class="belt"></div>
+<input type="file" class="file-input" accept='image/*' multiple (change)="selectFiles($event)" #fileUpload>
+<button class="image" (click)="fileUpload.click()">
+  <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
+  <div class="text-centered">click to change</div>
+</button>
 <mat-card class="card" >
     <mat-card-header class="header">
       <mat-card-title class="title">{{resourceName.toUpperCase()}} {{resource.id}}</mat-card-title>

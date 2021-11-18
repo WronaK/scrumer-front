@@ -13,12 +13,12 @@ export class UploadsService {
     private httpClient: HttpClient
   ) { }
 
-  upload(file: File): Observable<HttpEvent<any>> {
+  upload(id: number, file: File): Observable<HttpEvent<any>> {
     const formData: FormData = new FormData();
 
     formData.append('file', file);
 
-    const req = new HttpRequest('POST', `${this.baseUrl}/upload`, formData, {
+    const req = new HttpRequest('POST', "/api/projects/"+id+"/cover", formData, {
       reportProgress: true,
       responseType: 'json'
     });
@@ -28,5 +28,9 @@ export class UploadsService {
 
   getFiles(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/files`);
+  }
+
+  getProjectCover(id: number): Observable<Blob> {
+    return this.httpClient.get(`${this.baseUrl}/${id}/project/cover`, {responseType: 'blob'});
   }
 }

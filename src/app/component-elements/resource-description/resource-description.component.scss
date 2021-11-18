@@ -1,33 +1,42 @@
 @import "../../../main-styles";
 
-mat-card {
-  border-radius: 10px;
-  box-shadow: 0 2px 2px black;
-  background-color: $secondary-spot-color !important;
-}
-
-.resource-header-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-}
-
-.resource-image {
-  height: 30vh;
+.belt {
+  min-height: 30px;
   width: 100%;
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-color: $secondary-spot-color;
+  box-shadow: 0 2px 2px black;
+}
+
+.image {
+  min-height: 10vh;
+  width: 100%;
+  background-image: url("../../../assets/project-1.jpg");
+  box-shadow: 0 2px 2px black;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
 }
 
-mat-card-content {
-  padding: 20px 10px;
-  font-size: 1.1em;
-}
+.card {
+  padding: 1em;
+  background-color: $secondary-spot-color;
+  border-radius: 0;
 
-.header {
-  font-weight: bold;
-  font-size: 1.2em;
-  color: $detail-color;
-  margin-bottom: 10px;
+  .header {
+    .title {
+      font-weight: bolder;
+      font-size: 1.5em;
+      line-height: 1.5em;
+      color: $primary-color;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .mat-input-element:disabled {
+      color: $primary-color !important;
+    }
+  }
 }
