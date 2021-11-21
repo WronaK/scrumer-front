@@ -1,5 +1,7 @@
 <div class="belt"></div>
-<div class="image"></div>
+<div *ngIf="imgUrl" class="image">
+  <img class="image-upload" [src]="imgUrl">
+</div>
 <mat-card class="card" >
   <mat-card-header class="header">
     <mat-card-title class="title">{{resourceName.toUpperCase()}} {{resource.id}}</mat-card-title>

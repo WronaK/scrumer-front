@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {Team} from "../../model/team";
-import {Project} from "../../model/project";
+import {Team, TeamDetails} from "../../model/team";
+import {Project, ProjectDetails} from "../../model/project";
 import {tap} from "rxjs/operators";
 import {TeamsSubscribeService} from "../../services/teams-subscribe.service";
 import {ProjectsSubscribeService} from "../../services/projects-subscribe.service";
@@ -15,8 +15,8 @@ import {CreateProjectComponent} from "../../dialog/create-project/create-project
 })
 export class DashboardComponent implements OnInit {
 
-  teams: Team[] = [];
-  projects: Project[] = [];
+  teams: TeamDetails[] = [];
+  projects: ProjectDetails[] = [];
 
   constructor(
     private teasSubscribeService: TeamsSubscribeService,

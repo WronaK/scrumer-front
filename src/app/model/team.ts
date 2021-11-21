@@ -5,8 +5,12 @@ export interface Team {
   username: string;
 }
 
-export interface TeamDetails extends UpdateTeam {
-  creatorName: string
+export interface TeamDetails {
+  id: number;
+  name: string;
+  description: string;
+  username: string;
+  coverId: string;
 }
 
 export interface TeamInformation {
@@ -15,6 +19,7 @@ export interface TeamInformation {
   accessCode: string;
   description: string;
   username: string;
+  idCover: string;
 }
 
 export interface CreateTeam {

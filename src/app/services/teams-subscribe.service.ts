@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {Team} from "../model/team";
+import {Team, TeamDetails} from "../model/team";
 import {TeamsService} from "./teams.service";
 import {tap} from "rxjs/operators";
 
@@ -9,15 +9,15 @@ import {tap} from "rxjs/operators";
 })
 export class TeamsSubscribeService {
 
-  private teams$: BehaviorSubject<Team[]> = new BehaviorSubject<Team[]>([]);
+  private teams$: BehaviorSubject<TeamDetails[]> = new BehaviorSubject<TeamDetails[]>([]);
 
   constructor(private teamsService: TeamsService) { };
 
-  getTeams(): Observable<Team[]> {
+  getTeams(): Observable<TeamDetails[]> {
     return this.teams$.asObservable();
   }
 
-  setTeam(teams: Team[]) {
+  setTeam(teams: TeamDetails[]) {
     this.teams$.next(teams);
   }
 

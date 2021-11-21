@@ -8,5 +8,5 @@
       <app-resource-hash (selectedItemEvent)="selectedProject(project.id)" [resource]="project"></app-resource-hash>
     </mat-grid-tile>
   </mat-grid-list>
-  <app-resource-description *ngIf="indexProject!=null" [resourceName]="'project'" [roleName]="'PRODUCT OWNER'" [resource]="projects[indexProject]" (selectedElementEvent)="goToProject(projects[indexProject].id)" right-side></app-resource-description>
+  <app-resource-description #resourceDescription *ngIf="indexProject!=null" [resourceName]="'project'" [roleName]="'PRODUCT OWNER'" [resource]="projects[indexProject]" (selectedElementEvent)="goToProject(projects[indexProject].id)" right-side></app-resource-description>
 </app-base-view-template>

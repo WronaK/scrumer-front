@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ProjectsService} from "../../services/projects.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ProjectsSubscribeService} from "../../services/projects-subscribe.service";
@@ -6,6 +6,7 @@ import {tap} from "rxjs/operators";
 import {Router} from "@angular/router";
 import {ProjectDetails} from "../../model/project";
 import {CreateProjectComponent} from "../../dialog/create-project/create-project.component";
+import {ResourceDescriptionComponent} from "../../component-elements/resource-description/resource-description.component";
 
 @Component({
   selector: 'app-my-projects',
@@ -16,6 +17,10 @@ export class MyProjectsComponent implements OnInit {
   indexProject!: number;
 
   projects: ProjectDetails[] = [];
+
+  @ViewChild('resourceDescription')
+  resourceDescription!: ResourceDescriptionComponent;
+
   constructor(
     private projectsService: ProjectsService,
     private dialog: MatDialog,
@@ -53,5 +58,6 @@ export class MyProjectsComponent implements OnInit {
 
   selectedProject(idProject: number) {
     this.indexProject = this.projects.findIndex(project => project.id == idProject);
+    this.resourceDescription.refrash(this.projects[this.indexProject]);
   }
 }

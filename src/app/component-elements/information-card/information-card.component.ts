@@ -3,6 +3,8 @@ import {ResourceInformation} from "../../model/resource";
 import {FormControl} from "@angular/forms";
 import {UploadsService} from "../../services/uploads.service";
 import {HttpResponse} from "@angular/common/http";
+import {ProjectsService} from "../../services/projects.service";
+import {TeamsService} from "../../services/teams.service";
 
 @Component({
   selector: 'app-information-card',
@@ -32,6 +34,8 @@ export class InformationCardComponent implements OnInit {
   image!: File;
 
   constructor(
+    private projectsService: ProjectsService,
+    private teamsService: TeamsService,
     private uploadService: UploadsService
   ) {
     this.initForm();
@@ -46,10 +50,13 @@ export class InformationCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.setData();
-    this.uploadService.getProjectCover(this.resource.id).subscribe(
-      res => {
-        this.createImage(res)
-      });
+
+    if (this.resource.idCover != undefined) {
+      this.uploadService.getImage(this.resource.idCover).subscribe(
+        res => {
+          this.createImage(res)
+        });
+    }
   }
 
   setData(): void {
@@ -62,16 +69,33 @@ export class InformationCardComponent implements OnInit {
   selectFiles(event: any): void {
     this.image = event.target.files[0];
 
-    if(this.image) {
-      this.uploadService.upload(this.resource.id, this.image).subscribe(
-        event => {
-          if (event instanceof HttpResponse) {
-            this.createImage(this.image)
-          }
-        }
-      )
+    if (this.image) {
+      if (this.resourceName === 'project') {
+        this.uploadCoverToProject();
+      } else if (this.resourceName == 'team') {
+        this.uploadCoverToTeam();
+      }
     }
+  }
 
+  uploadCoverToProject() {
+    this.projectsService.uploadCover(this.resource.id, this.image).subscribe(
+      event => {
+        if (event instanceof HttpResponse) {
+          this.createImage(this.image)
+        }
+      }
+    )
+  }
+
+  uploadCoverToTeam() {
+    this.teamsService.uploadCover(this.resource.id, this.image).subscribe(
+      event => {
+        if (event instanceof HttpResponse) {
+          this.createImage(this.image)
+        }
+      }
+    )
   }
 
   createImage(image: Blob) {

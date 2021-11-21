@@ -1,12 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {tap} from "rxjs/operators";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {Team} from "../../model/team";
+import {TeamDetails} from "../../model/team";
 import {TeamsService} from "../../services/teams.service";
 import {JoinTeamComponent} from "../../dialog/join-team/join-team.component";
 import {TeamsSubscribeService} from "../../services/teams-subscribe.service";
 import {Router} from "@angular/router";
 import {CreateTeamComponent} from "../../dialog/create-team/create-team.component";
+import {ResourceDescription} from "../../model/resource";
+import {ResourceDescriptionComponent} from "../../component-elements/resource-description/resource-description.component";
 
 @Component({
   selector: 'app-my-teams',
@@ -15,8 +17,11 @@ import {CreateTeamComponent} from "../../dialog/create-team/create-team.componen
 })
 export class MyTeamsComponent implements OnInit {
 
-  teams: Team[] = [];
+  teams: TeamDetails[] = [];
   indexTeam!: number;
+
+  @ViewChild('resourceDescription')
+  resourceDescription!: ResourceDescriptionComponent;
 
   constructor(
     private teamsService: TeamsService,
@@ -71,5 +76,6 @@ export class MyTeamsComponent implements OnInit {
 
   selectedTeam(idTeam: number) {
     this.indexTeam = this.teams.findIndex(team => team.id == idTeam);
+    this.resourceDescription.refrash(this.teams[this.indexTeam]);
   }
 }

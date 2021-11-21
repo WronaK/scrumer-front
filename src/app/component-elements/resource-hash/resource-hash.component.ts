@@ -1,5 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ResourceHash} from "../../model/resource";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-resource-hash',
@@ -14,13 +15,34 @@ export class ResourceHashComponent implements OnInit {
   @Output()
   selectedItemEvent = new EventEmitter<number>();
 
-  constructor() { }
+  imgUrl: any;
+
+  constructor(
+    private uploadService: UploadsService
+  ) { }
 
   ngOnInit(): void {
+    if (this.resource.coverId != undefined) {
+      this.uploadService.getImage(this.resource.coverId).subscribe(
+        res => {
+          this.createImage(res)
+        });
+    }
   }
 
   selectedNewItem(id: number) {
     this.selectedItemEvent.emit(id);
   }
 
+  createImage(image: Blob) {
+    if (image && image.size > 0) {
+      let reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        this.imgUrl = reader.result;
+      }, false);
+
+      reader.readAsDataURL(image);
+    }
+  }
 }

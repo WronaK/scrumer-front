@@ -1,3 +1,4 @@
 <div class="background" (click)="selectedNewItem(resource.id)">
-  <div class="foreground">{{resource.name}}</div>
+  <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
+  <div class="text-centered">{{resource.name}}</div>
 </div>

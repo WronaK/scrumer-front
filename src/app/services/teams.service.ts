@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {Team, TeamDetails, TeamInformation, UpdateTeam} from "../model/team";
 import {JoinProject, Project} from "../model/project";
@@ -33,8 +33,8 @@ export class TeamsService {
     return this.http.get<Team[]>(this.url);
   }
 
-  getTeams(): Observable<any> {
-    return this.http.get<Team[]>(this.url + 'my-teams');
+  getTeams(): Observable<TeamDetails[]> {
+    return this.http.get<TeamDetails[]>(this.url + 'my-teams');
   }
 
   getTasksSprintBacklog(id: number): Observable<SprintBacklog> {
@@ -64,5 +64,18 @@ export class TeamsService {
 
   removeProjectWithTeam(id: number, idProject: number) {
     return this.http.patch(this.url + id + "/projects/" + idProject + "/remove", null);
+  }
+
+  uploadCover(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/cover", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 }

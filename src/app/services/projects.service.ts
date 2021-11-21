@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JoinTeams, Team} from "../model/team";
 import {CreateTask, Task} from "../model/task";
@@ -61,5 +61,18 @@ export class ProjectsService {
 
   removeTeamsWithProject(id: number, idTeams: number) {
     return this.http.patch(this.url + id + "/teams/" + idTeams + "/remove", null);
+  }
+
+  uploadCover(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/cover", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 }

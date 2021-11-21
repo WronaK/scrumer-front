@@ -1,6 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ResourceDescription} from "../../model/resource";
 import {FormControl} from "@angular/forms";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-resource-description',
@@ -28,7 +29,11 @@ export class ResourceDescriptionComponent implements OnInit {
 
   disabled = true;
 
-  constructor() {
+  imgUrl: any;
+
+  constructor(
+    private uploadService: UploadsService
+  ) {
     this.initForm();
   }
 
@@ -39,16 +44,49 @@ export class ResourceDescriptionComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.setData();
+
+    if (this.resource.coverId != undefined) {
+      this.uploadService.getImage(this.resource.coverId).subscribe(
+        res => {
+          this.createImage(res)
+        });
+    }
   }
 
-  setData(): void {
+  public setData(): void {
     this.name.setValue(this.resource.name);
     this.description.setValue(this.resource.description);
     this.username.setValue(this.resource.username);
   }
 
+  public refrash(data: ResourceDescription): void {
+    this.name.setValue(data.name);
+    this.description.setValue(data.description);
+    this.username.setValue(data.username);
+
+    if (data.coverId != undefined) {
+      this.uploadService.getImage(data.coverId).subscribe(
+        res => {
+          this.createImage(res)
+        });
+    }
+  }
+
   goTo(id: number) {
     this.selectedElementEvent.emit(id);
+  }
+
+  createImage(image: Blob) {
+    if (image && image.size > 0) {
+      let reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        this.imgUrl = reader.result;
+      }, false);
+
+      reader.readAsDataURL(image);
+    }
   }
 }

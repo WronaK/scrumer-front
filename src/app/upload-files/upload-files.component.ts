@@ -30,34 +30,34 @@ export class UploadFilesComponent implements OnInit {
   }
 
   uploadFiles(): void {
-    this.message = [];
-
-    if (this.files) {
-      for (let i = 0; i < this.files.length; i++) {
-        this.upload(i, this.files[i]);
-      }
-    }
+    // this.message = [];
+    //
+    // if (this.files) {
+    //   for (let i = 0; i < this.files.length; i++) {
+    //     this.upload(i, this.files[i]);
+    //   }
+    // }
   }
 
-  upload(idx: number, file: File): void {
-    this.progressInfos[idx] = { value: 0, fileName: file.name};
-
-    if (file) {
-      this.uploadService.upload(1, file).subscribe(
-        (event: any) => {
-          if (event.type === HttpEventType.UploadProgress) {
-            this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
-          } else if (event instanceof HttpResponse) {
-            this.message.push('Uploaded the file succesfully: ' + file.name);
-            this.fileInfos = this.uploadService.getFiles();
-          }
-        },
-    (err: any) => {
-      this.progressInfos[idx].value = 0;
-      this.message.push("Could not upload the file: " + file.name);
-      this.fileInfos = this.uploadService.getFiles();
-      });
-    }
-  }
+  // upload(idx: number, file: File): void {
+  //   this.progressInfos[idx] = { value: 0, fileName: file.name};
+  //
+  //   if (file) {
+  //     this.uploadService.upload(1, file).subscribe(
+  //       (event: any) => {
+  //         if (event.type === HttpEventType.UploadProgress) {
+  //           this.progressInfos[idx].value = Math.round(100 * event.loaded / event.total);
+  //         } else if (event instanceof HttpResponse) {
+  //           this.message.push('Uploaded the file succesfully: ' + file.name);
+  //           this.fileInfos = this.uploadService.getFiles();
+  //         }
+  //       },
+  //   (err: any) => {
+  //     this.progressInfos[idx].value = 0;
+  //     this.message.push("Could not upload the file: " + file.name);
+  //     this.fileInfos = this.uploadService.getFiles();
+  //     });
+  //   }
+  // }
 
 }

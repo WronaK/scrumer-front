@@ -1,13 +1,15 @@
 export interface ResourceHash {
   id: number,
-  name: string
+  name: string,
+  coverId: string
 }
 
 export interface ResourceDescription {
   id: number,
   name: string,
   description: string,
-  username: string
+  username: string,
+  coverId: string
 }
 
 export interface ResourceInformation {
@@ -16,4 +18,5 @@ export interface ResourceInformation {
   accessCode: string;
   description: string;
   username: string;
+  idCover: string;
 }
