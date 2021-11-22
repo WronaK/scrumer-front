@@ -58,6 +58,7 @@ export class MyProjectsComponent implements OnInit {
 
   selectedProject(idProject: number) {
     this.indexProject = this.projects.findIndex(project => project.id == idProject);
-    this.resourceDescription.refrash(this.projects[this.indexProject]);
+    if (this.resourceDescription != undefined)
+      this.resourceDescription.refrash(this.projects[this.indexProject]);
   }
 }

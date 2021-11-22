@@ -34,7 +34,7 @@ export class UploadsService {
     return this.httpClient.get(`${this.baseUrl}/${id}/project/cover`, {responseType: 'blob'});
   }
 
-  getImage(id: string): Observable<Blob> {
+  getImage(id: number): Observable<Blob> {
     return this.httpClient.get(`${this.baseUrl}/${id}/image`, {responseType: 'blob'});
   }
 }

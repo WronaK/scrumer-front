@@ -7,7 +7,6 @@ import {JoinTeamComponent} from "../../dialog/join-team/join-team.component";
 import {TeamsSubscribeService} from "../../services/teams-subscribe.service";
 import {Router} from "@angular/router";
 import {CreateTeamComponent} from "../../dialog/create-team/create-team.component";
-import {ResourceDescription} from "../../model/resource";
 import {ResourceDescriptionComponent} from "../../component-elements/resource-description/resource-description.component";
 
 @Component({
@@ -76,6 +75,7 @@ export class MyTeamsComponent implements OnInit {
 
   selectedTeam(idTeam: number) {
     this.indexTeam = this.teams.findIndex(team => team.id == idTeam);
-    this.resourceDescription.refrash(this.teams[this.indexTeam]);
+    if (this.resourceDescription != undefined)
+      this.resourceDescription.refrash(this.teams[this.indexTeam]);
   }
 }

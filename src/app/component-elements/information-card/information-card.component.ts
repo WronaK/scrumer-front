@@ -51,8 +51,9 @@ export class InformationCardComponent implements OnInit {
   ngOnInit(): void {
     this.setData();
 
-    if (this.resource.idCover != undefined) {
-      this.uploadService.getImage(this.resource.idCover).subscribe(
+    console.log("cover id: " + this.resource.coverId)
+    if (this.resource.coverId != undefined) {
+      this.uploadService.getImage(this.resource.coverId).subscribe(
         res => {
           this.createImage(res)
         });

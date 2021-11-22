@@ -16,7 +16,7 @@ export interface ProjectInformation {
   accessCode: string;
   description: string;
   username: string;
-  idCover: string;
+  coverId: number;
 }
 
 export interface UpdateProject extends Project {
@@ -30,7 +30,7 @@ export interface ProjectDetails {
   name: string;
   description: string;
   username: string;
-  coverId: string;
+  coverId: number;
 }
 
 export interface JoinProject {

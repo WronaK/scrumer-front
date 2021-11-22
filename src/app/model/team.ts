@@ -10,7 +10,7 @@ export interface TeamDetails {
   name: string;
   description: string;
   username: string;
-  coverId: string;
+  coverId: number;
 }
 
 export interface TeamInformation {
@@ -19,7 +19,7 @@ export interface TeamInformation {
   accessCode: string;
   description: string;
   username: string;
-  idCover: string;
+  coverId: number;
 }
 
 export interface CreateTeam {

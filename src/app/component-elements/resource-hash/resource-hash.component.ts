@@ -12,6 +12,9 @@ export class ResourceHashComponent implements OnInit {
   @Input()
   resource!: ResourceHash;
 
+  @Input()
+  title!: string;
+
   @Output()
   selectedItemEvent = new EventEmitter<number>();
 
@@ -22,7 +25,7 @@ export class ResourceHashComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if (this.resource.coverId != undefined) {
+    if (this.resource && this.resource.coverId != undefined) {
       this.uploadService.getImage(this.resource.coverId).subscribe(
         res => {
           this.createImage(res)
