@@ -2,8 +2,8 @@ import {Component} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TeamsDetailsService} from "../../services/teams-details.service";
 import {tap} from "rxjs/operators";
-import {JoinProjectComponent} from "../../dialog/join-project/join-project.component";
 import {AddTeamMemberComponent} from "../../dialog/add-team-member/add-team-member.component";
+import {JoinProjectToTeamComponent} from "../../dialog/join-project-to-team/join-project-to-team.component";
 
 @Component({
   selector: 'app-menu-team',
@@ -38,9 +38,9 @@ export class MenuTeamComponent {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      id: this.teamDetailsService.idTeam
+      idTeam: this.teamDetailsService.idTeam
     };
-    this.dialog.open(JoinProjectComponent, dialogConfig)
+    this.dialog.open(JoinProjectToTeamComponent, dialogConfig)
       .afterClosed().pipe(
       tap(() => {
         this.teamDetailsService.loadsProjects()

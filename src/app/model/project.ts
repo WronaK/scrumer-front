@@ -34,6 +34,11 @@ export interface ProjectDetails {
 }
 
 export interface JoinProject {
-  name: string,
+  idProject: number;
   accessCode: string
+}
+
+export interface SuggestedProject {
+  name: string;
+  id: number;
 }

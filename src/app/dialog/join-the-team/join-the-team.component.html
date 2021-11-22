@@ -1,0 +1,22 @@
+<app-dialog-template>
+  <h2 title>Join the team</h2>
+  <form [formGroup]="formGroup" content>
+    <mat-form-field>
+      <mat-label>Enter team name</mat-label>
+      <input [formControl]="teamName"
+             [matAutocomplete]="auto"
+             matInput required
+             type="text">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter access code to team</mat-label>
+      <input [formControl]="accessCode" matInput>
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let item of filteredOption" [value]="item.name">
+        {{item.name}}
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+  <button mat-raised-button action (click)="joinToTeam()" [disabled]="!formGroup.valid">JOIN</button>
+</app-dialog-template>

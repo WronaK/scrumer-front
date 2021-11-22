@@ -32,7 +32,6 @@ import {ProjectsComponent} from './components/projects/projects.component';
 import {MembersTeamComponent} from './components/members-team/members-team.component';
 import {TaskStatesComponent} from './task-states/task-states.component';
 import {ShowTaskFromSprintBacklogComponent} from './dialog/show-task-from-sprint-backlog/show-task-from-sprint-backlog.component';
-import {JoinProjectComponent} from './dialog/join-project/join-project.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ChatComponent} from './views/chat/chat.component';
 import {NewConversationComponent} from './dialog/new-conversation/new-conversation.component';
@@ -49,6 +48,8 @@ import { DashboardElementComponent } from './component-elements/dashboard-elemen
 import { FormLoginTemplateComponent } from './templates/form-login-template/form-login-template.component';
 import { InformationCardComponent } from './component-elements/information-card/information-card.component';
 import { JoinTeamToProjectComponent } from './dialog/join-team-to-project/join-team-to-project.component';
+import { JoinTheTeamComponent } from './dialog/join-the-team/join-the-team.component';
+import { JoinProjectToTeamComponent } from './dialog/join-project-to-team/join-project-to-team.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +78,6 @@ import { JoinTeamToProjectComponent } from './dialog/join-team-to-project/join-t
     MembersTeamComponent,
     TaskStatesComponent,
     ShowTaskFromSprintBacklogComponent,
-    JoinProjectComponent,
     ChatComponent,
     NewConversationComponent,
     UploadFilesComponent,
@@ -91,7 +91,9 @@ import { JoinTeamToProjectComponent } from './dialog/join-team-to-project/join-t
     DashboardElementComponent,
     FormLoginTemplateComponent,
     InformationCardComponent,
-    JoinTeamToProjectComponent
+    JoinTeamToProjectComponent,
+    JoinTheTeamComponent,
+    JoinProjectToTeamComponent
   ],
   imports: [
     BrowserModule,

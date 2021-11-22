@@ -7,6 +7,7 @@ import {TeamsSubscribeService} from "../../services/teams-subscribe.service";
 import {Router} from "@angular/router";
 import {CreateTeamComponent} from "../../dialog/create-team/create-team.component";
 import {ResourceDescriptionComponent} from "../../component-elements/resource-description/resource-description.component";
+import {JoinTheTeamComponent} from "../../dialog/join-the-team/join-the-team.component";
 
 @Component({
   selector: 'app-my-teams',
@@ -53,19 +54,16 @@ export class MyTeamsComponent implements OnInit {
   }
 
   joinTeam() {
-    // const dialogConfig= new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.data = {
-    //   request: "ADD"
-    // };
-    // this.dialog.open(JoinTeamComponent, dialogConfig)
-    //   .afterClosed()
-    //   .pipe(
-    //     tap( () => {
-    //         this.teasSubscribeService.uploadTeams()
-    //       }
-    //     )).subscribe();
+    const dialogConfig= new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(JoinTheTeamComponent, dialogConfig)
+      .afterClosed()
+      .pipe(
+        tap( () => {
+            this.teasSubscribeService.uploadTeams()
+          }
+        )).subscribe();
   }
 
   goToTeam(id: number) {

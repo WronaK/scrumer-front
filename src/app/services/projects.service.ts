@@ -3,7 +3,7 @@ import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JoinTeam, Team} from "../model/team";
 import {CreateTask, Task} from "../model/task";
-import {CreateProject, ProjectDetails, ProjectInformation, UpdateProject} from "../model/project";
+import {CreateProject, ProjectDetails, ProjectInformation, SuggestedProject, UpdateProject} from "../model/project";
 
 @Injectable({
   providedIn: 'root'
@@ -74,5 +74,9 @@ export class ProjectsService {
     });
 
     return this.http.request(req);
+  }
+
+  getSuggestedProject(name: any): Observable<SuggestedProject[]> {
+    return this.http.get<SuggestedProject[]>(this.url + "find/" + name);
   }
 }

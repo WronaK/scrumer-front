@@ -11,8 +11,8 @@ import {TeamsService} from "../../services/teams.service";
   styleUrls: ['./add-team-member.component.scss']
 })
 export class AddTeamMemberComponent {
-  teamMemberFormGroup!: FormGroup;
-  teamMember!: FormControl;
+  formGroup!: FormGroup;
+  member!: FormControl;
 
   filteredOption: SuggestedUser[] = [];
   suggestedUser: SuggestedUser[] = [];
@@ -30,17 +30,17 @@ export class AddTeamMemberComponent {
   }
 
   private initForm(): void {
-    this.teamMember = new FormControl('', Validators.required);
+    this.member = new FormControl('', Validators.required);
 
-    this.teamMemberFormGroup = new FormGroup({
-      teamMember: this.teamMember
+    this.formGroup = new FormGroup({
+      member: this.member
     })
 
     this.filterTeamMember();
   }
 
   private filterTeamMember(): void {
-    this.teamMember.valueChanges
+    this.member.valueChanges
       .subscribe(response => {
         if (response.length >= 3) {
           this.usersService.getSuggestedUser(response)
@@ -60,8 +60,10 @@ export class AddTeamMemberComponent {
     })
   }
 
-  public addTeamMember(): void {
-    this.teamsService.addMember(this.idTeam, this.teamMember.value.id)
-      .subscribe(() => this.dialogRef.close())
+  public addMember(): void {
+    const user = this.filteredOption.find(user => user.username == this.member.value);
+    if (user != undefined)
+      this.teamsService.addMember(this.idTeam, user.id)
+        .subscribe(() => this.dialogRef.close())
   }
 }

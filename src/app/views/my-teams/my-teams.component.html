@@ -2,7 +2,7 @@
   <h2 class="header" header>MY TEAMS</h2>
   <div class="buttons" buttons>
     <button mat-button class="button" (click)="addTeam()">Create team</button>
-    <button mat-button class="button" (click)="joinTeam()">Join team</button>
+    <button mat-button class="button" (click)="joinTeam()">Join the team</button>
   </div>
   <mat-grid-list class="left-side" cols="2" rowHeight="20vh" right-side>
     <mat-grid-tile *ngFor="let team of teams">
@@ -10,6 +10,5 @@
     </mat-grid-tile>
   </mat-grid-list>
   <app-resource-description  #resourceDescription *ngIf="indexTeam!=null" [resourceName]="'team'" [roleName]="'SCRUM MASTER'" [resource]="teams[indexTeam]" (selectedElementEvent)="goToTeam(teams[indexTeam].id)" right-side></app-resource-description>
-
 </app-base-view-template>
 

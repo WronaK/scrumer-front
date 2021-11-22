@@ -1,21 +1,21 @@
 <app-dialog-template>
-  <h2 title>Add member</h2>
-  <form [formGroup]="teamMemberFormGroup" content>
+  <h2 title>Add a new member</h2>
+  <form [formGroup]="formGroup" content>
     <mat-form-field>
-      <mat-label>Enter Product Owner</mat-label>
-      <input [formControl]="teamMember"
+      <mat-label>Enter name and surname member</mat-label>
+      <input [formControl]="member"
              [matAutocomplete]="auto"
              matInput required
              type="text">
     </mat-form-field>
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let item of filteredOption" [value]="item">
+      <mat-option *ngFor="let item of filteredOption" [value]="item.username">
         {{item.username}}
       </mat-option>
     </mat-autocomplete>
   </form>
 
-  <button mat-raised-button action (click)="addTeamMember()" [disabled]="!teamMemberFormGroup.valid">
+  <button mat-raised-button action (click)="addMember()" [disabled]="!formGroup.valid">
     ADD MEMBER
   </button>
 </app-dialog-template>
