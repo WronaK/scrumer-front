@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {JoinTeams, Team} from "../model/team";
+import {JoinTeam, Team} from "../model/team";
 import {CreateTask, Task} from "../model/task";
 import {CreateProject, ProjectDetails, ProjectInformation, UpdateProject} from "../model/project";
 
@@ -55,8 +55,8 @@ export class ProjectsService {
     return this.http.get<Team[]>(this.url + id + "/teams");
   }
 
-  joinTeamsToProject(id: number, teams: JoinTeams) {
-    return this.http.put<JoinTeams>(this.url + id + "/teams", teams);
+  joinTeamToProject(id: number, team: JoinTeam) {
+    return this.http.put<JoinTeam>(this.url + id + "/team", team);
   }
 
   removeTeamsWithProject(id: number, idTeams: number) {

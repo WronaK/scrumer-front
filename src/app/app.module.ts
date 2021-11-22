@@ -15,7 +15,6 @@ import {DashboardComponent} from './views/dashboard/dashboard.component';
 import {MyTasksComponent} from './components/my-tasks/my-tasks.component';
 import {MyProjectsComponent} from './views/my-projects/my-projects.component';
 import {MyTeamsComponent} from './views/my-teams/my-teams.component';
-import {JoinTeamComponent} from './dialog/join-team/join-team.component';
 import {ProjectComponent} from './views/project/project.component';
 import {ProductBacklogComponent} from './components/product-backlog/product-backlog.component';
 import {MenuTasksComponent} from './components/menu-tasks/menu-tasks.component';
@@ -49,6 +48,7 @@ import { AddTeamMemberComponent } from './dialog/add-team-member/add-team-member
 import { DashboardElementComponent } from './component-elements/dashboard-element/dashboard-element.component';
 import { FormLoginTemplateComponent } from './templates/form-login-template/form-login-template.component';
 import { InformationCardComponent } from './component-elements/information-card/information-card.component';
+import { JoinTeamToProjectComponent } from './dialog/join-team-to-project/join-team-to-project.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +61,6 @@ import { InformationCardComponent } from './component-elements/information-card/
     MyTasksComponent,
     MyProjectsComponent,
     MyTeamsComponent,
-    JoinTeamComponent,
     ProjectComponent,
     ProductBacklogComponent,
     MenuTasksComponent,
@@ -91,7 +90,8 @@ import { InformationCardComponent } from './component-elements/information-card/
     AddTeamMemberComponent,
     DashboardElementComponent,
     FormLoginTemplateComponent,
-    InformationCardComponent
+    InformationCardComponent,
+    JoinTeamToProjectComponent
   ],
   imports: [
     BrowserModule,

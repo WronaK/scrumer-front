@@ -25,7 +25,7 @@
              type="text">
     </mat-form-field>
     <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let item of filteredOption" [value]="item">
+      <mat-option *ngFor="let item of filteredOption" [value]="item.username">
         {{item.username}}
       </mat-option>
     </mat-autocomplete>

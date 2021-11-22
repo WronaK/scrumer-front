@@ -63,7 +63,9 @@ export class CreateProjectComponent {
   }
 
   public createProject(): void {
-    this.projectService.createProject(this.getData())
+    const user = this.filteredOption.find(user => user.username == this.productOwner.value);
+    if (user != undefined)
+      this.projectService.createProject(this.getData())
       .subscribe(() => this.dialogRef.close());
   }
 

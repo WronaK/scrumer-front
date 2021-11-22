@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ProjectDetailsService} from "../../services/project-details.service";
+import {JoinTeamToProjectComponent} from "../../dialog/join-team-to-project/join-team-to-project.component";
+import {tap} from "rxjs/operators";
 
 @Component({
   selector: 'app-menu-project',
@@ -33,18 +35,18 @@ export class MenuProjectComponent implements OnInit {
     // ).subscribe();
   }
 
-  addTeams() {
+  addTeam() {
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.data = {
-    //   id: this.projectDetailsService.idProject,
-    // };
-    // this.dialog.open(AddTeamsComponent, dialogConfig)
-    //   .afterClosed().pipe(
-    //   tap(() => {
-    //     this.projectDetailsService.uploadTeams()
-    //   })
-    // ).subscribe();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      idProject: this.projectDetailsService.idProject,
+    };
+    this.dialog.open(JoinTeamToProjectComponent, dialogConfig)
+      .afterClosed().pipe(
+      tap(() => {
+        this.projectDetailsService.uploadTeams()
+      })
+    ).subscribe();
   }
 }

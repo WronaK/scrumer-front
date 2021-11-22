@@ -3,7 +3,6 @@ import {tap} from "rxjs/operators";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {TeamDetails} from "../../model/team";
 import {TeamsService} from "../../services/teams.service";
-import {JoinTeamComponent} from "../../dialog/join-team/join-team.component";
 import {TeamsSubscribeService} from "../../services/teams-subscribe.service";
 import {Router} from "@angular/router";
 import {CreateTeamComponent} from "../../dialog/create-team/create-team.component";
@@ -54,19 +53,19 @@ export class MyTeamsComponent implements OnInit {
   }
 
   joinTeam() {
-    const dialogConfig= new MatDialogConfig();
-    dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
-    dialogConfig.data = {
-      request: "ADD"
-    };
-    this.dialog.open(JoinTeamComponent, dialogConfig)
-      .afterClosed()
-      .pipe(
-        tap( () => {
-            this.teasSubscribeService.uploadTeams()
-          }
-        )).subscribe();
+    // const dialogConfig= new MatDialogConfig();
+    // dialogConfig.disableClose = true;
+    // dialogConfig.autoFocus = true;
+    // dialogConfig.data = {
+    //   request: "ADD"
+    // };
+    // this.dialog.open(JoinTeamComponent, dialogConfig)
+    //   .afterClosed()
+    //   .pipe(
+    //     tap( () => {
+    //         this.teasSubscribeService.uploadTeams()
+    //       }
+    //     )).subscribe();
   }
 
   goToTeam(id: number) {

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Team, TeamDetails, TeamInformation, UpdateTeam} from "../model/team";
+import {SuggestedTeam, Team, TeamDetails, TeamInformation, UpdateTeam} from "../model/team";
 import {JoinProject, Project} from "../model/project";
 import {User} from "../model/user";
 import {SprintBacklog} from "../model/sprint.backlog";
@@ -77,5 +77,9 @@ export class TeamsService {
     });
 
     return this.http.request(req);
+  }
+
+  getSuggestedTeam(name: String): Observable<SuggestedTeam[]> {
+    return this.http.get<SuggestedTeam[]>(this.url + "find/" + name);
   }
 }

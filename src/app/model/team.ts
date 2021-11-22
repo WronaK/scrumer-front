@@ -30,7 +30,12 @@ export interface CreateTeam {
 }
 
 export interface JoinTeam {
-  teamName: string;
+  idTeam: number;
+  accessCode: string;
+}
+
+export interface TeamData {
+  name: string;
   accessCode: string;
 }
 
@@ -40,4 +45,9 @@ export interface JoinTeams {
 
 export interface UpdateTeam extends Team {
   accessCode: string
+}
+
+export interface SuggestedTeam {
+  name: string;
+  id: number;
 }

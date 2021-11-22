@@ -61,8 +61,10 @@ export class CreateTeamComponent {
   }
 
   public createTeam(): void {
-    this.teamsService.createTeam(this.getData())
-      .subscribe(() => this.dialogRef.close());
+    const user = this.filteredOption.find(user => user.username == this.scrumMaster.value);
+    if (user != undefined)
+      this.teamsService.createTeam(this.getData())
+        .subscribe(() => this.dialogRef.close());
   }
 
   private getData(): CreateTeam {
