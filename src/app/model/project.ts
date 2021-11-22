@@ -1,3 +1,5 @@
+import {Attachment} from "./resource";
+
 export interface Project {
   id: number;
   name: string;
@@ -17,6 +19,7 @@ export interface ProjectInformation {
   description: string;
   username: string;
   coverId: number;
+  attachments: Attachment[];
 }
 
 export interface UpdateProject {

@@ -32,25 +32,9 @@
   <div class="attachment">
     <mat-list>
       <div mat-subheader>ATTACHMENT</div>
-      <mat-list-item>
+      <mat-list-item *ngFor="let file of resource.attachments">
         <mat-icon mat-list-icon>note</mat-icon>
-        <div mat-line>FILE NAME</div>
-        <div mat-line>DATA</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>note</mat-icon>
-        <div mat-line>FILE NAME</div>
-        <div mat-line>DATA</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>note</mat-icon>
-        <div mat-line>FILE NAME</div>
-        <div mat-line>DATA</div>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>note</mat-icon>
-        <div mat-line>FILE NAME</div>
-        <div mat-line>DATA</div>
+        <div mat-line>{{file.filename}}</div>
       </mat-list-item>
     </mat-list>
   <mat-list>

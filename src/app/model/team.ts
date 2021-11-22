@@ -1,3 +1,5 @@
+import {Attachment} from "./resource";
+
 export interface Team {
   id: number;
   name: string;
@@ -20,6 +22,7 @@ export interface TeamInformation {
   description: string;
   username: string;
   coverId: number;
+  attachments: Attachment[];
 }
 
 export interface CreateTeam {

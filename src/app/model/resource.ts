@@ -19,4 +19,10 @@ export interface ResourceInformation {
   description: string;
   username: string;
   coverId: number;
+  attachments: Attachment[];
+}
+
+export interface Attachment {
+  id: number;
+  filename: string;
 }
