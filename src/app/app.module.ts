@@ -19,7 +19,7 @@ import {JoinTeamComponent} from './dialog/join-team/join-team.component';
 import {ProjectComponent} from './views/project/project.component';
 import {ProductBacklogComponent} from './components/product-backlog/product-backlog.component';
 import {MenuTasksComponent} from './components/menu-tasks/menu-tasks.component';
-import {ShowTaskFromProductBacklogComponent} from './dialog/show-task-from-product-backlog/show-task-from-product-backlog.component';
+import {ShowTaskFromProductBacklogComponent} from './components/show-task-from-product-backlog/show-task-from-product-backlog.component';
 import {TeamsComponent} from './components/teams/teams.component';
 import {MenuProjectComponent} from './components/menu-project/menu-project.component';
 import {AddTaskToProductBacklogComponent} from './dialog/add-task-to-product-backlog/add-task-to-product-backlog.component';

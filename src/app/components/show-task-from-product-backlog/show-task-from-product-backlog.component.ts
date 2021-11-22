@@ -50,7 +50,7 @@ export class ShowTaskFromProductBacklogComponent implements OnInit {
     this.taskId = task.id;
     this.taskTitleFC.setValue(task.title);
     this.descriptionFC.setValue(task.description);
-    this.priorityFC.setValue(<keyof typeof PriorityStatus>task.priority);
+    this.priorityFC.setValue(task.priority);
     this.storyPointFC.setValue(task.storyPoints);
     this.statusFC.setValue(task.status);
   }
