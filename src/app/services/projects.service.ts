@@ -79,4 +79,17 @@ export class ProjectsService {
   getSuggestedProject(name: any): Observable<SuggestedProject[]> {
     return this.http.get<SuggestedProject[]>(this.url + "find/" + name);
   }
+
+  uploadAttachment(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/attachment", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
 }

@@ -12,7 +12,6 @@ import {TeamsService} from "../../services/teams.service";
   styleUrls: ['./information-card.component.scss']
 })
 export class InformationCardComponent implements OnInit {
-
   @Input()
   resourceName!: string;
 
@@ -32,6 +31,9 @@ export class InformationCardComponent implements OnInit {
   disabled = true;
 
   image!: File;
+
+  files: File[] = [];
+
 
   constructor(
     private projectsService: ProjectsService,
@@ -67,7 +69,7 @@ export class InformationCardComponent implements OnInit {
     this.username.setValue(this.resource.username);
   }
 
-  selectFiles(event: any): void {
+  selectImage(event: any): void {
     this.image = event.target.files[0];
 
     if (this.image) {
@@ -109,5 +111,38 @@ export class InformationCardComponent implements OnInit {
 
       reader.readAsDataURL(image);
     }
+  }
+
+  selectFiles(event: any): void {
+    for (let i = 0; i< event.target.files.length; i++) {
+      this.files.push(event.target.files[i])
+    }
+  }
+
+
+  uploadFiles(): void {
+    if (this.files) {
+      for (let i = 0; i < this.files.length; i++) {
+         this.addAttachment(this.files[i]);
+      }
+    }
+  }
+
+  addAttachment(file: File) {
+    if (this.resourceName === 'project') {
+      this.uploadAttachmentToProject(file)
+    } else if (this.resourceName == 'team') {
+      this.uploadAttachmentToTeam(file);
+    }
+  }
+
+  uploadAttachmentToProject(file: File): void {
+    this.projectsService.uploadAttachment(this.resource.id, file)
+      .subscribe();
+  }
+
+  uploadAttachmentToTeam(file: File): void {
+    this.teamsService.uploadAttachment(this.resource.id, file)
+      .subscribe();
   }
 }

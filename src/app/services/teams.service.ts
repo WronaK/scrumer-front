@@ -90,4 +90,17 @@ export class TeamsService {
   joinToTeam(team: JoinTeam) {
     return this.http.put<JoinTeam>(this.url + "/member", team);
   }
+
+  uploadAttachment(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/attachment", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
 }

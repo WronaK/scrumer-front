@@ -1,5 +1,5 @@
 <div class="belt"></div>
-<input type="file" class="file-input" accept='image/*' multiple (change)="selectFiles($event)" #fileUpload>
+<input type="file" class="file-input" accept='image/*' (change)="selectImage($event)" #fileUpload>
 <button class="image" (click)="fileUpload.click()">
   <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
   <div class="text-centered">click to change</div>
@@ -28,6 +28,52 @@
         <input matInput [formControl]="username" />
       </mat-form-field>
     </form>
+
+  <div class="attachment">
+    <mat-list>
+      <div mat-subheader>ATTACHMENT</div>
+      <mat-list-item>
+        <mat-icon mat-list-icon>note</mat-icon>
+        <div mat-line>FILE NAME</div>
+        <div mat-line>DATA</div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>note</mat-icon>
+        <div mat-line>FILE NAME</div>
+        <div mat-line>DATA</div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>note</mat-icon>
+        <div mat-line>FILE NAME</div>
+        <div mat-line>DATA</div>
+      </mat-list-item>
+      <mat-list-item>
+        <mat-icon mat-list-icon>note</mat-icon>
+        <div mat-line>FILE NAME</div>
+        <div mat-line>DATA</div>
+      </mat-list-item>
+    </mat-list>
+  <mat-list>
+    <div mat-subheader>
+      <div>ADD ATTACHMENT</div>
+      <input type="file" class="file-input" multiple (change)="selectFiles($event)" #filesUpload>
+      <div>
+      <button mat-mini-fab color="primary" class="upload-btn" (click)="filesUpload.click()">
+        <mat-icon>attach_file</mat-icon>
+      </button>
+      <button *ngIf="files.length" mat-button (click)="uploadFiles()">
+        SAVE ATTACHMENT
+      </button>
+      </div>
+    </div>
+    <mat-list-item *ngFor="let file of files">
+      <mat-icon mat-list-icon>note</mat-icon>
+      <div mat-line>{{file.name}}</div>
+      <div mat-line>{{file.lastModified | date}}</div>
+    </mat-list-item>
+  </mat-list>
+  </div>
+
 </mat-card>
 
 
