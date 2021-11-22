@@ -43,8 +43,12 @@ export interface JoinTeams {
   teams: JoinTeam[];
 }
 
-export interface UpdateTeam extends Team {
-  accessCode: string
+export interface UpdateTeam {
+  id: number;
+  teamName: string;
+  accessCode: string;
+  description: string;
+  scrumMaster: number;
 }
 
 export interface SuggestedTeam {

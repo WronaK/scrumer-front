@@ -19,10 +19,12 @@ export interface ProjectInformation {
   coverId: number;
 }
 
-export interface UpdateProject extends Project {
+export interface UpdateProject {
+  id: number;
+  projectName: string;
   accessCode: string;
   description: string;
-  productOwner: string;
+  productOwner: number;
 }
 
 export interface ProjectDetails {

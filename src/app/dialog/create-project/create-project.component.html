@@ -24,8 +24,8 @@
              matInput required
              type="text">
     </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let item of filteredOption" [value]="item.username">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
         {{item.username}}
       </mat-option>
     </mat-autocomplete>

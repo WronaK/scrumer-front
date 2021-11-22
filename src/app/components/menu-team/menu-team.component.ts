@@ -4,6 +4,7 @@ import {TeamsDetailsService} from "../../services/teams-details.service";
 import {tap} from "rxjs/operators";
 import {AddTeamMemberComponent} from "../../dialog/add-team-member/add-team-member.component";
 import {JoinProjectToTeamComponent} from "../../dialog/join-project-to-team/join-project-to-team.component";
+import {UpdateTeamComponent} from "../../dialog/update-team/update-team.component";
 
 @Component({
   selector: 'app-menu-team',
@@ -18,19 +19,18 @@ export class MenuTeamComponent {
   ) { }
 
   updateTeam() {
-    // const dialogConfig = new MatDialogConfig();
-    // dialogConfig.disableClose = true;
-    // dialogConfig.autoFocus = true;
-    // dialogConfig.data = {
-    //   id: this.teamDetailsService.idTeam,
-    //   request: "UPDATE"
-    // };
-    // this.dialog.open(AddTeamComponent, dialogConfig)
-    //   .afterClosed().pipe(
-    //   tap(() => {
-    //     this.teamDetailsService.loadsTeam()
-    //   })
-    // ).subscribe();
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      id: this.teamDetailsService.idTeam
+    };
+    this.dialog.open(UpdateTeamComponent, dialogConfig)
+      .afterClosed().pipe(
+      tap(() => {
+        this.teamDetailsService.loadsTeam()
+      })
+    ).subscribe();
   }
 
   joinTeam() {

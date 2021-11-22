@@ -58,9 +58,7 @@ export class JoinTeamToProjectComponent {
   }
 
   joinToProject() {
-    const team = this.filteredOption.find(team => team.name == this.teamName.value);
-    if (team != undefined)
-      this.projectService.joinTeamToProject(this.idProject, {idTeam: team.id, accessCode: this.accessCode.value})
+      this.projectService.joinTeamToProject(this.idProject, {idTeam: this.teamName.value.id, accessCode: this.accessCode.value})
       .subscribe(() => this.dialogRef.close());
   }
 
@@ -68,5 +66,9 @@ export class JoinTeamToProjectComponent {
     return this.filteredOption = this.suggestedTeam.filter(item => {
         item.name.toLowerCase().includes(enteredData.toString().toLowerCase());
     })
+  }
+
+  getName(option: SuggestedTeam) {
+    return option.name;
   }
 }

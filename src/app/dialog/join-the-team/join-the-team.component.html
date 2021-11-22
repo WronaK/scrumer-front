@@ -12,8 +12,8 @@
       <mat-label>Enter access code to team</mat-label>
       <input [formControl]="accessCode" matInput>
     </mat-form-field>
-    <mat-autocomplete #auto="matAutocomplete">
-      <mat-option *ngFor="let item of filteredOption" [value]="item.name">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getName">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
         {{item.name}}
       </mat-option>
     </mat-autocomplete>

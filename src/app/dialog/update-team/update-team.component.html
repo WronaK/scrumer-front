@@ -1,5 +1,5 @@
 <app-dialog-template>
-  <h2 title>Create team</h2>
+  <h2 title>Update team</h2>
 
   <form [formGroup]="teamFormGroup" content>
     <mat-form-field>
@@ -31,5 +31,5 @@
       </mat-option>
     </mat-autocomplete>
   </form>
-  <button mat-raised-button action (click)="createTeam()" [disabled]="!teamFormGroup.valid">CREATE TEAM</button>
+  <button mat-raised-button action (click)="updateTeam()" [disabled]="!teamFormGroup.valid">UPDATE TEAM</button>
 </app-dialog-template>

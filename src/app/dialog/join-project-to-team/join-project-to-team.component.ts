@@ -69,4 +69,8 @@ export class JoinProjectToTeamComponent {
       item.name.toLowerCase().includes(enteredData.toString().toLowerCase());
     })
   }
+
+  getName(option: SuggestedProject) {
+    return option.name;
+  }
 }

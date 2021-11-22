@@ -1,34 +1,39 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SuggestedUser} from "../../model/user";
-import {CreateProject} from "../../model/project";
-import {MatDialogRef} from "@angular/material/dialog";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProjectsService} from "../../services/projects.service";
 import {UsersService} from "../../services/users.service";
+import {ProjectInformation, UpdateProject} from "../../model/project";
 
 @Component({
-  selector: 'app-create-project',
-  templateUrl: './create-project.component.html',
-  styleUrls: ['./create-project.component.scss']
+  selector: 'app-update-project',
+  templateUrl: './update-project.component.html',
+  styleUrls: ['./update-project.component.scss']
 })
-export class CreateProjectComponent {
+export class UpdateProjectComponent {
 
   projectFormGroup!: FormGroup;
   projectName!: FormControl;
   accessCode!: FormControl;
   description!: FormControl;
   productOwner!: FormControl;
+  project!: ProjectInformation;
+  idProject!: number;
 
   filteredOption: SuggestedUser[] = [];
   suggestedUser: SuggestedUser[] = [];
 
   constructor(
-    private dialogRef: MatDialogRef<CreateProjectComponent>,
+    private dialogRef: MatDialogRef<UpdateProjectComponent>,
     private projectService: ProjectsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    @Inject(MAT_DIALOG_DATA) data: any
   ) {
+    this.idProject = data.id;
 
     this.initForm();
+    this.getProjects();
   }
 
   private initForm(): void {
@@ -59,16 +64,24 @@ export class CreateProjectComponent {
             )
         }
         this.filterData(response);
-    })
+      })
   }
 
-  public createProject(): void {
-    this.projectService.createProject(this.getData())
-    .subscribe(() => this.dialogRef.close());
+  private setData(): void {
+      this.projectName.setValue(this.project.name);
+      this.accessCode.setValue(this.project.accessCode);
+      this.description.setValue(this.project.description);
+      this.productOwner.setValue({username: this.project.username} as SuggestedUser);
   }
 
-  private getData(): CreateProject {
+  public updateProject(): void {
+      this.projectService.updateProject(this.getData())
+        .subscribe(() => this.dialogRef.close());
+  }
+
+  private getData(): UpdateProject {
     return  {
+      id: this.idProject,
       projectName: this.projectName.value,
       accessCode: this.accessCode.value,
       description: this.description.value,
@@ -82,7 +95,16 @@ export class CreateProjectComponent {
     });
   }
 
-  getUsername(option: SuggestedUser) {
+  private getProjects(): void {
+    this.projectService.getInformationAboutProject(this.idProject).subscribe(
+      project => {
+        this.project = project;
+        this.setData();
+      }
+    )
+  }
+
+  getUsername(option: SuggestedUser): string {
     return option.username;
   }
 }

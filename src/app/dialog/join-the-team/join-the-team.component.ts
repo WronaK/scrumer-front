@@ -52,15 +52,17 @@ export class JoinTheTeamComponent {
   }
 
   joinToTeam() {
-    const team = this.filteredOption.find(team => team.name == this.teamName.value);
-    if (team != undefined)
-      this.teamService.joinToTeam({idTeam: team.id, accessCode: this.accessCode.value})
-        .subscribe(() => this.dialogRef.close());
+    this.teamService.joinToTeam({idTeam: this.teamName.value.id, accessCode: this.accessCode.value})
+      .subscribe(() => this.dialogRef.close());
   }
 
   private filterData(enteredData: String) {
     return this.filteredOption = this.suggestedTeam.filter(item => {
       item.name.toLowerCase().includes(enteredData.toString().toLowerCase());
     })
+  }
+
+  getName(option: SuggestedTeam) {
+    return option.name;
   }
 }

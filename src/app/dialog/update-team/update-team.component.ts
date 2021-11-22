@@ -1,32 +1,39 @@
-import {Component} from '@angular/core';
+import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SuggestedUser} from "../../model/user";
-import {MatDialogRef} from "@angular/material/dialog";
-import {UsersService} from "../../services/users.service";
-import {CreateTeam} from "../../model/team";
+import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TeamsService} from "../../services/teams.service";
+import {UsersService} from "../../services/users.service";
+import {TeamInformation, UpdateTeam} from "../../model/team";
 
 @Component({
-  selector: 'app-create-team',
-  templateUrl: './create-team.component.html',
-  styleUrls: ['./create-team.component.scss']
+  selector: 'app-update-team',
+  templateUrl: './update-team.component.html',
+  styleUrls: ['./update-team.component.scss']
 })
-export class CreateTeamComponent {
+export class UpdateTeamComponent {
+
   teamFormGroup!: FormGroup;
   teamName!: FormControl;
   description!: FormControl;
   accessCode!: FormControl;
   scrumMaster!: FormControl;
+  team!: TeamInformation;
+  idTeam!: number;
 
   filteredOption: SuggestedUser[] = [];
   suggestedUser: SuggestedUser[] = [];
 
   constructor(
-    private dialogRef: MatDialogRef<CreateTeamComponent>,
+    private dialogRef: MatDialogRef<UpdateTeamComponent>,
     private teamsService: TeamsService,
-    private usersService: UsersService
+    private usersService: UsersService,
+    @Inject(MAT_DIALOG_DATA) data: any
   ) {
+    this.idTeam = data.id;
+
     this.initForm();
+    this.getTeam();
   }
 
   private initForm(): void {
@@ -60,13 +67,21 @@ export class CreateTeamComponent {
       })
   }
 
-  public createTeam(): void {
-    this.teamsService.createTeam(this.getData())
+  updateTeam(): void {
+    this.teamsService.updateTeam(this.getData())
       .subscribe(() => this.dialogRef.close());
   }
 
-  private getData(): CreateTeam {
+  private setData(): void {
+    this.teamName.setValue(this.team.name);
+    this.accessCode.setValue(this.team.accessCode);
+    this.description.setValue(this.team.description);
+    this.scrumMaster.setValue({username: this.team.username} as SuggestedUser);
+  }
+
+  private getData(): UpdateTeam {
     return  {
+      id: this.idTeam,
       teamName: this.teamName.value,
       accessCode: this.accessCode.value,
       description: this.description.value,
@@ -80,8 +95,16 @@ export class CreateTeamComponent {
     });
   }
 
+  private getTeam(): void {
+    this.teamsService.getInformationAboutTeam(this.idTeam).subscribe(
+      team => {
+        this.team = team;
+        this.setData();
+      }
+    )
+  }
+
   getUsername(option: SuggestedUser) {
     return option.username;
   }
-
 }

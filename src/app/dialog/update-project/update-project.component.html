@@ -1,13 +1,12 @@
 <app-dialog-template>
-  <h2 title>Create team</h2>
-
-  <form [formGroup]="teamFormGroup" content>
+  <h2 title>Update project</h2>
+  <form [formGroup]="projectFormGroup" content>
     <mat-form-field>
-      <mat-label>Enter a name for the team</mat-label>
-      <input [formControl]="teamName" matInput required>
+      <mat-label>Enter a name for the project</mat-label>
+      <input [formControl]="projectName" matInput required>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Enter a team description</mat-label>
+      <mat-label>Enter a project description</mat-label>
       <textarea [formControl]="description"
                 matInput
                 cdkTextareaAutosize
@@ -15,21 +14,22 @@
                 required></textarea>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Enter a access code for the team</mat-label>
+      <mat-label>Enter a access code for the project</mat-label>
       <input [formControl]="accessCode" matInput required>
     </mat-form-field>
     <mat-form-field>
-      <mat-label>Enter Scrum Master</mat-label>
-      <input [formControl]="scrumMaster"
+      <mat-label>Enter Product Owner</mat-label>
+      <input [formControl]="productOwner"
              [matAutocomplete]="auto"
              matInput required
              type="text">
     </mat-form-field>
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
-      <mat-option *ngFor="let item of filteredOption" [value]="item">
+      <mat-option *ngFor="let item of filteredOption" [value]="item" >
         {{item.username}}
       </mat-option>
     </mat-autocomplete>
   </form>
-  <button mat-raised-button action (click)="createTeam()" [disabled]="!teamFormGroup.valid">CREATE TEAM</button>
+
+  <button mat-raised-button action (click)="updateProject()" [disabled]="!projectFormGroup.valid">UPDATE PROJECT</button>
 </app-dialog-template>

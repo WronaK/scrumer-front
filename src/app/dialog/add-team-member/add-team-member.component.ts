@@ -54,16 +54,18 @@ export class AddTeamMemberComponent {
       })
   }
 
-  private filterData(enteredData: SuggestedUser) {
+  private filterData(enteredData: String) {
     this.filteredOption = this.suggestedUser.filter(item => {
-      return item.username.toLowerCase().indexOf(enteredData.username.toLowerCase()) > -1;
+      return item.username.toLowerCase().indexOf(enteredData.toString().toLowerCase()) > -1;
     })
   }
 
   public addMember(): void {
-    const user = this.filteredOption.find(user => user.username == this.member.value);
-    if (user != undefined)
-      this.teamsService.addMember(this.idTeam, user.id)
-        .subscribe(() => this.dialogRef.close())
+    this.teamsService.addMember(this.idTeam, this.member.value.id)
+      .subscribe(() => this.dialogRef.close())
+  }
+
+  getUsername(option: SuggestedUser): string {
+    return option.username;
   }
 }

@@ -50,6 +50,8 @@ import { InformationCardComponent } from './component-elements/information-card/
 import { JoinTeamToProjectComponent } from './dialog/join-team-to-project/join-team-to-project.component';
 import { JoinTheTeamComponent } from './dialog/join-the-team/join-the-team.component';
 import { JoinProjectToTeamComponent } from './dialog/join-project-to-team/join-project-to-team.component';
+import { UpdateProjectComponent } from './dialog/update-project/update-project.component';
+import { UpdateTeamComponent } from './dialog/update-team/update-team.component';
 
 @NgModule({
   declarations: [
@@ -93,7 +95,9 @@ import { JoinProjectToTeamComponent } from './dialog/join-project-to-team/join-p
     InformationCardComponent,
     JoinTeamToProjectComponent,
     JoinTheTeamComponent,
-    JoinProjectToTeamComponent
+    JoinProjectToTeamComponent,
+    UpdateProjectComponent,
+    UpdateTeamComponent
   ],
   imports: [
     BrowserModule,
