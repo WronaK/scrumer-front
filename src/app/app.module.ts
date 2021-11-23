@@ -35,7 +35,6 @@ import {ShowTaskFromSprintBacklogComponent} from './dialog/show-task-from-sprint
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ChatComponent} from './views/chat/chat.component';
 import {NewConversationComponent} from './dialog/new-conversation/new-conversation.component';
-import {UploadFilesComponent} from './upload-files/upload-files.component';
 import {ResourceHashComponent} from './component-elements/resource-hash/resource-hash.component';
 import {ResourceDescriptionComponent} from './component-elements/resource-description/resource-description.component';
 import {BaseViewTemplateComponent} from './templates/base-view-template/base-view-template.component';
@@ -82,7 +81,6 @@ import { UpdateTeamComponent } from './dialog/update-team/update-team.component'
     ShowTaskFromSprintBacklogComponent,
     ChatComponent,
     NewConversationComponent,
-    UploadFilesComponent,
     ResourceHashComponent,
     ResourceDescriptionComponent,
     BaseViewTemplateComponent,

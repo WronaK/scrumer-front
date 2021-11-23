@@ -5,6 +5,7 @@ import {UploadsService} from "../../services/uploads.service";
 import {HttpResponse} from "@angular/common/http";
 import {ProjectsService} from "../../services/projects.service";
 import {TeamsService} from "../../services/teams.service";
+import { saveAs } from "file-saver";
 
 @Component({
   selector: 'app-information-card',
@@ -144,5 +145,13 @@ export class InformationCardComponent implements OnInit {
   uploadAttachmentToTeam(file: File): void {
     this.teamsService.uploadAttachment(this.resource.id, file)
       .subscribe();
+  }
+
+  downloadFile(file: any) {
+    this.uploadService.getFile(file.id).subscribe(
+      blob => {
+        saveAs(blob, file.name)
+      }
+    );
   }
 }

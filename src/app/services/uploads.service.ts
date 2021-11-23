@@ -26,6 +26,11 @@ export class UploadsService {
   //   return this.httpClient.request(req);
   // }
 
+
+  getFile(id: number) {
+    return this.httpClient.get(this.baseUrl + "/" + id + "/file", {responseType: 'blob'});
+  }
+
   getFiles(): Observable<any> {
     return this.httpClient.get(`${this.baseUrl}/files`);
   }
