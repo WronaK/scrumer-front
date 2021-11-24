@@ -10,6 +10,7 @@ import {MyTeamsComponent} from "./views/my-teams/my-teams.component";
 import {ProjectComponent} from "./views/project/project.component";
 import {TeamComponent} from "./views/team/team.component";
 import {ChatComponent} from "./views/chat/chat.component";
+import {UserProfileComponent} from "./views/user-profile/user-profile.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
@@ -18,7 +19,8 @@ const routes: Routes = [
       { path: 'my-teams', component: MyTeamsComponent, canActivate: [AuthGuard] },
       { path: 'project/:id', component: ProjectComponent, canActivate: [AuthGuard] },
       { path: 'team/:id', component: TeamComponent, canActivate: [AuthGuard] },
-      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]}
+      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
+      { path: 'my-profile', component: UserProfileComponent, canActivate: [AuthGuard]}
     ]
   },
   { path: 'login', component: LoginPageComponent},

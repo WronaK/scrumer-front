@@ -55,4 +55,8 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['chat']);
   }
 
+  toYourProfile() {
+    this.router.navigate(['my-profile'])
+  }
+
 }

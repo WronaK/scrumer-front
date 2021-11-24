@@ -1,0 +1,130 @@
+@import "../../../main-styles";
+
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  width: 50%;
+  justify-content: center;
+  align-items: stretch;
+  background: $spot-color;
+  box-shadow: 0 2px 2px black;
+  border-radius: 10px;
+}
+
+.file-input {
+  display: none;
+}
+
+.profile-details {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  mat-form-field {
+    width: 80%;
+    color: $detail-color;
+    font-size: 1.5em;
+
+    mat-label {
+      color: $primary-color;
+    }
+  }
+}
+
+.image {
+  height: 30vh;
+  width: 30vh;
+  background-color: $secondary-spot-color;
+  padding: 0;
+
+  position: relative;
+  text-align: center;
+  border: none;
+  border-radius: 100%;
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  box-shadow: 0 2px 2px black;
+
+
+  .text-centered {
+    width: 100%;
+    background-color: $spot-color;
+    font-size: 1.3em;
+    line-height: 1.3em;
+    font-weight: bold;
+    color: $primary-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none;
+  }
+
+  .initial {
+    width: 100%;
+    font-size: 7em;
+    color: $spot-color;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: block;
+    text-shadow: 0 2px 2px black;
+  }
+
+  &:hover {
+    cursor: pointer;
+    .text-centered {
+      display: block;
+      z-index: 1;
+    }
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.image-upload {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  button {
+    width: 80%;
+    height: 5vh;
+    color: $spot-color;
+    margin-top: 10px;
+    box-shadow: 0 2px 2px black;
+    border-radius: 10px;
+  }
+
+  .change {
+    background: $secondary-detail-color;
+  }
+
+  .update {
+    background: $secondary-color;
+  }
+
+  .delete {
+    background: red;
+  }
+}

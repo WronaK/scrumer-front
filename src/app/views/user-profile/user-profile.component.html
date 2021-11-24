@@ -1,0 +1,27 @@
+<div class="container">
+  <input type="file" class="file-input" accept='image/*' (change)="selectImage($event)" #fileUpload>
+  <button class="image" (click)="fileUpload.click()">
+    <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
+    <div class="text-centered">click to change</div>
+    <div *ngIf="!imgUrl" class="initial">{{initial}}</div>
+  </button>
+  <form class="profile-details">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input [formControl]="name" matInput required type="text"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Surname</mat-label>
+      <input [formControl]="surname" matInput required type="text"/>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input [formControl]="email" matInput required type="email"/>
+    </mat-form-field>
+  </form>
+  <div class="buttons">
+    <button class="change" mat-button>CHANGE PASSWORD</button>
+    <button class="update" mat-button>UPDATE DATA</button>
+    <button class="delete" mat-button>DELETE ACCOUNT</button>
+  </div>
+</div>

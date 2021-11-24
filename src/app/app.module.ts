@@ -51,6 +51,7 @@ import { JoinTheTeamComponent } from './dialog/join-the-team/join-the-team.compo
 import { JoinProjectToTeamComponent } from './dialog/join-project-to-team/join-project-to-team.component';
 import { UpdateProjectComponent } from './dialog/update-project/update-project.component';
 import { UpdateTeamComponent } from './dialog/update-team/update-team.component';
+import { UserProfileComponent } from './views/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { UpdateTeamComponent } from './dialog/update-team/update-team.component'
     JoinTheTeamComponent,
     JoinProjectToTeamComponent,
     UpdateProjectComponent,
-    UpdateTeamComponent
+    UpdateTeamComponent,
+    UserProfileComponent
   ],
   imports: [
     BrowserModule,
