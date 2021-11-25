@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TaskService} from "../../services/task.service";
 import {FormControl} from "@angular/forms";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-remove-user-story',
@@ -22,7 +22,7 @@ export class RemoveUserStoryComponent {
 
   constructor(
     private dialogRef: MatDialogRef<RemoveUserStoryComponent>,
-    private taskService: TaskService,
+    private userStoryService: UserStoryService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.idUserStory = data.id;
@@ -36,11 +36,11 @@ export class RemoveUserStoryComponent {
   }
 
   removeUserStory(): void {
-    this.taskService.removeUserStory(this.idUserStory).subscribe(() => this.dialogRef.close());
+    this.userStoryService.removeUserStory(this.idUserStory).subscribe(() => this.dialogRef.close());
   }
 
   setData(): void {
-    this.taskService.getUserStory(this.idUserStory).subscribe(userStory => {
+    this.userStoryService.getUserStory(this.idUserStory).subscribe(userStory => {
       this.titleFC.setValue(userStory.title);
       this.descriptionFC.setValue(userStory.description);
       this.priorityFC.setValue(userStory.priority);

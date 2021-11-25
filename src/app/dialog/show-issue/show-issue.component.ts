@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {TaskService} from "../../services/task.service";
+import {IssueService} from "../../services/issue.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 import {IssueCommand} from "../../model/task";
 
@@ -26,7 +26,7 @@ export class ShowIssueComponent {
   issue!: IssueCommand;
 
   constructor(
-    private tasksService: TaskService,
+    private issueService: IssueService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.idIssue = data.idIssue;
@@ -45,7 +45,7 @@ export class ShowIssueComponent {
   }
 
   setData(): void {
-    this.tasksService.getIssueById(this.idIssue).subscribe(
+    this.issueService.getIssueById(this.idIssue).subscribe(
       issue => {
         this.issue = issue;
         this.title.setValue(issue.title);

@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {ProjectsService} from "./projects.service";
 import {tap} from "rxjs/operators";
-import {TaskService} from "./task.service";
 import {UserStory} from "../model/task";
+import {UserStoryService} from "./user-story.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,7 @@ export class ProductBacklogService {
 
   constructor(
     private projectsService: ProjectsService,
-    private tasksService: TaskService) {
+    private userStoryService: UserStoryService) {
   }
 
   setId(id: number) {
@@ -53,7 +53,7 @@ export class ProductBacklogService {
 
   selectedTask() {
     if(this.idSelectTask != null) {
-      this.tasksService.getUserStory(this.idSelectTask)
+      this.userStoryService.getUserStory(this.idSelectTask)
         .pipe(tap(task => this.setSelectedTask(task))).subscribe();
     }
   }

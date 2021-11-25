@@ -2,7 +2,7 @@ import {Component, Inject} from '@angular/core';
 import {PriorityStatus, PriorityStatusLabelMapping, UpdateUserStory} from "../../model/task";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TaskService} from "../../services/task.service";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-update-user-story',
@@ -24,7 +24,7 @@ export class UpdateUserStoryComponent {
 
   constructor(
     private dialogRef: MatDialogRef<UpdateUserStoryComponent>,
-    private taskService: TaskService,
+    private userStoryService: UserStoryService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
       this.idUserStory = data.id;
@@ -47,7 +47,7 @@ export class UpdateUserStoryComponent {
   }
 
   initValue(): void {
-    this.taskService.getUserStory(this.idUserStory).subscribe(
+    this.userStoryService.getUserStory(this.idUserStory).subscribe(
       userStory => {
         this.title.setValue(userStory.title);
         this.description.setValue(userStory.description);
@@ -58,7 +58,7 @@ export class UpdateUserStoryComponent {
   }
 
   update() {
-    this.taskService.updateUserStory(this.getData())
+    this.userStoryService.updateUserStory(this.getData())
       .subscribe(() => this.dialogRef.close());
   }
 

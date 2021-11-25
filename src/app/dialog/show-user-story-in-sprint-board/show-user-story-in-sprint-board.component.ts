@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {UserStory} from "../../model/task";
-import {TaskService} from "../../services/task.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-show-user-story-in-sprint-board',
@@ -24,7 +24,7 @@ export class ShowUserStoryInSprintBoardComponent {
   statusUserStory!: FormControl;
 
   constructor(
-    private tasksService: TaskService,
+    private userStoryService: UserStoryService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.idUserStory = data.idUserStory;
@@ -41,7 +41,7 @@ export class ShowUserStoryInSprintBoardComponent {
   }
 
   setData(): void {
-    this.tasksService.getUserStory(this.idUserStory).subscribe(
+    this.userStoryService.getUserStory(this.idUserStory).subscribe(
       userStory => {
         this.userStory = userStory;
         this.title.setValue(userStory.title);

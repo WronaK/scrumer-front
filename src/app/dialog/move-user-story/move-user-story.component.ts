@@ -3,7 +3,7 @@ import {Team} from "../../model/team";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProjectsService} from "../../services/projects.service";
 import {ProjectDetailsService} from "../../services/project-details.service";
-import {TaskService} from "../../services/task.service";
+import {IssueService} from "../../services/issue.service";
 
 @Component({
   selector: 'app-move-task',
@@ -20,7 +20,7 @@ export class MoveUserStoryComponent implements OnInit {
     private dialogRef: MatDialogRef<MoveUserStoryComponent>,
     private projectService: ProjectsService,
     private projectDetailsService: ProjectDetailsService,
-    private tasksService: TaskService,
+    private issueService: IssueService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.idTask = data.id;
@@ -31,7 +31,7 @@ export class MoveUserStoryComponent implements OnInit {
   }
 
   save() {
-    this.tasksService.moveUserStoryToTeam(
+    this.issueService.moveUserStoryToTeam(
       this.selected,
       this.idTask
     ).subscribe(() => this.dialogRef.close());

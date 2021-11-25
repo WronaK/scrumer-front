@@ -4,7 +4,7 @@ import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AddIssueComponent} from "../../dialog/add-issue/add-issue.component";
 import {tap} from "rxjs/operators";
 import {TeamsDetailsService} from "../../services/teams-details.service";
-import {TaskService} from "../../services/task.service";
+import {IssueService} from "../../services/issue.service";
 import {AuthService} from "../../services/auth.service";
 import {AssigmToYourselfComponent} from "../../dialog/assigm-to-yourself/assigm-to-yourself.component";
 import {ShowIssueComponent} from "../../dialog/show-issue/show-issue.component";
@@ -31,7 +31,7 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   constructor(
-    private tasksService: TaskService,
+    private issueService: IssueService,
     private teamDetialsService: TeamsDetailsService,
     private dialog: MatDialog,
     private authService: AuthService,
@@ -93,7 +93,7 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   assignToYourself(id: number) {
-    this.tasksService.addIssueToRealize(id, this.authService.loginUser.id).subscribe(() => {
+    this.issueService.addIssueToRealize(id, this.authService.loginUser.id).subscribe(() => {
       this.teamDetialsService.loadsSprintBacklog()
     })
   }
@@ -114,7 +114,7 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   moveIssue(id: number) {
-    this.tasksService.changeStatusIssue(id).subscribe(
+    this.issueService.changeStatusIssue(id).subscribe(
       () => this.teamDetialsService.loadsSprintBacklog()
     )
   }

@@ -2,7 +2,7 @@ import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core
 import {Router} from "@angular/router";
 import {IssueCommand} from "../../model/task";
 import {tap} from "rxjs/operators";
-import {TaskService} from "../../services/task.service";
+import {IssueService} from "../../services/issue.service";
 
 @Component({
   selector: 'app-my-tasks',
@@ -18,7 +18,7 @@ export class MyTasksComponent implements OnInit {
 
   constructor(private router: Router,
               private renderer: Renderer2,
-              private tasksService: TaskService) { }
+              private issueService: IssueService) { }
 
   ngOnInit(): void {
     this.getMyIssue().subscribe();
@@ -26,7 +26,7 @@ export class MyTasksComponent implements OnInit {
   }
 
   getMyIssue() {
-    return this.tasksService.getMyIssue().pipe(
+    return this.issueService.getMyIssue().pipe(
       tap(issues => {
         this.issues = issues;
       })

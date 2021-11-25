@@ -9,7 +9,8 @@ import {
 } from "../../model/task";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TaskService} from "../../services/task.service";
+import {IssueService} from "../../services/issue.service";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-add-issue',
@@ -38,7 +39,8 @@ export class AddIssueComponent {
 
   constructor(
     private dialogRef: MatDialogRef<AddIssueComponent>,
-    private tasksService: TaskService,
+    private issueService: IssueService,
+    private userStoryService: UserStoryService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.statusIssue = data.statusIssue;
@@ -71,13 +73,13 @@ export class AddIssueComponent {
   }
 
   createAndAddToUserStory(): void {
-    this.tasksService.addIssueToUserStory(this.idUserStory, this.getData()).subscribe(
+    this.userStoryService.addIssueToUserStory(this.idUserStory, this.getData()).subscribe(
       () => this.dialogRef.close()
     )
   }
 
   createIssue(): void {
-    this.tasksService.addIssue(this.getData()).subscribe(
+    this.issueService.addIssue(this.getData()).subscribe(
       () => this.dialogRef.close()
     )
   }

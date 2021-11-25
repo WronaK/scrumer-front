@@ -3,7 +3,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {SuggestedUser} from "../../model/user";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {UsersService} from "../../services/users.service";
-import {TaskService} from "../../services/task.service";
+import {IssueService} from "../../services/issue.service";
 
 @Component({
   selector: 'app-assigm-to-yourself',
@@ -21,7 +21,7 @@ export class AssigmToYourselfComponent {
 
   constructor(
     private dialogRef: MatDialogRef<AssigmToYourselfComponent>,
-    private tasksService: TaskService,
+    private issueService: IssueService,
     private usersService: UsersService,
     @Inject(MAT_DIALOG_DATA) data: any
   ) {
@@ -61,7 +61,7 @@ export class AssigmToYourselfComponent {
   }
 
   public assign(): void {
-    this.tasksService.addIssueToRealize(this.idIssue, this.member.value.id)
+    this.issueService.addIssueToRealize(this.idIssue, this.member.value.id)
       .subscribe(() => this.dialogRef.close());
   }
 

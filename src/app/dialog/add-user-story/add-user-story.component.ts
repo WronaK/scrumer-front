@@ -2,8 +2,8 @@ import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {ProjectsService} from "../../services/projects.service";
-import {TaskService} from "../../services/task.service";
 import {PriorityStatus, PriorityStatusLabelMapping} from "../../model/task";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-add-user-story',
@@ -23,7 +23,7 @@ export class AddUserStory {
 
   constructor(private dialogRef: MatDialogRef<AddUserStory>,
               private projectService: ProjectsService,
-              private tasksService: TaskService,
+              private userStoryService: UserStoryService,
               @Inject(MAT_DIALOG_DATA) data: any
   ) {
     this.id = data.id;
