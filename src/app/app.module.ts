@@ -21,17 +21,15 @@ import {MenuTasksComponent} from './components/menu-tasks/menu-tasks.component';
 import {ShowTaskFromProductBacklogComponent} from './components/show-task-from-product-backlog/show-task-from-product-backlog.component';
 import {TeamsComponent} from './components/teams/teams.component';
 import {MenuProjectComponent} from './components/menu-project/menu-project.component';
-import {AddTaskToProductBacklogComponent} from './dialog/add-task-to-product-backlog/add-task-to-product-backlog.component';
-import {RemoveTaskComponent} from './dialog/remove-task/remove-task.component';
-import {MoveTaskComponent} from './dialog/move-task/move-task.component';
+import {AddUserStory} from './dialog/add-user-story/add-user-story.component';
+import {RemoveUserStoryComponent} from './dialog/remove-user-story/remove-user-story.component';
+import {MoveUserStoryComponent} from './dialog/move-user-story/move-user-story.component';
 import {PipesModule} from "./pipes/pipes.module";
 import {TeamComponent} from './views/team/team.component';
 import {SprintBacklogComponent} from './components/sprint-backlog/sprint-backlog.component';
 import {MenuTeamComponent} from './components/menu-team/menu-team.component';
 import {ProjectsComponent} from './components/projects/projects.component';
 import {MembersTeamComponent} from './components/members-team/members-team.component';
-import {TaskStatesComponent} from './task-states/task-states.component';
-import {ShowTaskFromSprintBacklogComponent} from './dialog/show-task-from-sprint-backlog/show-task-from-sprint-backlog.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {ChatComponent} from './views/chat/chat.component';
 import {NewConversationComponent} from './dialog/new-conversation/new-conversation.component';
@@ -52,6 +50,10 @@ import { JoinProjectToTeamComponent } from './dialog/join-project-to-team/join-p
 import { UpdateProjectComponent } from './dialog/update-project/update-project.component';
 import { UpdateTeamComponent } from './dialog/update-team/update-team.component';
 import { UserProfileComponent } from './views/user-profile/user-profile.component';
+import { UpdateUserStoryComponent } from './dialog/update-user-story/update-user-story.component';
+import { SprintBoardElementsComponent } from './component-elements/sprint-board-elements/sprint-board-elements.component';
+import { AddIssueComponent } from './dialog/add-issue/add-issue.component';
+import { ShowUserStoryInSprintBoardComponent } from './dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component';
 
 @NgModule({
   declarations: [
@@ -70,16 +72,14 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     ShowTaskFromProductBacklogComponent,
     TeamsComponent,
     MenuProjectComponent,
-    AddTaskToProductBacklogComponent,
-    RemoveTaskComponent,
-    MoveTaskComponent,
+    AddUserStory,
+    RemoveUserStoryComponent,
+    MoveUserStoryComponent,
     TeamComponent,
     SprintBacklogComponent,
     MenuTeamComponent,
     ProjectsComponent,
     MembersTeamComponent,
-    TaskStatesComponent,
-    ShowTaskFromSprintBacklogComponent,
     ChatComponent,
     NewConversationComponent,
     ResourceHashComponent,
@@ -97,7 +97,11 @@ import { UserProfileComponent } from './views/user-profile/user-profile.componen
     JoinProjectToTeamComponent,
     UpdateProjectComponent,
     UpdateTeamComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    UpdateUserStoryComponent,
+    SprintBoardElementsComponent,
+    AddIssueComponent,
+    ShowUserStoryInSprintBoardComponent
   ],
   imports: [
     BrowserModule,

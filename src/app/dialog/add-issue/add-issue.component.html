@@ -1,0 +1,35 @@
+<app-dialog-template>
+  <h2 title>Add issue</h2>
+  <form [formGroup]="formGroup" content>
+    <mat-form-field>
+      <mat-label>Enter a title for the issue</mat-label>
+      <input [formControl]="title" matInput required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter a issue description</mat-label>
+      <textarea [formControl]="description"
+                matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Give priority</mat-label>
+      <mat-select [formControl]="priorityFC" required >
+        <mat-option *ngFor="let p of priority" [value]="p">
+          {{priorityStatusLabelMapping[p]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Give type issue</mat-label>
+      <mat-select [formControl]="typeIssueFC" required >
+        <mat-option *ngFor="let t of typeIssue" [value]="t">
+          {{typeIssueLabelMapping[t]}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
+  <button action mat-raised-button (click)="create()" [disabled]="!formGroup.valid">SAVE</button>
+</app-dialog-template>
+

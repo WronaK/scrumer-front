@@ -58,3 +58,23 @@ mat-horizontal-stepper {
   color: $secondary-spot-color;
 }
 
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: $primary-color;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: $spot-color;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: $spot-color;
+}
+

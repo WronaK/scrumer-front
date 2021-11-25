@@ -1,10 +1,11 @@
 import {Component} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {ProductBacklogService} from "../../services/product-backlog.service";
-import {AddTaskToProductBacklogComponent} from "../../dialog/add-task-to-product-backlog/add-task-to-product-backlog.component";
+import {AddUserStory} from "../../dialog/add-user-story/add-user-story.component";
 import {tap} from "rxjs/operators";
-import {RemoveTaskComponent} from "../../dialog/remove-task/remove-task.component";
-import {MoveTaskComponent} from "../../dialog/move-task/move-task.component";
+import {RemoveUserStoryComponent} from "../../dialog/remove-user-story/remove-user-story.component";
+import {MoveUserStoryComponent} from "../../dialog/move-user-story/move-user-story.component";
+import {UpdateUserStoryComponent} from "../../dialog/update-user-story/update-user-story.component";
 
 @Component({
   selector: 'app-menu-tasks',
@@ -16,15 +17,14 @@ export class MenuTasksComponent {
   constructor(private dialog: MatDialog,
               private productBacklogService: ProductBacklogService) { }
 
-  addTask(): void {
+  addUserStory(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       id: this.productBacklogService.idProject,
-      request: "ADD"
     };
-    this.dialog.open(AddTaskToProductBacklogComponent, dialogConfig)
+    this.dialog.open(AddUserStory, dialogConfig)
       .afterClosed().pipe(
       tap(() => {
         this.productBacklogService.productBacklog();
@@ -32,16 +32,14 @@ export class MenuTasksComponent {
     ).subscribe();
   }
 
-  updateTask(): void {
+  updateUserStory(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      id: this.productBacklogService.idProject,
-      idTask: this.productBacklogService.idSelectTask,
-      request: "UPDATE"
+      id: this.productBacklogService.idSelectTask,
     };
-    this.dialog.open(AddTaskToProductBacklogComponent, dialogConfig)
+    this.dialog.open(UpdateUserStoryComponent, dialogConfig)
       .afterClosed().pipe(
       tap(() => {
         this.productBacklogService.productBacklog();
@@ -54,14 +52,14 @@ export class MenuTasksComponent {
     return this.productBacklogService.idSelectTask != null;
   }
 
-  deleteTask() {
+  deleteUserStory() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
-      idTask: this.productBacklogService.idSelectTask,
+      id: this.productBacklogService.idSelectTask,
     };
-    this.dialog.open(RemoveTaskComponent, dialogConfig)
+    this.dialog.open(RemoveUserStoryComponent, dialogConfig)
       .afterClosed().pipe(
       tap(() => {
         this.productBacklogService.productBacklog();
@@ -70,14 +68,14 @@ export class MenuTasksComponent {
     ).subscribe();
   }
 
-  moveTask() {
+  moveUserStory() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       id: this.productBacklogService.idSelectTask,
     };
-    this.dialog.open(MoveTaskComponent, dialogConfig)
+    this.dialog.open(MoveUserStoryComponent, dialogConfig)
       .afterClosed().pipe(
       tap(() => {
         this.productBacklogService.productBacklog();

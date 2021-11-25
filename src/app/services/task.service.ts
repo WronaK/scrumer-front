@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
-import {RealizeTask, Subtasks, Task} from "../model/task";
+import {CreateIssue, IssueCommand, UpdateUserStory, UserStory} from "../model/task";
 
 @Injectable({
   providedIn: 'root'
@@ -13,39 +13,39 @@ export class TaskService {
     private http: HttpClient
   ) { }
 
-  getTask(id: number): Observable<Task> {
-    return this.http.get<Task>(this.url + id);
+  getUserStory(id: number): Observable<UserStory> {
+    return this.http.get<UserStory>("/api/user/story/" + id);
   }
 
-  getSubtask(id: number): Observable<Task> {
-    return this.http.get<Task>('api/subtasks/' + id);
+  updateUserStory(userStory: UpdateUserStory): Observable<any> {
+    return this.http.put<UpdateUserStory>("/api/user/story/", userStory);
   }
 
-  updateTask(task: Task): Observable<any> {
-    return this.http.put<Task>(this.url, task);
+  removeUserStory(id: number) {
+    return this.http.delete("/api/user/story/" + id);
   }
 
-  removeTask(id: number) {
-    return this.http.delete(this.url + id);
+  moveUserStoryToTeam(id: number, idUserStory: number) {
+    return this.http.patch("api/teams/" + id + "/user/story/" + idUserStory, null);
   }
 
-  addTaskToTeam(id: number, idTask: number) {
-    return this.http.patch("api/teams/" + id + "/task/" + idTask, null);
+  changeStatusIssue(id: number) {
+    return this.http.patch("api/issue/" + id + "/status", null);
   }
 
-  addSubtasks(id: number, subtasks: Subtasks) {
-    return this.http.put<Subtasks>(this.url + id + "/subtasks", subtasks);
+  addIssueToRealize(idIssue: number, idUser: number) {
+    return this.http.patch("api/issue/" + idIssue + "/realize/" + idUser, null);
   }
 
-  changeStatusTask(id: number) {
-    return this.http.patch("api/subtasks/" + id, null);
+  getMyIssue() {
+    return this.http.get<IssueCommand[]>("api/issue");
   }
 
-  addRealizeTask(realizeTask: RealizeTask) {
-    return this.http.patch<RealizeTask>("api/subtasks/realize", realizeTask);
+  addIssueToUserStory(idUserStory: number, issue: CreateIssue) {
+    return this.http.put<CreateIssue>("/api/user/story/" + idUserStory + "/issue", issue);
   }
 
-  getSubtasks() {
-    return this.http.get<Task[]>("api/subtasks");
+  addIssue(issue: CreateIssue) {
+    return this.http.post<CreateIssue>("api/issue", issue);
   }
 }

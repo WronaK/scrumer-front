@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {TeamsDetailsService} from "../../services/teams-details.service";
-import {Task} from "../../model/task";
+import {IssueCommand, NameColumnScrumBoard, PBICommand} from "../../model/task";
 
 @Component({
   selector: 'app-sprint-backlog',
@@ -10,17 +10,19 @@ import {Task} from "../../model/task";
 })
 export class SprintBacklogComponent implements OnInit {
 
-  tasksPBI: Task[]  = [];
-  tasksTasks: Task[] = [];
-  tasksInProgress: Task[]  = [];
-  tasksMergeRequest: Task[]  = [];
-  tasksDone: Task[] = [];
+  tasksPBI: PBICommand[]  = [];
+  tasksTasks: IssueCommand[] = [];
+  tasksInProgress: IssueCommand[]  = [];
+  tasksMergeRequest: IssueCommand[]  = [];
+  tasksDone: IssueCommand[] = [];
 
-  pbi = 'PBI';
-  tasks = 'TASKS';
-  inProgress = 'IN-PROGRESS';
-  mergeRequest = 'MERGE REQUEST';
-  done = 'DONE';
+  columnName = NameColumnScrumBoard;
+
+  // pbi = 'PBI';
+  // tasks = 'TASKS';
+  // inProgress = 'IN-PROGRESS';
+  // mergeRequest = 'MERGE REQUEST';
+  // done = 'DONE';
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +35,7 @@ export class SprintBacklogComponent implements OnInit {
       sprintBacklog => {
         if (sprintBacklog != null) {
           this.tasksPBI = sprintBacklog.tasksPBI;
-          this.tasksTasks = sprintBacklog.tasksTasks;
+          this.tasksTasks = sprintBacklog.tasksToDo;
           this.tasksInProgress = sprintBacklog.tasksInProgress;
           this.tasksMergeRequest = sprintBacklog.tasksMergeRequest;
           this.tasksDone = sprintBacklog.tasksDone

@@ -10,6 +10,7 @@ import {DataRegistration} from "../model/data.registration";
 export class AuthService {
 
   private customHttpClient: HttpClient;
+  loginUser!: LoginUser;
 
   constructor(
     private http: HttpClient,
@@ -30,6 +31,10 @@ export class AuthService {
           if (token !== null) {
             localStorage.setItem('access_token', token.replace('Bearer ', ''));
             this.router.navigate(['dashboard']);
+            this.getUserData().subscribe(user => {
+              this.loginUser = user
+            })
+
           }
         }
       )

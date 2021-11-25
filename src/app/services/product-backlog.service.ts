@@ -1,17 +1,17 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {ProjectsService} from "./projects.service";
 import {tap} from "rxjs/operators";
 import {TaskService} from "./task.service";
-import {Task} from "../model/task";
+import {UserStory} from "../model/task";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProductBacklogService {
 
-  private productBacklog$: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
-  private selectedTask$: BehaviorSubject<Task | null> = new BehaviorSubject<Task | null>(null);
+  private productBacklog$: BehaviorSubject<UserStory[]> = new BehaviorSubject<UserStory[]>([]);
+  private selectedTask$: BehaviorSubject<UserStory | null> = new BehaviorSubject<UserStory | null>(null);
   idProject!: number;
   idSelectTask!: number | null;
 
@@ -24,19 +24,19 @@ export class ProductBacklogService {
     this.idProject = id;
   }
 
-  getProductBacklog(): Observable<Task[]> {
+  getProductBacklog(): Observable<UserStory[]> {
     return this.productBacklog$.asObservable();
   }
 
-  setProductBacklog(productBacklog: Task[]) {
+  setProductBacklog(productBacklog: UserStory[]) {
     this.productBacklog$.next(productBacklog);
   }
 
-  getSelectedTask(): Observable<Task | null> {
+  getSelectedTask(): Observable<UserStory | null> {
     return this.selectedTask$.asObservable();
   }
 
-  setSelectedTask(task: Task) {
+  setSelectedTask(task: UserStory) {
     this.selectedTask$.next(task);
   }
 
@@ -47,13 +47,13 @@ export class ProductBacklogService {
   }
 
   productBacklog() {
-    this.projectsService.getTasksToProductBacklog(this.idProject)
+    this.projectsService.getProductBacklog(this.idProject)
       .pipe(tap(productBacklog => this.setProductBacklog(productBacklog))).subscribe();
   }
 
   selectedTask() {
     if(this.idSelectTask != null) {
-      this.tasksService.getTask(this.idSelectTask)
+      this.tasksService.getUserStory(this.idSelectTask)
         .pipe(tap(task => this.setSelectedTask(task))).subscribe();
     }
   }

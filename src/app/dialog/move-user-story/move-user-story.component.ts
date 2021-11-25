@@ -7,17 +7,17 @@ import {TaskService} from "../../services/task.service";
 
 @Component({
   selector: 'app-move-task',
-  templateUrl: './move-task.component.html',
-  styleUrls: ['./move-task.component.scss']
+  templateUrl: './move-user-story.component.html',
+  styleUrls: ['./move-user-story.component.scss']
 })
-export class MoveTaskComponent implements OnInit {
+export class MoveUserStoryComponent implements OnInit {
 
   idTask: number;
   teams: Team[] =[];
   selected!: number;
 
   constructor(
-    private dialogRef: MatDialogRef<MoveTaskComponent>,
+    private dialogRef: MatDialogRef<MoveUserStoryComponent>,
     private projectService: ProjectsService,
     private projectDetailsService: ProjectDetailsService,
     private tasksService: TaskService,
@@ -31,7 +31,7 @@ export class MoveTaskComponent implements OnInit {
   }
 
   save() {
-    this.tasksService.addTaskToTeam(
+    this.tasksService.moveUserStoryToTeam(
       this.selected,
       this.idTask
     ).subscribe(() => this.dialogRef.close());

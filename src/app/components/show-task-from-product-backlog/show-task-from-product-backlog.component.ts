@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {PriorityStatus} from "../../model/priority.status";
 import {ProjectsService} from "../../services/projects.service";
 import {ProductBacklogService} from "../../services/product-backlog.service";
-import {Task} from "../../model/task";
+import {PriorityStatus, UserStory} from "../../model/task";
 
 @Component({
   selector: 'app-show-task-from-product-backlog',
@@ -46,12 +45,11 @@ export class ShowTaskFromProductBacklogComponent implements OnInit {
     this.productBacklogService.getSelectedTask().subscribe(selectedTask => {if(selectedTask != null) this.setData(selectedTask)})
   }
 
-  setData(task: Task): void {
-    this.taskId = task.id;
-    this.taskTitleFC.setValue(task.title);
-    this.descriptionFC.setValue(task.description);
-    this.priorityFC.setValue(task.priority);
-    this.storyPointFC.setValue(task.storyPoints);
-    this.statusFC.setValue(task.status);
+  setData(userStory: UserStory): void {
+    this.taskId = userStory.id;
+    this.taskTitleFC.setValue(userStory.title);
+    this.descriptionFC.setValue(userStory.description);
+    this.priorityFC.setValue(userStory.priority);
+    this.statusFC.setValue(userStory.statusIssue);
   }
 }

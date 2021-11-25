@@ -3,10 +3,10 @@
     MY TASKS
   </div>
   <div class="content">
-    <div class="task-card-content" *ngFor="let task of tasks">
-      <div class="task-card-title">{{task.title}}</div>
+    <div class="task-card-content" *ngFor="let issue of issues">
+      <div class="task-card-title">{{issue.title}}</div>
       <div #bodyText class="task-card-body">
-        <p>{{task.description}}</p>
+        <p>{{issue.description}}</p>
         <div #truncator class="fade-out-truncation"></div>
       </div>
     </div>

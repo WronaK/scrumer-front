@@ -1,7 +1,6 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
-import {Task} from "../../model/task";
-import {Observable} from "rxjs";
+import {IssueCommand} from "../../model/task";
 import {tap} from "rxjs/operators";
 import {TaskService} from "../../services/task.service";
 
@@ -12,7 +11,7 @@ import {TaskService} from "../../services/task.service";
 })
 export class MyTasksComponent implements OnInit {
 
-  tasks: Task[] = []
+  issues: IssueCommand[] = []
 
   @ViewChild('truncator') truncator!: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText!: ElementRef<HTMLElement>;
@@ -22,15 +21,14 @@ export class MyTasksComponent implements OnInit {
               private tasksService: TaskService) { }
 
   ngOnInit(): void {
-    this.getSubtasks().subscribe();
+    this.getMyIssue().subscribe();
     this.displayElement();
   }
 
-
-  getSubtasks(): Observable<Task[]> {
-    return this.tasksService.getSubtasks().pipe(
-      tap(subtasks => {
-        this.tasks = subtasks;
+  getMyIssue() {
+    return this.tasksService.getMyIssue().pipe(
+      tap(issues => {
+        this.issues = issues;
       })
     )
   }

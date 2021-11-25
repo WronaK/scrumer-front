@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
 import {ProductBacklogService} from "../../services/product-backlog.service";
-import {Task} from "../../model/task";
+import {UserStory} from "../../model/task";
 
 @Component({
   selector: 'app-product-backlog',
@@ -11,16 +11,16 @@ import {Task} from "../../model/task";
 })
 export class ProductBacklogComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'title', 'priority', 'storyPoints', 'status'];
+  displayedColumns: string[] = ['id', 'title', 'priority', 'storyPoints', 'statusIssue', 'team'];
 
-  productBacklog: Task[] = [];
+  productBacklog: UserStory[] = [];
 
-  dataSource!: MatTableDataSource<Task>;
+  dataSource!: MatTableDataSource<UserStory>;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private productBacklogService: ProductBacklogService) {
-    this.dataSource = new MatTableDataSource<Task>();
+    this.dataSource = new MatTableDataSource<UserStory>();
     this.dataSource.data = this.productBacklog;
   }
 

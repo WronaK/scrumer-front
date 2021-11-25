@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JoinTeam, Team} from "../model/team";
-import {CreateTask, Task} from "../model/task";
+import {CreateUserStory, UserStory} from "../model/task";
 import {CreateProject, ProjectDetails, ProjectInformation, SuggestedProject, UpdateProject} from "../model/project";
 
 @Injectable({
@@ -43,12 +43,12 @@ export class ProjectsService {
     return this.http.get<ProjectDetails[]>(this.url);
   }
 
-  getTasksToProductBacklog(id: number): Observable<Task[]> {
-    return this.http.get<Task[]>(this.url + id + '/product_backlog');
+  getProductBacklog(id: number): Observable<UserStory[]> {
+    return this.http.get<UserStory[]>(this.url + id + '/product_backlog');
   }
 
-  addTaskToProductBacklog(id: number, task: CreateTask) {
-    return this.http.put<CreateTask>(this.url + id + '/product_backlog', task)
+  addUserStory(id: number, task: CreateUserStory) {
+    return this.http.put<CreateUserStory>(this.url + id + '/product_backlog', task)
   }
 
   getTeamsWorkProject(id: number): Observable<Team[]> {
