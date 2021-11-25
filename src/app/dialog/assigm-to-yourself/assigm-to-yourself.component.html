@@ -1,0 +1,22 @@
+<app-dialog-template>
+  <h2 title>Assign issue</h2>
+  <form [formGroup]="formGroup" content>
+    <mat-form-field>
+      <mat-label>Enter name and surname user</mat-label>
+      <input [formControl]="member"
+             [matAutocomplete]="auto"
+             matInput required
+             type="text">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
+        {{item.username}}
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+
+  <button mat-raised-button action (click)="assign()" [disabled]="!formGroup.valid">
+    ASSIGN
+  </button>
+</app-dialog-template>
+

@@ -6,6 +6,9 @@ import {tap} from "rxjs/operators";
 import {TeamsDetailsService} from "../../services/teams-details.service";
 import {TaskService} from "../../services/task.service";
 import {AuthService} from "../../services/auth.service";
+import {AssigmToYourselfComponent} from "../../dialog/assigm-to-yourself/assigm-to-yourself.component";
+import {ShowIssueComponent} from "../../dialog/show-issue/show-issue.component";
+import {ShowUserStoryInSprintBoardComponent} from "../../dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component";
 
 @Component({
   selector: 'app-sprint-board-elements',
@@ -49,7 +52,13 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   displayUserStory(id: number) {
-
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      idUserStory: id,
+    };
+    this.dialog.open(ShowUserStoryInSprintBoardComponent, dialogConfig);
   }
 
   addIssue(id: number) {
@@ -74,7 +83,13 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   displayIssue(id: number) {
-
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      idIssue: id,
+    };
+    this.dialog.open(ShowIssueComponent, dialogConfig);
   }
 
   assignToYourself(id: number) {
@@ -84,7 +99,18 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   assignToSomeone(id: number) {
-
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      idIssue: id,
+    };
+    this.dialog.open(AssigmToYourselfComponent, dialogConfig)
+      .afterClosed().pipe(
+      tap(() => {
+        this.teamDetialsService.loadsSprintBacklog()
+      })
+    ).subscribe();
   }
 
   moveIssue(id: number) {

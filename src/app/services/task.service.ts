@@ -17,6 +17,10 @@ export class TaskService {
     return this.http.get<UserStory>("/api/user/story/" + id);
   }
 
+  getIssueById(id: number): Observable<IssueCommand> {
+    return this.http.get<IssueCommand>("/api/issue/" + id);
+  }
+
   updateUserStory(userStory: UpdateUserStory): Observable<any> {
     return this.http.put<UpdateUserStory>("/api/user/story/", userStory);
   }

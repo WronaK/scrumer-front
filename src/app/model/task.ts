@@ -68,7 +68,9 @@ export interface IssueCommand {
   priority: PriorityStatus,
   statusIssue: StatusIssue,
   storyPoints: number;
-  typeIssue: Type
+  typeIssue: Type;
+  idUserStory: number;
+  titleUserStory: number;
 }
 
 export enum StatusIssue {

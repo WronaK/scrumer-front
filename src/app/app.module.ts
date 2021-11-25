@@ -54,6 +54,8 @@ import { UpdateUserStoryComponent } from './dialog/update-user-story/update-user
 import { SprintBoardElementsComponent } from './component-elements/sprint-board-elements/sprint-board-elements.component';
 import { AddIssueComponent } from './dialog/add-issue/add-issue.component';
 import { ShowUserStoryInSprintBoardComponent } from './dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component';
+import { AssigmToYourselfComponent } from './dialog/assigm-to-yourself/assigm-to-yourself.component';
+import { ShowIssueComponent } from './dialog/show-issue/show-issue.component';
 
 @NgModule({
   declarations: [
@@ -101,7 +103,9 @@ import { ShowUserStoryInSprintBoardComponent } from './dialog/show-user-story-in
     UpdateUserStoryComponent,
     SprintBoardElementsComponent,
     AddIssueComponent,
-    ShowUserStoryInSprintBoardComponent
+    ShowUserStoryInSprintBoardComponent,
+    AssigmToYourselfComponent,
+    ShowIssueComponent
   ],
   imports: [
     BrowserModule,
