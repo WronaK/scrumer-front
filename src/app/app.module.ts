@@ -56,6 +56,7 @@ import { AddIssueComponent } from './dialog/add-issue/add-issue.component';
 import { ShowUserStoryInSprintBoardComponent } from './dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component';
 import { AssigmToYourselfComponent } from './dialog/assigm-to-yourself/assigm-to-yourself.component';
 import { ShowIssueComponent } from './dialog/show-issue/show-issue.component';
+import { ImportIssueFromCsvComponent } from './dialog/import-issue-from-csv/import-issue-from-csv.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { ShowIssueComponent } from './dialog/show-issue/show-issue.component';
     AddIssueComponent,
     ShowUserStoryInSprintBoardComponent,
     AssigmToYourselfComponent,
-    ShowIssueComponent
+    ShowIssueComponent,
+    ImportIssueFromCsvComponent
   ],
   imports: [
     BrowserModule,

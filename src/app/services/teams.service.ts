@@ -5,6 +5,7 @@ import {JoinTeam, SuggestedTeam, Team, TeamDetails, TeamInformation, UpdateTeam}
 import {JoinProject, Project} from "../model/project";
 import {User} from "../model/user";
 import {SprintBacklog} from "../model/sprint.backlog";
+import {ImportResult} from "../model/importResult";
 
 class CreateTeam {
 }
@@ -102,5 +103,16 @@ export class TeamsService {
     });
 
     return this.http.request(req);
+  }
+
+  importCsv(idTeam: number, file: File): Observable<ImportResult> {
+    const formData: FormData = new FormData();
+
+    formData.append('csv', file);
+
+    // const req = new HttpRequest('POST', "api/csv/"+idTeam+"/import", formData, {
+    // });
+
+    return this.http.post<ImportResult>("/api/csv/"+idTeam+"/import", formData);
   }
 }

@@ -5,6 +5,7 @@ import {tap} from "rxjs/operators";
 import {AddTeamMemberComponent} from "../../dialog/add-team-member/add-team-member.component";
 import {JoinProjectToTeamComponent} from "../../dialog/join-project-to-team/join-project-to-team.component";
 import {UpdateTeamComponent} from "../../dialog/update-team/update-team.component";
+import {ImportIssueFromCsvComponent} from "../../dialog/import-issue-from-csv/import-issue-from-csv.component";
 
 @Component({
   selector: 'app-menu-team',
@@ -59,6 +60,21 @@ export class MenuTeamComponent {
       .afterClosed().pipe(
       tap(() => {
         this.teamDetailsService.loadsMembers()
+      })
+    ).subscribe();
+  }
+
+  importIssueFromCsv() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      idTeam: this.teamDetailsService.idTeam
+    };
+    this.dialog.open(ImportIssueFromCsvComponent, dialogConfig)
+      .afterClosed().pipe(
+      tap(() => {
+        this.teamDetailsService.loadsSprintBacklog();
       })
     ).subscribe();
   }
