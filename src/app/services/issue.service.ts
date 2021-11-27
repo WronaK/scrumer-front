@@ -36,4 +36,8 @@ export class IssueService {
   addIssue(issue: CreateIssue) {
     return this.http.post<CreateIssue>(this.url, issue);
   }
+
+  addIssueToRealizeMe(idIssue: number) {
+    return this.http.patch(this.url + idIssue + "/realize/me", null);
+  }
 }

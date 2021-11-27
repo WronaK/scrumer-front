@@ -75,3 +75,21 @@ mat-icon:hover {
   cursor: pointer;
   color: $primary-color;
 }
+
+.assign {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  app-picture-user {
+    //width:35px;
+    //height: 35px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background: $secondary-color;
+    margin-left: 5px;
+  }
+}

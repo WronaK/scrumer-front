@@ -71,6 +71,14 @@ export interface IssueCommand {
   typeIssue: Type;
   idUserStory: number;
   titleUserStory: number;
+  assignCommands: AssignCommand[];
+}
+
+export interface AssignCommand {
+  imageId: number,
+  userId: number,
+  username: string,
+  surname: string
 }
 
 export enum StatusIssue {
