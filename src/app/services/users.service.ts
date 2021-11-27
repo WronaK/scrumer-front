@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {SuggestedUser} from "../model/user";
 
 @Injectable({
@@ -14,5 +14,17 @@ export class UsersService {
 
   getSuggestedUser(name: string): Observable<SuggestedUser[]> {
     return this.http.get<SuggestedUser[]>("api/users/find/" + name);
+  }
+
+  uploadImageProfile(file: File) {
+    const formData: FormData = new FormData();
+
+    formData.append('profile', file);
+
+    const req = new HttpRequest('POST', "/api/users/profile", formData, {
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 }

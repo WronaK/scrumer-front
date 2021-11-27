@@ -1,5 +1,5 @@
-import { Injectable } from '@angular/core';
-import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 
 @Injectable({
@@ -13,33 +13,15 @@ export class UploadsService {
     private httpClient: HttpClient
   ) { }
 
-  // upload(id: number, file: File): Observable<HttpEvent<any>> {
-  //   const formData: FormData = new FormData();
-  //
-  //   formData.append('file', file);
-  //
-  //   const req = new HttpRequest('POST', "/api/projects/"+id+"/cover", formData, {
-  //     reportProgress: true,
-  //     responseType: 'json'
-  //   });
-  //
-  //   return this.httpClient.request(req);
-  // }
-
-
   getFile(id: number) {
     return this.httpClient.get(this.baseUrl + "/" + id + "/file", {responseType: 'blob'});
   }
 
-  getFiles(): Observable<any> {
-    return this.httpClient.get(`${this.baseUrl}/files`);
-  }
-
-  getProjectCover(id: number): Observable<Blob> {
-    return this.httpClient.get(`${this.baseUrl}/${id}/project/cover`, {responseType: 'blob'});
-  }
-
   getImage(id: number): Observable<Blob> {
     return this.httpClient.get(`${this.baseUrl}/${id}/image`, {responseType: 'blob'});
+  }
+
+  getProfileImage(): Observable<Blob> {
+    return this.httpClient.get(`${this.baseUrl}/profile`, {responseType: 'blob'});
   }
 }

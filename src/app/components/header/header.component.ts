@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {LoginUser} from "../../model/login.user";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-header',
@@ -12,11 +13,31 @@ export class HeaderComponent implements OnInit {
 
   user!: LoginUser;
   isAdmin = false;
+  imgUrl: any;
   constructor(private router: Router,
-              private authService: AuthService) { }
+              private authService: AuthService,
+              private uploadService: UploadsService) {
+  }
 
   ngOnInit(): void {
-    this.getUserData();
+    this.getUserData()
+
+    this.uploadService.getProfileImage().subscribe(
+      res => {
+        this.createImage(res)
+      });
+  }
+
+  createImage(image: Blob) {
+    if (image && image.size > 0) {
+      let reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        this.imgUrl = reader.result;
+      }, false);
+
+      reader.readAsDataURL(image);
+    }
   }
 
   goHome() {

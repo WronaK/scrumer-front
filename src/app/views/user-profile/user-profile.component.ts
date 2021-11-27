@@ -1,6 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {AuthService} from "../../services/auth.service";
+import {UsersService} from "../../services/users.service";
+import {HttpResponse} from "@angular/common/http";
+import {LoginUser} from "../../model/login.user";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-user-profile',
@@ -19,11 +23,15 @@ export class UserProfileComponent implements OnInit {
 
   disabled = true;
 
+  image!: File;
+  user!: LoginUser;
+
   constructor(
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UsersService,
+    private uploadService: UploadsService,
   ) {
     this.initForm();
-    this.setData();
   }
 
   initForm() {
@@ -34,6 +42,7 @@ export class UserProfileComponent implements OnInit {
 
   setData() {
     this.authService.getUserData().subscribe(user => {
+      this.user = user;
       this.name.setValue(user.name);
       this.surname.setValue(user.surname);
       this.email.setValue(user.email);
@@ -41,11 +50,39 @@ export class UserProfileComponent implements OnInit {
     })
   }
 
-
   ngOnInit(): void {
+    this.setData();
+
+    this.uploadService.getProfileImage().subscribe(
+      res => {
+        this.createImage(res)
+      });
   }
 
-  selectImage($event: Event) {
+  selectImage(event: any): void {
+    this.image = event.target.files[0];
 
+    if (this.image) {
+      this.userService.uploadImageProfile(this.image).subscribe(
+        event => {
+          if (event instanceof HttpResponse) {
+            this.createImage(this.image)
+          }
+        }
+      )
+    }
   }
+
+  createImage(image: Blob) {
+    if (image && image.size > 0) {
+      let reader = new FileReader();
+
+      reader.addEventListener("load", () => {
+        this.imgUrl = reader.result;
+      }, false);
+
+      reader.readAsDataURL(image);
+    }
+  }
+
 }
