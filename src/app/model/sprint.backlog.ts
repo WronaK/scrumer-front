@@ -1,9 +1,9 @@
-import {Task} from "./task";
+import {IssueCommand, PBICommand} from "./task";
 
 export interface SprintBacklog {
-  tasksPBI: Task[],
-  tasksTasks: Task[],
-  tasksInProgress: Task[],
-  tasksMergeRequest: Task[],
-  tasksDone: Task[],
+  tasksPBI: PBICommand[],
+  tasksToDo: IssueCommand[],
+  tasksInProgress: IssueCommand[],
+  tasksMergeRequest: IssueCommand[],
+  tasksDone: IssueCommand[],
 }

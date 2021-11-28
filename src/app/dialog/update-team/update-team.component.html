@@ -1,0 +1,35 @@
+<app-dialog-template>
+  <h2 title>Update team</h2>
+
+  <form [formGroup]="teamFormGroup" content>
+    <mat-form-field>
+      <mat-label>Enter a name for the team</mat-label>
+      <input [formControl]="teamName" matInput required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter a team description</mat-label>
+      <textarea [formControl]="description"
+                matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"
+                required></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter a access code for the team</mat-label>
+      <input [formControl]="accessCode" matInput required>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter Scrum Master</mat-label>
+      <input [formControl]="scrumMaster"
+             [matAutocomplete]="auto"
+             matInput required
+             type="text">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
+        {{item.username}}
+      </mat-option>
+    </mat-autocomplete>
+  </form>
+  <button mat-raised-button action (click)="updateTeam()" [disabled]="!teamFormGroup.valid">UPDATE TEAM</button>
+</app-dialog-template>

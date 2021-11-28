@@ -1,0 +1,6 @@
+<mat-toolbar class="menu-task">
+  <button mat-button (click)="addUserStory()">Add user story</button>
+  <button mat-button (click)="updateUserStory()" [disabled]="!select()" >Update user story</button>
+  <button mat-button (click)="deleteUserStory()" [disabled]="!select()">Delete user story</button>
+  <button mat-button (click)="moveUserStory()" [disabled]="!select()">Move user story</button>
+</mat-toolbar>

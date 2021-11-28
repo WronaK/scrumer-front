@@ -1,0 +1,63 @@
+<div class="title">{{columnName}}</div>
+<div class="content">
+  <div class="task-card-content" *ngFor="let issue of issues">
+    <div class="task-card-title">
+      <div>{{issue.title}}</div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="displayIssue(issue.id)">
+          <span>Display issue</span>
+        </button>
+        <button mat-menu-item (click)="assignToYourself(issue.id)">
+          <span>Assign to yourself</span>
+        </button>
+        <button mat-menu-item (click)="assignToSomeone(issue.id)">
+          <span>Assign to someone</span>
+        </button>
+        <button mat-menu-item (click)="moveIssue(issue.id)">
+          <span>Move issue</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div #bodyText class="task-card-body">
+      <p>{{issue.description}}</p>
+      <div #truncator class="fade-out-truncation"></div>
+    </div>
+    <div class="assign">
+      <app-picture-user
+        *ngFor="let user of issue.assignCommands"
+        [idImage]="user.imageId"
+        [initial]="user.username[0] + user.surname[0]">
+      </app-picture-user>
+    </div>
+  </div>
+  <div class="task-card-content" *ngFor="let userStory of userStorys">
+    <div class="task-card-title">
+      <div>{{userStory.title}}</div>
+      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+        <mat-icon>more_horiz</mat-icon>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="displayUserStory(userStory.id)">
+          <span>Display user story</span>
+        </button>
+        <button mat-menu-item (click)="addIssue(userStory.id)">
+          <span>Add issue</span>
+        </button>
+        <button mat-menu-item (click)="closeUserStory(userStory.id)">
+          <span>Close user story</span>
+        </button>
+      </mat-menu>
+    </div>
+    <div #bodyText class="task-card-body">
+      <p>{{userStory.description}}</p>
+      <div #truncator class="fade-out-truncation"></div>
+    </div>
+  </div>
+</div>
+<button class="new-element" *ngIf="columnName != nameColumnScrumBoard.PBI" (click)="addIssue(-1)" mat-button>ADD NEW ISSUE</button>
+<button class="new-element" *ngIf="columnName == nameColumnScrumBoard.PBI" mat-button>ADD USER STORY</button>
+
+

@@ -1,0 +1,14 @@
+<div class="container">
+  <div class="header-card">
+    MY TASKS
+  </div>
+  <div class="content">
+    <div class="task-card-content" *ngFor="let issue of issues">
+      <div class="task-card-title">{{issue.title}}</div>
+      <div #bodyText class="task-card-body">
+        <p>{{issue.description}}</p>
+        <div #truncator class="fade-out-truncation"></div>
+      </div>
+    </div>
+  </div>
+</div>

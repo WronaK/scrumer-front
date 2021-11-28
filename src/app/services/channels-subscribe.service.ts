@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {Channel} from "../model/channel";
 import {ChannelsService} from "./channels.service";
 import {tap} from "rxjs/operators";
+import {Channel} from "../model/chat.dto";
 
 @Injectable({
   providedIn: 'root'

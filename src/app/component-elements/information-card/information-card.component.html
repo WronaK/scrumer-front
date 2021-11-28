@@ -1,0 +1,35 @@
+<div class="belt"></div>
+<input type="file" class="file-input" accept='image/*' (change)="selectImage($event)" #fileUpload>
+<button class="image" (click)="fileUpload.click()">
+  <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
+  <div class="text-centered">click to change</div>
+</button>
+<mat-card class="card" >
+    <mat-card-header class="header">
+      <mat-card-title class="title">{{resourceName.toUpperCase()}} {{resource.id}}</mat-card-title>
+    </mat-card-header>
+    <form class="content">
+      <mat-form-field >
+        <mat-label>Title for the {{resourceName}}</mat-label>
+        <input matInput [formControl]="name">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Description</mat-label>
+        <textarea [formControl]="description" matInput
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="5"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Access code for the {{resourceName}}</mat-label>
+        <input matInput placeholder="test" [formControl]="accessCode">
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>{{roleName}}</mat-label>
+        <input matInput [formControl]="username" />
+      </mat-form-field>
+    </form>
+
+  <app-attachments-element [resourceName]="resourceName" [attachments]="resource.attachments" [idResource]="resource.id"></app-attachments-element>
+</mat-card>
+
+

@@ -1,0 +1,95 @@
+@import "../../../main-styles";
+
+:host {
+  padding: 10px 0;
+  width: 100%;
+  height: 98%;
+
+  display: grid;
+  grid-template-rows: 5% 82% 5%;
+  row-gap: 1em;
+}
+
+.title {
+  background: $secondary-detail-color;
+  box-shadow: 0 3px 6px black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  color: $primary-color;
+  border-radius: 10px;
+
+}
+
+.content {
+  padding: 5px;
+  //background: red;
+  overflow-y: auto;
+}
+
+.new-element {
+  background: $secondary-color !important;
+  font-size: 1.2em !important;
+  font-weight: bold !important;
+  color: $primary-color !important;
+  box-shadow: 0 3px 6px black;
+  border-radius: 10px !important;
+}
+
+.task-card-content {
+  background-color: $secondary-spot-color;
+  padding: 10px;
+  margin-top: 10px;
+  border-radius: 5px;
+
+  .task-card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    font-size: 18px;
+    color: $primary-color;
+  }
+
+  .task-card-body {
+    position: relative;
+    max-height: 70px;
+    overflow: hidden;
+    color: $primary-color;
+    pointer-events: none;
+
+    .fade-out-truncation {
+      position: absolute;
+      bottom: 0;
+      height: 50%;
+      width: 100%;
+      background: linear-gradient(to bottom, rgba($secondary-spot-color, 0) 0%, rgba($secondary-spot-color, 0.8) 50%, $secondary-spot-color 100%);
+
+    }
+  }
+}
+
+mat-icon:hover {
+  cursor: pointer;
+  color: $primary-color;
+}
+
+.assign {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  app-picture-user {
+    //width:35px;
+    //height: 35px;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+    background: $secondary-color;
+    margin-left: 5px;
+  }
+}

@@ -11,7 +11,7 @@ import {WebSocketService} from "./web-socket.service";
 export class AuthService {
 
   private customHttpClient: HttpClient;
-  private user!: LoginUser;
+  loginUser!: LoginUser;
 
   constructor(
     private http: HttpClient,
@@ -38,6 +38,10 @@ export class AuthService {
 
             });
             this.router.navigate(['dashboard']);
+            this.getUserData().subscribe(user => {
+              this.loginUser = user
+            })
+
           }
         }
       )

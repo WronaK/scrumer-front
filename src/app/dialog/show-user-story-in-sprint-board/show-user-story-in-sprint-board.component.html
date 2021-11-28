@@ -1,0 +1,29 @@
+<app-dialog-template>
+  <h2 title>Show user story</h2>
+  <form content>
+    <mat-form-field>
+      <mat-label>Enter a title for the user story</mat-label>
+      <input [formControl]="title" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter a user story description</mat-label>
+      <textarea [formControl]="description"
+                matInput
+                cdkTextareaAutosize
+                cdkAutosizeMinRows="5"></textarea>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Give priority</mat-label>
+      <input [formControl]="priorityFC" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Enter a story points</mat-label>
+      <input [formControl]="storyPoints" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Give status user story</mat-label>
+      <input [formControl]="statusUserStory" matInput>
+    </mat-form-field>
+  </form>
+</app-dialog-template>
+

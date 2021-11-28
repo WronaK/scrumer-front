@@ -1,14 +1,9 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Team} from "../model/team";
-import {UpdateTeam} from "../model/update.team";
-import {Members} from "../model/member";
-import {JoinProject} from "../model/join.project";
-import {JoinTeam} from "../model/join.teams";
-import {Project} from "../model/project";
+import {JoinTeam, SuggestedTeam, Team, TeamDetails, TeamInformation, UpdateTeam} from "../model/team";
+import {JoinProject, Project} from "../model/project";
 import {User} from "../model/user";
-import {TeamDetails} from "../model/team.details";
 import {SprintBacklog} from "../model/sprint.backlog";
 
 class CreateTeam {
@@ -30,12 +25,16 @@ export class TeamsService {
     return this.http.get<TeamDetails>(this.url + id);
   }
 
+  getInformationAboutTeam(idTeam: number): Observable<TeamInformation> {
+    return this.http.get<TeamInformation>(this.url + idTeam + "/information");
+  }
+
   getAllTeams(): Observable<any> {
     return this.http.get<Team[]>(this.url);
   }
 
-  getTeams(): Observable<any> {
-    return this.http.get<Team[]>(this.url + 'my-teams');
+  getTeams(): Observable<TeamDetails[]> {
+    return this.http.get<TeamDetails[]>(this.url + 'my-teams');
   }
 
   getTasksSprintBacklog(id: number): Observable<SprintBacklog> {
@@ -54,19 +53,54 @@ export class TeamsService {
     return this.http.put<UpdateTeam>(this.url, team);
   }
 
-  addMembers(id: number, members: Members) {
-    return this.http.put<Members>(this.url + id + '/members', members);
+  addMember(idTeam: number, idMember: number) {
+    return this.http.put(this.url + idTeam + '/member/' + idMember, null);
   }
 
   joinProject(id: number, projects: JoinProject) {
     return this.http.put<JoinProject>(this.url + id + '/projects', projects);
   }
 
-  joinTeam(team: JoinTeam) {
-    return this.http.put<JoinTeam>('api/users/join', team);
-  }
 
   removeProjectWithTeam(id: number, idProject: number) {
     return this.http.patch(this.url + id + "/projects/" + idProject + "/remove", null);
+  }
+
+  uploadCover(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/cover", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
+  }
+
+  getSuggestedTeam(name: String): Observable<SuggestedTeam[]> {
+    return this.http.get<SuggestedTeam[]>(this.url + "find/" + name);
+  }
+
+  joinProjectToTeam(id: number, project: JoinProject) {
+    return this.http.put<JoinProject>(this.url + id + "/project", project);
+  }
+
+  joinToTeam(team: JoinTeam) {
+    return this.http.put<JoinTeam>(this.url + "/member", team);
+  }
+
+  uploadAttachment(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/attachment", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 }

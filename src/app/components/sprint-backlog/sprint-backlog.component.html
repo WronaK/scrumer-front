@@ -1,0 +1,7 @@
+<div class="sprint-backlog" cdkDropListGroup>
+  <app-sprint-board-elements [columnName]="columnName.PBI" [userStorys]="tasksPBI"></app-sprint-board-elements>
+  <app-sprint-board-elements [columnName]="columnName.TO_DO" [issues]="tasksTasks"></app-sprint-board-elements>
+  <app-sprint-board-elements [columnName]="columnName.IN_PROGRESS" [issues]="tasksInProgress"></app-sprint-board-elements>
+  <app-sprint-board-elements [columnName]="columnName.MERGE_REQUEST" [issues]="tasksMergeRequest"></app-sprint-board-elements>
+  <app-sprint-board-elements [columnName]="columnName.COMPLETED" [issues]="tasksDone"></app-sprint-board-elements>
+</div>

@@ -1,0 +1,21 @@
+<app-form-login-template>
+  <div class="header" header>SCRUMER</div>
+  <form [formGroup]="loginFormGroup" class="form-content" content-form>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input [formControl]="email" matInput required type="email"/>
+      <mat-error>This field should be an e-mail</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input [formControl]="password" matInput required type="password"/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+  </form>
+  <div class="name-button" button-name>
+    SIGN IN
+  </div>
+  <button class="button-click" button-click (click)="singIn()" [disabled]="!loginFormGroup.valid">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</app-form-login-template>

@@ -1,0 +1,12 @@
+<div class="container">
+  <div class="header-card">MY {{baseName.toUpperCase()}}S</div>
+
+  <mat-grid-list cols="3" rowHeight="fit">
+    <mat-grid-tile *ngFor="let element of resource">
+      <app-resource-hash (click)="goToPage(element.id)" [resource]="element"></app-resource-hash>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <app-resource-hash (click)="createdNewElement()" [title]="'CREATE ' + baseName.toUpperCase()"></app-resource-hash>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

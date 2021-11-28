@@ -1,0 +1,42 @@
+<app-form-login-template>
+  <div class="header" header>SCRUMER</div>
+  <form [formGroup]="registrationFormGroup" class="form-content" content-form>
+    <span class="error" *ngIf="error!=null">{{error}}</span>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input [formControl]="email" matInput required type="email"/>
+      <mat-error>This field should be an e-mail</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input [formControl]="name" matInput required type="text"/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Surname</mat-label>
+      <input [formControl]="surname" matInput required type="text"/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input [formControl]="password" matInput required type="password"/>
+      <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Repeat Password</mat-label>
+      <input [formControl]="repeatPassword"
+             [errorStateMatcher]="errorMatcher"
+             matInput required type="password"/>
+      <mat-error>
+        <span *ngIf="registrationFormGroup.hasError('isEqual')">The passwords don't match</span>
+      </mat-error>
+    </mat-form-field>
+  </form>
+  <div class="name-button" button-name>
+    REGISTER
+  </div>
+  <button class="button-click" button-click (click)="signUp()" [disabled]="!registrationFormGroup.valid">
+    <i class="fas fa-chevron-right"></i>
+  </button>
+</app-form-login-template>
+

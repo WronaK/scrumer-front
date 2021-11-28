@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="login-button" (click)="goToLogin()">
+    <span class="name">SIGN IN</span>
+  </div>
+  <ng-content class="header" select="[header]">
+
+  </ng-content>
+  <div class="registration-button" (click)="goToRegistration()">
+    <span class="name">REGISTRATION</span>
+  </div>
+  <div class="content-form">
+    <ng-content select="[content-form]">
+
+    </ng-content>
+  </div>
+  <div class="button">
+    <ng-content class="button-name" select="[button-name]">
+
+    </ng-content>
+    <ng-content class="button-click" select="[button-click]">
+
+    </ng-content>
+  </div>
+</div>

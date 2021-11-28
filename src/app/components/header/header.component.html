@@ -1,0 +1,15 @@
+<div class="top-bar">
+  <div class="logo">
+    <img src="../../../assets/logo.png" (click)="goHome()">
+  </div>
+  <div class="menu">
+    <div class="item" (click)="toYourTeams()">MY TEAMS</div>
+    <div class="item" (click)="toYourProjects()">MY PROJECTS</div>
+    <div class="item" (click)="toChat()">CHAT</div>
+    <div class="logout item" (click)="logout()">LOGOUT</div>
+    <div class="item user" (click)="toYourProfile()">
+      <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
+      <div *ngIf="!imgUrl" class="initial">{{user?.name + ' ' + user?.surname}}</div>
+      </div>
+  </div>
+</div>
