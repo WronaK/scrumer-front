@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {CreateIssue, UpdateUserStory, UserStory} from "../model/task";
 
@@ -28,5 +28,18 @@ export class UserStoryService {
 
   addIssueToUserStory(idUserStory: number, issue: CreateIssue) {
     return this.http.put<CreateIssue>(this.url + idUserStory + "/issue", issue);
+  }
+
+  uploadAttachment(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/attachment", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 }

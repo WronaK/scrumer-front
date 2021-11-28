@@ -29,35 +29,7 @@
       </mat-form-field>
     </form>
 
-  <div class="attachment">
-    <mat-list>
-      <div mat-subheader>ATTACHMENT</div>
-      <mat-list-item class="my-attachment" *ngFor="let file of resource.attachments" (click)="downloadFile(file)">
-        <mat-icon mat-list-icon>note</mat-icon>
-        <div mat-line>{{file.filename}}</div>
-      </mat-list-item>
-    </mat-list>
-  <mat-list>
-    <div mat-subheader>
-      <div>ADD ATTACHMENT</div>
-      <input type="file" class="file-input" multiple (change)="selectFiles($event)" #filesUpload>
-      <div>
-      <button mat-mini-fab color="primary" class="upload-btn" (click)="filesUpload.click()">
-        <mat-icon>attach_file</mat-icon>
-      </button>
-      <button *ngIf="files.length" mat-button (click)="uploadFiles()">
-        SAVE ATTACHMENT
-      </button>
-      </div>
-    </div>
-    <mat-list-item *ngFor="let file of files">
-      <mat-icon mat-list-icon>note</mat-icon>
-      <div mat-line>{{file.name}}</div>
-      <div mat-line>{{file.lastModified | date}}</div>
-    </mat-list-item>
-  </mat-list>
-  </div>
-
+  <app-attachments-element [resourceName]="resourceName" [attachments]="resource.attachments" [idResource]="resource.id"></app-attachments-element>
 </mat-card>
 
 

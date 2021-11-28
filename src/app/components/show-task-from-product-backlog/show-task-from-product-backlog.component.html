@@ -27,5 +27,6 @@
       <input [formControl]="statusFC" matInput>
     </mat-form-field>
   </form>
+  <app-attachments-element [resourceName]="'user-story'" [idResource]="taskId" [attachments]="userStory.attachments" ></app-attachments-element>
 </mat-card>
 

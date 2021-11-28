@@ -1,0 +1,23 @@
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+.mat-subheader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.attachment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.my-attachment:hover {
+  cursor: pointer;
+}
+
+.file-input {
+  display: none;
+}

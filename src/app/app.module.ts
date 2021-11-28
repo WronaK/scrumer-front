@@ -40,23 +40,25 @@ import {DialogTemplateComponent} from './templates/dialog-template/dialog-templa
 import {CreateProjectComponent} from './dialog/create-project/create-project.component';
 import {CreateTeamComponent} from './dialog/create-team/create-team.component';
 import {MaterialModule} from "./material.module";
-import { AddTeamMemberComponent } from './dialog/add-team-member/add-team-member.component';
-import { DashboardElementComponent } from './component-elements/dashboard-element/dashboard-element.component';
-import { FormLoginTemplateComponent } from './templates/form-login-template/form-login-template.component';
-import { InformationCardComponent } from './component-elements/information-card/information-card.component';
-import { JoinTeamToProjectComponent } from './dialog/join-team-to-project/join-team-to-project.component';
-import { JoinTheTeamComponent } from './dialog/join-the-team/join-the-team.component';
-import { JoinProjectToTeamComponent } from './dialog/join-project-to-team/join-project-to-team.component';
-import { UpdateProjectComponent } from './dialog/update-project/update-project.component';
-import { UpdateTeamComponent } from './dialog/update-team/update-team.component';
-import { UserProfileComponent } from './views/user-profile/user-profile.component';
-import { UpdateUserStoryComponent } from './dialog/update-user-story/update-user-story.component';
-import { SprintBoardElementsComponent } from './component-elements/sprint-board-elements/sprint-board-elements.component';
-import { AddIssueComponent } from './dialog/add-issue/add-issue.component';
-import { ShowUserStoryInSprintBoardComponent } from './dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component';
-import { AssigmToYourselfComponent } from './dialog/assigm-to-yourself/assigm-to-yourself.component';
-import { ShowIssueComponent } from './dialog/show-issue/show-issue.component';
-import { PictureUserComponent } from './component-elements/picture-user/picture-user.component';
+import {AddTeamMemberComponent} from './dialog/add-team-member/add-team-member.component';
+import {DashboardElementComponent} from './component-elements/dashboard-element/dashboard-element.component';
+import {FormLoginTemplateComponent} from './templates/form-login-template/form-login-template.component';
+import {InformationCardComponent} from './component-elements/information-card/information-card.component';
+import {JoinTeamToProjectComponent} from './dialog/join-team-to-project/join-team-to-project.component';
+import {JoinTheTeamComponent} from './dialog/join-the-team/join-the-team.component';
+import {JoinProjectToTeamComponent} from './dialog/join-project-to-team/join-project-to-team.component';
+import {UpdateProjectComponent} from './dialog/update-project/update-project.component';
+import {UpdateTeamComponent} from './dialog/update-team/update-team.component';
+import {UserProfileComponent} from './views/user-profile/user-profile.component';
+import {UpdateUserStoryComponent} from './dialog/update-user-story/update-user-story.component';
+import {SprintBoardElementsComponent} from './component-elements/sprint-board-elements/sprint-board-elements.component';
+import {AddIssueComponent} from './dialog/add-issue/add-issue.component';
+import {ShowUserStoryInSprintBoardComponent} from './dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component';
+import {AssigmToYourselfComponent} from './dialog/assigm-to-yourself/assigm-to-yourself.component';
+import {ShowIssueComponent} from './dialog/show-issue/show-issue.component';
+import {PictureUserComponent} from './component-elements/picture-user/picture-user.component';
+import {AttachmentsElementComponent} from './component-elements/attachments-element/attachments-element.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -107,7 +109,8 @@ import { PictureUserComponent } from './component-elements/picture-user/picture-
     ShowUserStoryInSprintBoardComponent,
     AssigmToYourselfComponent,
     ShowIssueComponent,
-    PictureUserComponent
+    PictureUserComponent,
+    AttachmentsElementComponent
   ],
   imports: [
     BrowserModule,
@@ -118,7 +121,8 @@ import { PictureUserComponent } from './component-elements/picture-user/picture-
     PipesModule,
     DragDropModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

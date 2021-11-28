@@ -21,6 +21,7 @@ export class ShowTaskFromProductBacklogComponent implements OnInit {
   statusFC: FormControl;
   keys: any[] = [];
   priority = PriorityStatus;
+  userStory!: UserStory;
 
   constructor(private projectService: ProjectsService,
               private  productBacklogService: ProductBacklogService) {
@@ -46,6 +47,7 @@ export class ShowTaskFromProductBacklogComponent implements OnInit {
   }
 
   setData(userStory: UserStory): void {
+    this.userStory = userStory;
     this.taskId = userStory.id;
     this.taskTitleFC.setValue(userStory.title);
     this.descriptionFC.setValue(userStory.description);
