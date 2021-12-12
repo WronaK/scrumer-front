@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {CreateIssue, IssueCommand} from "../model/task";
 
 @Injectable({
@@ -35,5 +35,22 @@ export class IssueService {
 
   addIssue(issue: CreateIssue) {
     return this.http.post<CreateIssue>(this.url, issue);
+  }
+
+  addIssueToRealizeMe(idIssue: number) {
+    return this.http.patch(this.url + idIssue + "/realize/me", null);
+  }
+
+  uploadAttachment(id: number, file: File): Observable<HttpEvent<any>> {
+    const formData: FormData = new FormData();
+
+    formData.append('file', file);
+
+    const req = new HttpRequest('POST', this.url+id+"/attachment", formData, {
+      reportProgress: true,
+      responseType: 'json'
+    });
+
+    return this.http.request(req);
   }
 }

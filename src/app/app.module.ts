@@ -57,6 +57,9 @@ import { ShowUserStoryInSprintBoardComponent } from './dialog/show-user-story-in
 import { AssigmToYourselfComponent } from './dialog/assigm-to-yourself/assigm-to-yourself.component';
 import { ShowIssueComponent } from './dialog/show-issue/show-issue.component';
 import { ImportIssueFromCsvComponent } from './dialog/import-issue-from-csv/import-issue-from-csv.component';
+import {PictureUserComponent} from './component-elements/picture-user/picture-user.component';
+import {AttachmentsElementComponent} from './component-elements/attachments-element/attachments-element.component';
+import {MatSnackBarModule} from "@angular/material/snack-bar";
 
 @NgModule({
   declarations: [
@@ -107,6 +110,9 @@ import { ImportIssueFromCsvComponent } from './dialog/import-issue-from-csv/impo
     ShowUserStoryInSprintBoardComponent,
     AssigmToYourselfComponent,
     ShowIssueComponent,
+    PictureUserComponent,
+    AttachmentsElementComponent,
+    ShowIssueComponent,
     ImportIssueFromCsvComponent
   ],
   imports: [
@@ -118,7 +124,8 @@ import { ImportIssueFromCsvComponent } from './dialog/import-issue-from-csv/impo
     PipesModule,
     DragDropModule,
     FormsModule,
-    MaterialModule
+    MaterialModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

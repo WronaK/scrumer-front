@@ -25,6 +25,13 @@
       <p>{{issue.description}}</p>
       <div #truncator class="fade-out-truncation"></div>
     </div>
+    <div class="assign">
+      <app-picture-user
+        *ngFor="let user of issue.assignCommands"
+        [idImage]="user.imageId"
+        [initial]="user.username[0] + user.surname[0]">
+      </app-picture-user>
+    </div>
   </div>
   <div class="task-card-content" *ngFor="let userStory of userStorys">
     <div class="task-card-title">

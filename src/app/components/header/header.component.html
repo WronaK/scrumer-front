@@ -7,6 +7,9 @@
     <div class="item" (click)="toYourProjects()">MY PROJECTS</div>
     <div class="item" (click)="toChat()">CHAT</div>
     <div class="logout item" (click)="logout()">LOGOUT</div>
-    <div class="item user" (click)="toYourProfile()">{{user?.name + ' ' + user?.surname}}</div>
+    <div class="item user" (click)="toYourProfile()">
+      <img class="image-upload" *ngIf="imgUrl" [src]="imgUrl">
+      <div *ngIf="!imgUrl" class="initial">{{user?.name + ' ' + user?.surname}}</div>
+      </div>
   </div>
 </div>

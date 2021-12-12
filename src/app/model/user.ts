@@ -2,6 +2,7 @@ export interface User {
   name: string;
   surname: string;
   email: string;
+  idProfileImage: number;
 }
 
 export interface SuggestedUser {

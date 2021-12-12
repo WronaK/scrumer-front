@@ -25,6 +25,7 @@ export class SprintBoardElementsComponent implements OnInit {
 
   @ViewChild('truncator') truncator!: ElementRef<HTMLElement>;
   @ViewChild('bodyText') bodyText!: ElementRef<HTMLElement>;
+  imgUrls: any[] = [];
 
   ngOnInit(): void {
     this.displayElement();
@@ -93,7 +94,7 @@ export class SprintBoardElementsComponent implements OnInit {
   }
 
   assignToYourself(id: number) {
-    this.issueService.addIssueToRealize(id, this.authService.loginUser.id).subscribe(() => {
+    this.issueService.addIssueToRealizeMe(id).subscribe(() => {
       this.teamDetialsService.loadsSprintBacklog()
     })
   }

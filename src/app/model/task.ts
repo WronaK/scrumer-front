@@ -1,3 +1,5 @@
+import {Attachment} from "./resource";
+
 export interface Task extends CreateTask {
   id: number;
   storyPoints: string | number;
@@ -41,6 +43,7 @@ export interface UserStory {
   statusIssue: StatusIssue,
   storyPoints: number;
   team: string;
+  attachments: Attachment[];
 }
 
 export interface PBICommand {
@@ -50,6 +53,7 @@ export interface PBICommand {
   priority: PriorityStatus,
   statusIssue: StatusIssue,
   storyPoints: number;
+  attachments: Attachment[];
 }
 
 export interface CreateIssue {
@@ -71,6 +75,15 @@ export interface IssueCommand {
   typeIssue: Type;
   idUserStory: number;
   titleUserStory: number;
+  assignCommands: AssignCommand[];
+  attachments: Attachment[];
+}
+
+export interface AssignCommand {
+  imageId: number,
+  userId: number,
+  username: string,
+  surname: string
 }
 
 export enum StatusIssue {
