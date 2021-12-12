@@ -4,13 +4,15 @@ import {CreateMessageCommand} from "../model/createMessageCommand";
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {LoginUser} from "../model/login.user";
-import {AuthService} from "./auth.service";
 import {MessageCommand} from "../model/messageCommand";
 import {ChannelsSubscribeService} from "./channels-subscribe.service";
 import {tap} from "rxjs/operators";
 import {ChannelsService} from "./channels.service";
 import {MessageService} from "./message.service";
 import {Channel} from "../model/chat.dto";
+import {ScrumPokerService} from "./scrum-poker.service";
+import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
+import {ScrumPokerCommand} from "../model/scrum.poker.command";
 
 @Injectable({
   providedIn: 'root'
@@ -24,13 +26,23 @@ export class WebSocketService {
   user!: LoginUser;
   activeChannelId!: number;
   channels: Channel[] = [];
+  horizontalPosition: MatSnackBarHorizontalPosition = "center";
+  verticalPosition: MatSnackBarVerticalPosition = "bottom";
 
   constructor(
     private channelService: ChannelsService,
     private messageService: MessageService,
     private channelsSubscriberService: ChannelsSubscribeService,
-    private scrumPokerService: ScrumPokerService
+    private scrumPokerService: ScrumPokerService,
+    private _snackBar: MatSnackBar
   ) {}
+
+  openSnackBar(message: string) {
+    this._snackBar.open(message, 'Close', {
+      horizontalPosition: this.horizontalPosition,
+      verticalPosition: this.verticalPosition,
+    });
+  }
 
   setConnected(connected: boolean) {
     this.disabled = !connected;
@@ -69,19 +81,39 @@ export class WebSocketService {
 
       _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/scrum`, (message: any) => {
         const m = JSON.parse(message.body);
-        this.scrumPokerService.notificationStartScrumPoker(m.id).afterClosed()
-          .subscribe( result => {
-            if (result) {
-              this.joinUser(m.idTeam)
-            }
-          })
+        console.log("Scrum ppoker is: " + m );
+        this.scrumPokerService.notificationStartScrumPoker(m.idScrumPoker);
       });
 
       _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/join`, (message: any) => {
-        const m = JSON.parse(message.body);
-        this.scrumPokerService.addUser(message.id);
+        console.log("MMM: ", message)
+        this.scrumPokerService.setScrumPoker(JSON.parse(message.body));
+        // this.scrumPokerService.addUser(message.id);
       });
+
+      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/start`,(message: any) => {
+        const result = JSON.parse(message.body);
+        this.scrumPokerService.resultChange.next("???");
+        this.scrumPokerService.setScrumPoker(result);
+        this.openSnackBar("Start estimating for the task number " + result.currentTask);
+        this.scrumPokerService.setStartEstimation(true);
+      } );
+
+      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/vote`,(message: any) => {
+        const result = JSON.parse(message.body);
+        this.scrumPokerService.newVote(result.idUser);
+      } );
+
+      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/st`,(message: any) => {
+        const result = JSON.parse(message.body);
+        this.scrumPokerService.setResult(result);
+        this.openSnackBar("Stop estimating for the task number " + result.idTask);
+        this.scrumPokerService.setStartEstimation(false);
+      } );
+
     });
+
+
 
   }
 
@@ -107,29 +139,11 @@ export class WebSocketService {
     console.log('Disconnected!');
   }
 
-  public joinUser(idTeam: number) {
-    console.log("join " + this.user.id);
-    let command = new Command(this.user.id, idTeam);
-
-    this.stompClient.send(
-      '/api/app/join', {}, JSON.stringify(command)
-    );
-  }
-
   public sendMessage(message: CreateMessageCommand) {
     console.log("send");
     this.stompClient.send(
       '/api/app/chat', {}, JSON.stringify(message));
     this.chatMessages.push(message)
-  }
-
-  public initScrumPoker(idTeam: number) {
-    console.log("init");
-    console.log(idTeam)
-    let scrumpoker = new ScrumPokerCommand(idTeam);
-    this.stompClient.send(
-      '/api/app/example', {}, JSON.stringify(scrumpoker)
-    );
   }
 
   public loadsMessageActiveChannel() {

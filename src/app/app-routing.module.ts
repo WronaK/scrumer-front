@@ -5,18 +5,13 @@ import {RegistrationPageComponent} from "./views/registration-page/registration-
 import {MainLayoutComponent} from "./components/main-layout/main-layout.component";
 import {DashboardComponent} from "./views/dashboard/dashboard.component";
 import {AuthGuard} from "./services/auth.guard";
+import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+import {ScrumPokerComponent} from "./scrum-poker/scrum-poker.component";
 import {MyProjectsComponent} from "./views/my-projects/my-projects.component";
 import {MyTeamsComponent} from "./views/my-teams/my-teams.component";
 import {ProjectComponent} from "./views/project/project.component";
 import {TeamComponent} from "./views/team/team.component";
 import {ChatComponent} from "./views/chat/chat.component";
-import {UserProfileComponent} from "./views/user-profile/user-profile.component";
-import {MyProjectsComponent} from "./my-projects/my-projects.component";
-import {MyTeamsComponent} from "./my-teams/my-teams.component";
-import {ProjectComponent} from "./project/project.component";
-import {TeamComponent} from "./team/team.component";
-import {ChatComponent} from "./chat/chat.component";
-import {ScrumPokerComponent} from "./scrum-poker/scrum-poker.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
@@ -25,8 +20,7 @@ const routes: Routes = [
       { path: 'my-teams', component: MyTeamsComponent, canActivate: [AuthGuard] },
       { path: 'project/:id', component: ProjectComponent, canActivate: [AuthGuard] },
       { path: 'team/:id', component: TeamComponent, canActivate: [AuthGuard] },
-      { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
-      { path: 'scrum-poker/:id', component: ScrumPokerComponent, canActivate: [AuthGuard]}
+      { path: 'scrum-poker/:id', component: ScrumPokerComponent, canActivate: [AuthGuard]},
       { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
       { path: 'my-profile', component: UserProfileComponent, canActivate: [AuthGuard]}
     ]

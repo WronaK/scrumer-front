@@ -1,0 +1,47 @@
+<app-dialog-template>
+  <h2 title>Create scrum poker</h2>
+  <div class="content" content>
+    <form [formGroup]="formGroup" content>
+      <mat-form-field>
+        <mat-label>Select member</mat-label>
+        <input [formControl]="member"
+               [matAutocomplete]="auto"
+               matInput required
+               type="text">
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
+          <mat-option *ngFor="let item of filteredOptionUser" [value]="item">
+            {{item.username}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button (click)="addUser()">ADD MEMBER</button>
+      <mat-form-field>
+        <mat-label>Select team</mat-label>
+        <input [formControl]="team"
+               [matAutocomplete]="autoTeam"
+               matInput required
+               type="text">
+        <mat-autocomplete #autoTeam="matAutocomplete" [displayWith]="getName">
+          <mat-option *ngFor="let item of filteredOptionTeam" [value]="item">
+            {{item.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <button mat-raised-button (click)="addTeam()">ADD TEAM</button>
+    </form>
+
+    <mat-list>
+      <div mat-subheader>Members</div>
+      <mat-list-item *ngFor="let user of members">
+        <div mat-line>{{user.username}}</div>
+      </mat-list-item>
+      <mat-divider></mat-divider>
+      <div mat-subheader>Teams</div>
+      <mat-list-item *ngFor="let team of teams">
+        <div mat-line>{{team.name}}</div>
+      </mat-list-item>
+    </mat-list>
+  </div>
+
+  <button mat-raised-button action (click)="startScrumPoker()">START SCRUM POKER</button>
+</app-dialog-template>

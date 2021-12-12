@@ -1,11 +1,20 @@
 <div class="container">
-  <div class="header-card">Actual mark</div>
+  <div class="header-card">
+    <div class="header">
+      Actual mark
+    </div>
+    <div class="button">
+      <button mat-button (click)="startEstimation()">Start estimating</button>
+      <button mat-button (click)="stopEstimation()">Stop estimating</button>
+      <button mat-button (click)="acceptResult()">Accept result</button>
+    </div>
+  </div>
   <mat-grid-list cols="6" rowHeight="fit">
     <mat-grid-tile [colspan]="2" [rowspan]="2">
-      <app-my-card [value]="3" [my]="true"></app-my-card>
+      <app-my-card [value]="result" [my]="true"></app-my-card>
     </mat-grid-tile>
-    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of usersId">
-      <app-my-card [value]="v" [my]="false"></app-my-card>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of teamEstimation">
+      <app-my-card [value]="v.estimation" [my]="false"></app-my-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

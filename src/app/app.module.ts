@@ -27,7 +27,6 @@ import {MoveUserStoryComponent} from './dialog/move-user-story/move-user-story.c
 import {PipesModule} from "./pipes/pipes.module";
 import {TeamComponent} from './views/team/team.component';
 import {SprintBacklogComponent} from './components/sprint-backlog/sprint-backlog.component';
-import {MenuTeamComponent} from './components/menu-team/menu-team.component';
 import {ProjectsComponent} from './components/projects/projects.component';
 import {MembersTeamComponent} from './components/members-team/members-team.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
@@ -59,6 +58,15 @@ import {ShowIssueComponent} from './dialog/show-issue/show-issue.component';
 import {PictureUserComponent} from './component-elements/picture-user/picture-user.component';
 import {AttachmentsElementComponent} from './component-elements/attachments-element/attachments-element.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import {ScrumPokerComponent} from "./scrum-poker/scrum-poker.component";
+import {TeamEstimationComponent} from "./team-estimation/team-estimation.component";
+import {NotificationStartScrumPokerComponent} from "./notification-start-scrum-poker/notification-start-scrum-poker.component";
+import {DeckOfCardsComponent} from "./deck-of-cards/deck-of-cards.component";
+import {TaskViewComponent} from "./task-view/task-view.component";
+import {MenuTeamComponent} from "./components/menu-team/menu-team.component";
+import {MyCardComponent} from "./my-card/my-card.component";
+import {PlanComponent} from "./plan/plan.component";
+import { CreateScrumPokerComponent } from './dialog/create-scrum-poker/create-scrum-poker.component';
 
 @NgModule({
   declarations: [
@@ -91,10 +99,7 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     TeamEstimationComponent,
     DeckOfCardsComponent,
     TaskViewComponent,
-    PlanComponent,
-    MyCardComponent,
-    NotificationStartScrumPokerComponent
-    NewConversationComponent,
+    NotificationStartScrumPokerComponent,
     ResourceHashComponent,
     ResourceDescriptionComponent,
     BaseViewTemplateComponent,
@@ -118,7 +123,10 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     AssigmToYourselfComponent,
     ShowIssueComponent,
     PictureUserComponent,
-    AttachmentsElementComponent
+    AttachmentsElementComponent,
+    MyCardComponent,
+    PlanComponent,
+    CreateScrumPokerComponent
   ],
   imports: [
     BrowserModule,

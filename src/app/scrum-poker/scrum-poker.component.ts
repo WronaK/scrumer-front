@@ -1,18 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import {ScrumPokerService} from "../services/scrum-poker.service";
+import {ScrumPoker} from "../model/scrum.poker.command";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-scrum-poker',
   templateUrl: './scrum-poker.component.html',
   styleUrls: ['./scrum-poker.component.scss']
 })
-export class ScrumPokerComponent implements OnInit {
+export class ScrumPokerComponent implements OnInit{
 
-  userId: number[] = [];
-  constructor(private scrumPokerService: ScrumPokerService) { }
+  scrumPoker!: ScrumPoker
+  constructor(private scrumPokerService: ScrumPokerService) {
 
-  ngOnInit(): void {
-    this.userId = this.scrumPokerService.userId;
   }
 
+  ngOnInit() {
+    this.scrumPoker = this.scrumPokerService.scrumPoker;
+  }
 }

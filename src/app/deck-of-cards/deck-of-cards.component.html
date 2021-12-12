@@ -2,7 +2,7 @@
   <div class="header-card">Submit estimate</div>
   <mat-grid-list cols="6" rowHeight="fit">
     <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of value">
-      <app-my-card [value]="v" [my]="true"></app-my-card>
+      <app-my-card [slectDeck]="selectedDeck" [disabled]="disabled" [value]="v" [my]="true" (click)="vote(v)"></app-my-card>
     </mat-grid-tile>
   </mat-grid-list>
 </div>

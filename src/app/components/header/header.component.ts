@@ -3,6 +3,10 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {LoginUser} from "../../model/login.user";
 import {UploadsService} from "../../services/uploads.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {AssigmToYourselfComponent} from "../../dialog/assigm-to-yourself/assigm-to-yourself.component";
+import {tap} from "rxjs/operators";
+import {CreateScrumPokerComponent} from "../../dialog/create-scrum-poker/create-scrum-poker.component";
 
 @Component({
   selector: 'app-header',
@@ -16,7 +20,8 @@ export class HeaderComponent implements OnInit {
   imgUrl: any;
   constructor(private router: Router,
               private authService: AuthService,
-              private uploadService: UploadsService) {
+              private uploadService: UploadsService,
+              private dialog: MatDialog ) {
   }
 
   ngOnInit(): void {
@@ -80,4 +85,13 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['my-profile'])
   }
 
+  createScrumPoker() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    dialogConfig.data = {
+      idUser: this.authService.loginUser.id,
+    };
+    this.dialog.open(CreateScrumPokerComponent, dialogConfig);
+  }
 }

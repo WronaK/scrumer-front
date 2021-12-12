@@ -20,8 +20,6 @@ export class NotificationStartScrumPokerComponent {
   }
 
   add() {
-    console.log("add");
-    this.router.navigate(['scrum-poker/' + this.id])
     this.dialogRef.close(true);
   }
 }

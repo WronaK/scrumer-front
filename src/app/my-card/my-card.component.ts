@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {ScrumPokerService} from "../services/scrum-poker.service";
 
 @Component({
   selector: 'app-my-card',
@@ -13,7 +14,15 @@ export class MyCardComponent implements OnInit {
   @Input()
   my!: boolean;
 
-  constructor() { }
+  @Input()
+  disabled: boolean = false;
+
+  @Input()
+  slectDeck!: string;
+
+  constructor() {
+
+  }
 
   ngOnInit(): void {
   }

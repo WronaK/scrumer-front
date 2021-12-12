@@ -4,6 +4,7 @@ import {Router} from "@angular/router";
 import {LoginUser} from "../model/login.user";
 import {DataRegistration} from "../model/data.registration";
 import {WebSocketService} from "./web-socket.service";
+import {LoginUserService} from "./login-user.service";
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class AuthService {
     private http: HttpClient,
     private router: Router,
     private backed: HttpBackend,
-    private webSocketService: WebSocketService
+    private webSocketService: WebSocketService,
+    private loginUserService: LoginUserService
   ) {
     this.customHttpClient = new HttpClient(backed);
   }
@@ -33,14 +35,12 @@ export class AuthService {
           if (token !== null) {
             localStorage.setItem('access_token', token.replace('Bearer ', ''));
             this.getUserData().subscribe(user => {
-              this.user = user;
+              this.loginUserService.loginUser = user
+              this.loginUser = user;
               this.webSocketService.openWebSocket(token, user);
 
             });
             this.router.navigate(['dashboard']);
-            this.getUserData().subscribe(user => {
-              this.loginUser = user
-            })
 
           }
         }

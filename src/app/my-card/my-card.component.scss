@@ -21,12 +21,8 @@
   border-radius: 10px;
   box-shadow: 0 3px 6px black;
   position: relative;
-
-  &:hover {
-    background: $secondary-detail-color;
-    cursor: pointer;
-  }
 }
+
 
 .img-card {
   background: #845EC2;
@@ -37,4 +33,15 @@
   bottom: 4px;
   left: 4px;
   box-shadow: 0 3px 6px black;
+}
+
+.selected {
+  background: $secondary-detail-color;
+}
+
+.click-card {
+  &:hover {
+    background: $secondary-detail-color;
+    cursor: pointer;
+  }
 }
