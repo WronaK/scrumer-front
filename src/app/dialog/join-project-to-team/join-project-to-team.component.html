@@ -13,7 +13,7 @@
       <input [formControl]="accessCode" matInput>
     </mat-form-field>
     <mat-autocomplete #auto="matAutocomplete" [displayWith]="getName">
-      <mat-option *ngFor="let item of filteredOption" [value]="item.name">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
         {{item.name}}
       </mat-option>
     </mat-autocomplete>

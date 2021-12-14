@@ -1,0 +1,154 @@
+<app-dialog-template>
+  <h2 title>Import from csv file</h2>
+  <div *ngIf="step===1" class="import-file" content>
+    <h4>Choose what do you what to do</h4>
+    <div class="options">
+      <div class="option" [ngClass]="{'selected-option': select==='option-1'}" (click)="selectOption('option-1')">IMPORT USER STORY INTO THE PRODUCT BACKLOG</div>
+      <div class="option" [ngClass]="{'selected-option': select==='option-2'}" (click)="selectOption('option-2')">IMPORT ISSUE INTO THE SPRINT BOARD</div>
+    </div>
+    <input type="file" class="file-input" accept='text/csv' (change)="selectFile($event)" #fileUpload>
+    <div class="select-file">
+      <button mat-raised-button class="image" (click)="fileUpload.click()">
+        CHOOSE FILE
+      </button>
+      <div class="info">{{info}}</div>
+    </div>
+  </div>
+
+  <table *ngIf="step===2" content mat-table [dataSource]="headers" class="mat-elevation-z8">
+    <ng-container matColumnDef="filed_name">
+      <th mat-header-cell *matHeaderCellDef> READ FIELD NAME OF THE CSV FILE </th>
+      <td mat-cell *matCellDef="let element" [ngClass]="{'strikethrough': element.skipField}"> {{element.readField}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="suggested_filed_name">
+      <th mat-header-cell *matHeaderCellDef> SUGGESTED FILE NAME </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-form-field>
+          <mat-label>Select column name</mat-label>
+          <mat-select [(ngModel)]="element.suggestedField">
+            <mat-option *ngFor="let f of fields" [value]="f">
+              {{f}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="skip">
+      <th mat-header-cell *matHeaderCellDef> SKIP FIELD </th>
+      <td mat-cell *matCellDef="let element">
+        <mat-checkbox class="example-margin" [(ngModel)]="element.skipField">SKIP FIELD</mat-checkbox>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <table *ngIf="step===3" content mat-table [dataSource]="selectedHeaders" class="mat-elevation-z8">
+    <ng-container matColumnDef="filed_name">
+      <th mat-header-cell *matHeaderCellDef> READ FIELD NAME OF THE CSV FILE </th>
+      <td mat-cell *matCellDef="let element"> {{element.readField}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="suggested_filed_name">
+      <th mat-header-cell *matHeaderCellDef> SUGGESTED FILE NAME </th>
+      <td mat-cell *matCellDef="let element">
+        {{element.suggestedField}}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedSelectedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedSelectedColumns;"></tr>
+  </table>
+
+  <div *ngIf="step===4" class="matchValue" content>
+    <div *ngFor="let value of myResult; let i=index">
+      <h2>{{value.fields}}</h2>
+      <table mat-table [dataSource]="value.uniqueValues" class="mat-elevation-z8">
+        <ng-container matColumnDef="uniqueValue">
+          <th mat-header-cell *matHeaderCellDef> READ VALUES OF THE CSV FILE </th>
+          <td mat-cell *matCellDef="let element"> {{element.value}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="matchValue">
+          <th mat-header-cell *matHeaderCellDef> MATCH VALUE </th>
+          <td mat-cell *matCellDef="let element">
+            <mat-form-field *ngIf="value.availableValue.length > 0">
+              <mat-label>Select value</mat-label>
+              <mat-select [formControl]="element.match">
+                <mat-option *ngFor="let f of value.availableValue" [value]="f">
+                  {{f}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field *ngIf="value.fields === 'team'">
+              <mat-label>Enter team name</mat-label>
+              <input [formControl]="element.match"
+                     [matAutocomplete]="auto"
+                     matInput required
+                     type="text">
+            </mat-form-field>
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="getName">
+              <mat-option *ngFor="let item of filteredOption" [value]="item">
+                {{item.name}}
+              </mat-option>
+            </mat-autocomplete>
+
+            <mat-form-field *ngIf="value.fields === 'users'">
+              <mat-label>Enter name and surname member</mat-label>
+              <input [formControl]="element.match"
+                     [matAutocomplete]="autoUser"
+                     matInput required
+                     type="text">
+            </mat-form-field>
+            <mat-autocomplete #autoUser="matAutocomplete" [displayWith]="getUsername">
+              <mat-option *ngFor="let item of filteredOptionUser" [value]="item">
+                {{item.username}}
+              </mat-option>
+            </mat-autocomplete>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedUniqueValue"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedUniqueValue;"></tr>
+      </table>
+    </div>
+
+  </div>
+
+  <div content *ngIf="step===5">
+    <h2 *ngIf="select==='option-2'">Select the team to which you want to add issues</h2>
+    <h2 *ngIf="select==='option-1'">Select the projects to which you want to add user stories</h2>
+
+    <mat-form-field *ngIf="select==='option-1'">
+      <mat-label>Enter project name</mat-label>
+      <input [formControl]="projectName"
+             [matAutocomplete]="autoProject"
+             matInput required
+             type="text">
+    </mat-form-field>
+    <mat-autocomplete #autoProject="matAutocomplete" [displayWith]="getName">
+      <mat-option *ngFor="let item of filteredOptionProject" [value]="item">
+        {{item.name}}
+      </mat-option>
+    </mat-autocomplete>
+
+    <mat-form-field *ngIf="select==='option-2'">
+      <mat-label>Enter team name</mat-label>
+      <input [formControl]="teamName"
+             [matAutocomplete]="Teamauto"
+             matInput required
+             type="text">
+    </mat-form-field>
+    <mat-autocomplete #Teamauto="matAutocomplete" [displayWith]="getName">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
+        {{item.name}}
+      </mat-option>
+    </mat-autocomplete>
+
+  </div>
+  <button action mat-raised-button (click)="next()">NEXT</button>
+</app-dialog-template>

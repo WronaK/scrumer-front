@@ -1,0 +1,59 @@
+@import "../../../assets/styles/dialog-styles";
+
+
+.file-input {
+  display: none;
+}
+
+.options {
+  display: flex;
+  min-height: 240px;
+  width: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+  min-width: 500px;
+
+  .option {
+    border: 1px solid $spot-color;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    font-size: 1.2em;
+    width: 200px;
+    min-height: 200px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.selected-option {
+  background: $secondary-detail-color;
+  border-color: $secondary-detail-color !important;
+  color: $spot-color !important;
+}
+
+.image {
+  background: $secondary-detail-color;
+  text-align: center;
+}
+
+.select-file {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+table {
+  width: 70vw;
+}
+
+.strikethrough {
+  text-decoration: line-through;
+}
+
+.matchValue {
+  display: flex;
+  flex-direction: column;
+}

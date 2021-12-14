@@ -40,10 +40,10 @@ export class JoinProjectToTeamComponent {
       accessCode: this.accessCode
     })
 
-    this.filterTeam();
+    this.filterProject();
   }
 
-  private filterTeam(): void {
+  private filterProject(): void {
     this.projectName.valueChanges
       .subscribe(response => {
         if (response.length >= 3) {

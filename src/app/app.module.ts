@@ -60,6 +60,8 @@ import { ImportIssueFromCsvComponent } from './dialog/import-issue-from-csv/impo
 import {PictureUserComponent} from './component-elements/picture-user/picture-user.component';
 import {AttachmentsElementComponent} from './component-elements/attachments-element/attachments-element.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { ImportFromCsvFileComponent } from './dialog/import-from-csv-file/import-from-csv-file.component';
+import {MatCheckboxModule} from "@angular/material/checkbox";
 
 @NgModule({
   declarations: [
@@ -113,7 +115,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     PictureUserComponent,
     AttachmentsElementComponent,
     ShowIssueComponent,
-    ImportIssueFromCsvComponent
+    ImportIssueFromCsvComponent,
+    ImportFromCsvFileComponent,
   ],
   imports: [
     BrowserModule,
@@ -125,7 +128,8 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
     DragDropModule,
     FormsModule,
     MaterialModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatCheckboxModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

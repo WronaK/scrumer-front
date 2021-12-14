@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {LoginUser} from "../../model/login.user";
 import {UploadsService} from "../../services/uploads.service";
+import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
+import {ImportFromCsvFileComponent} from "../../dialog/import-from-csv-file/import-from-csv-file.component";
 
 @Component({
   selector: 'app-header',
@@ -16,7 +18,8 @@ export class HeaderComponent implements OnInit {
   imgUrl: any;
   constructor(private router: Router,
               private authService: AuthService,
-              private uploadService: UploadsService) {
+              private uploadService: UploadsService,
+              private dialog: MatDialog) {
   }
 
   ngOnInit(): void {
@@ -80,4 +83,10 @@ export class HeaderComponent implements OnInit {
     this.router.navigate(['my-profile'])
   }
 
+  toImportCsv() {
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.disableClose = true;
+    dialogConfig.autoFocus = true;
+    this.dialog.open(ImportFromCsvFileComponent, dialogConfig).afterClosed().subscribe();
+  }
 }
