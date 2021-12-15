@@ -6,6 +6,8 @@ import {tap} from "rxjs/operators";
 import {RemoveUserStoryComponent} from "../../dialog/remove-user-story/remove-user-story.component";
 import {MoveUserStoryComponent} from "../../dialog/move-user-story/move-user-story.component";
 import {UpdateUserStoryComponent} from "../../dialog/update-user-story/update-user-story.component";
+import {ReportService} from "../../services/report.service";
+import {saveAs} from "file-saver";
 
 @Component({
   selector: 'app-menu-tasks',
@@ -15,7 +17,8 @@ import {UpdateUserStoryComponent} from "../../dialog/update-user-story/update-us
 export class MenuTasksComponent {
 
   constructor(private dialog: MatDialog,
-              private productBacklogService: ProductBacklogService) { }
+              private productBacklogService: ProductBacklogService,
+              private reportService: ReportService) { }
 
   addUserStory(): void {
     const dialogConfig = new MatDialogConfig();
@@ -82,5 +85,13 @@ export class MenuTasksComponent {
         this.productBacklogService.selectedTask();
       })
     ).subscribe();
+  }
+
+  generateReport() {
+    this.reportService.getProductBacklogReport(this.productBacklogService.idProject).subscribe(
+      blob => {
+        saveAs(blob, "productBacklogReport")
+      }
+      );
   }
 }
