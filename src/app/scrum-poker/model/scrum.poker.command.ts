@@ -1,17 +1,8 @@
-export class ScrumPokerCommand {
-  idTeam: number
-
-  constructor(idTeam: number) {
-    this.idTeam = idTeam;
-  }
-}
-
 export interface CreateScrumPoker {
   idCreator: number,
   invitedTeams: number[],
   invitedMembers: number[]
 }
-
 
 export interface ScrumPoker {
   idScrumPoker: string,
@@ -27,6 +18,7 @@ export interface TeamVote {
   idUser: number,
   estimation: string
 }
+
 export interface TaskCommand {
   idTask: number,
   typeTask: TypeTask

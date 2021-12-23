@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ScrumPoker} from "../../../model/scrum.poker.command";
+import {ScrumPoker} from "../../model/scrum.poker.command";
 import {ScrumPokerObservableService} from "../../services/scrum-poker-observable.service";
 
 @Component({

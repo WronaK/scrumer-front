@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TaskCommand, TypeTask} from "../../../model/scrum.poker.command";
+import {TaskCommand, TypeTask} from "../../model/scrum.poker.command";
 import {UserStoryService} from "../../../services/user-story.service";
 import {IssueService} from "../../../services/issue.service";
 import {FormControl} from "@angular/forms";

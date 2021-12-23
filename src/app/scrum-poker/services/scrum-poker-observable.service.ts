@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {ResultEstimation, ScrumPoker} from "../../model/scrum.poker.command";
+import {ResultEstimation, ScrumPoker} from "../model/scrum.poker.command";
 import {Subject} from "rxjs";
 
 @Injectable({

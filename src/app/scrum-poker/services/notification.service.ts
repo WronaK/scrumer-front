@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {NotificationStartScrumPokerComponent} from "../dialogs/notification-start-scrum-poker/notification-start-scrum-poker.component";
-import {JoinScrumPoker, ScrumPoker, ScrumPokerStatus} from "../../model/scrum.poker.command";
+import {JoinScrumPoker, ScrumPoker, ScrumPokerStatus} from "../model/scrum.poker.command";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LoggedUserDataService} from "../../services/logged-user-data.service";

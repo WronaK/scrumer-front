@@ -5,7 +5,7 @@ import {tap} from "rxjs/operators";
 import {AddTeamMemberComponent} from "../../dialog/add-team-member/add-team-member.component";
 import {JoinProjectToTeamComponent} from "../../dialog/join-project-to-team/join-project-to-team.component";
 import {UpdateTeamComponent} from "../../dialog/update-team/update-team.component";
-import {ScrumPoker} from "../../model/scrum.poker.command";
+import {ScrumPoker} from "../../scrum-poker/model/scrum.poker.command";
 
 @Component({
   selector: 'app-menu-team',
