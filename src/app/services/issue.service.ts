@@ -21,6 +21,10 @@ export class IssueService {
     return this.http.patch("api/teams/" + id + "/user/story/" + idUserStory, null);
   }
 
+  setStoryPoints(id: number, storyPoints: string) {
+    return this.http.patch(this.url + id + "/points/" + storyPoints, null);
+  }
+
   changeStatusIssue(id: number) {
     return this.http.patch(this.url + id + "/status", null);
   }

@@ -5,6 +5,7 @@ import {IssueService} from "../services/issue.service";
 import {FormControl} from "@angular/forms";
 import {IssueCommand, UserStory} from "../model/task";
 import {ScrumPokerService} from "../services/scrum-poker.service";
+import {LoginUserService} from "../services/login-user.service";
 
 @Component({
   selector: 'app-task-view',
@@ -15,6 +16,9 @@ export class TaskViewComponent implements OnInit {
 
   @Input()
   tasks!: TaskCommand[];
+
+  @Input()
+  idCreator!: number;
 
   index = 0;
 
@@ -37,8 +41,10 @@ export class TaskViewComponent implements OnInit {
   constructor(
     private userStoryService: UserStoryService,
     private issueService: IssueService,
-    private scrumPokerService: ScrumPokerService
-  ) { }
+    private scrumPokerService: ScrumPokerService,
+    public loginService: LoginUserService
+  ) {
+  }
 
   ngOnInit(): void {
 

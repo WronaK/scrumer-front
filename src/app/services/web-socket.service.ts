@@ -97,6 +97,8 @@ export class WebSocketService {
         this.scrumPokerService.setScrumPoker(result);
         this.openSnackBar("Start estimating for the task number " + result.currentTask);
         this.scrumPokerService.setStartEstimation(true);
+        this.scrumPokerService.selectedDeck.next("");
+        this.scrumPokerService.setCurrentTask(this.scrumPokerService.scrumPoker.currentTask)
       } );
 
       _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/vote`,(message: any) => {

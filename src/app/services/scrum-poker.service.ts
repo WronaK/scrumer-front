@@ -24,6 +24,8 @@ export class ScrumPokerService implements OnInit {
   scrumPoker!: ScrumPoker;
   start: boolean = false;
 
+  selectedDeck: Subject<string> =  new Subject<string>();
+
   resultChange: Subject<string> = new Subject<string>();
 
   startChange: Subject<boolean> = new Subject<boolean>();
@@ -84,8 +86,12 @@ export class ScrumPokerService implements OnInit {
 
   startEstimationPoker() {
     this.resetResult();
+
+    if (this.scrumPoker.currentTask == null) {
+      this.scrumPoker.currentTask = this.scrumPoker.tasks[0].idTask
+    }
     return this.http.post<void>("/api/scrum/poker/start/estimation", {idTask: this.scrumPoker.currentTask, idScrumPoker: this.scrumPoker.idScrumPoker} as ChangeEstimationStatus)
-      .subscribe();
+      .subscribe(() => this.selectedDeck.next(""));
   }
 
   vote(value: string) {
@@ -105,6 +111,7 @@ export class ScrumPokerService implements OnInit {
     this.scrumPoker.members = scrumPoker.members;
     this.scrumPoker.idCreator = scrumPoker.idCreator;
     this.scrumPoker.individualEstimation = scrumPoker.individualEstimation;
+    this.scrumPoker.currentTask = scrumPoker.currentTask
   }
 
   newVote(idUser: number) {

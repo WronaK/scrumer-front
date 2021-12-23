@@ -20,6 +20,13 @@
   .buttons {
     button {
       margin-left: 10px;
+      width: 200px;
+      background: $secondary-detail-color;
+      color: $spot-color;
+    }
+
+    .mat-button-disabled {
+      opacity: 50%;
     }
   }
 
@@ -42,12 +49,10 @@ mat-card {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-width: 500px;
 }
 
 form {
+  width: 100%;
   display: flex;
   flex-direction: column;
-  width: 95%;
-  min-width: 500px;
 }

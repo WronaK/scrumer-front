@@ -16,6 +16,7 @@ export class DeckOfCardsComponent implements OnInit {
     this.scrumPokerService.startChange.subscribe((value) => {
       this.disabled = value;
     })
+    this.scrumPokerService.selectedDeck.subscribe((value) => this.selectedDeck=value)
   }
 
   ngOnInit(): void {
@@ -23,7 +24,7 @@ export class DeckOfCardsComponent implements OnInit {
 
   vote(v: string) {
     if (this.disabled) {
-      this.selectedDeck = v;
+      this.scrumPokerService.selectedDeck.next(v);
       this.scrumPokerService.vote(v).subscribe();
     }
   }

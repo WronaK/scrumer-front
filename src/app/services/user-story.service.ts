@@ -22,6 +22,10 @@ export class UserStoryService {
     return this.http.put<UpdateUserStory>(this.url, userStory);
   }
 
+  setStoryPoints(id: number, storyPoints: string) {
+    return this.http.patch(this.url + id + "/points/" + storyPoints, null);
+  }
+
   removeUserStory(id: number) {
     return this.http.delete(this.url + id);
   }

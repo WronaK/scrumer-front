@@ -1,9 +1,9 @@
 <mat-grid-list cols="2" rowHeight="9.8vh">
   <mat-grid-tile [colspan]="1" [rowspan]="6">
-    <app-team-estimation [teamEstimation]="scrumPoker.individualEstimation"></app-team-estimation>
+    <app-team-estimation [teamEstimation]="scrumPoker.individualEstimation" [idCreator]="scrumPoker.idCreator"></app-team-estimation>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" [rowspan]="6">
-    <app-task-view [tasks]="scrumPoker.tasks"></app-task-view>
+    <app-task-view [tasks]="scrumPoker.tasks" [idCreator]="scrumPoker.idCreator"></app-task-view>
   </mat-grid-tile>
   <mat-grid-tile [colspan]="1" [rowspan]="4">
     <app-deck-of-cards></app-deck-of-cards>

@@ -67,6 +67,7 @@ import {MenuTeamComponent} from "./components/menu-team/menu-team.component";
 import {MyCardComponent} from "./my-card/my-card.component";
 import {PlanComponent} from "./plan/plan.component";
 import { CreateScrumPokerComponent } from './dialog/create-scrum-poker/create-scrum-poker.component';
+import { AcceptEstimationComponent } from './dialog/accept-estimation/accept-estimation.component';
 
 @NgModule({
   declarations: [
@@ -126,7 +127,8 @@ import { CreateScrumPokerComponent } from './dialog/create-scrum-poker/create-sc
     AttachmentsElementComponent,
     MyCardComponent,
     PlanComponent,
-    CreateScrumPokerComponent
+    CreateScrumPokerComponent,
+    AcceptEstimationComponent
   ],
   imports: [
     BrowserModule,

@@ -31,3 +31,12 @@ mat-grid-list {
   display: flex;
 }
 
+.button {
+  button {
+    width: 200px;
+    margin-right: 10px;
+    background: $secondary-detail-color;
+    color: $spot-color;
+  }
+}
+

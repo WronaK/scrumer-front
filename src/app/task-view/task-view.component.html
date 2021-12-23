@@ -1,7 +1,7 @@
 <div class="container">
   <div class="header">
     <div class="header-card">Current task</div>
-    <div class="buttons">
+    <div *ngIf="idCreator==loginService.loginUser.id" class="buttons">
       <button mat-raised-button (click)="previewsTask()" [disabled]="index < 1">previews task</button>
       <button mat-raised-button (click)="nextTask()" [disabled]="index>=tasks.length-1">next task</button>
     </div>
