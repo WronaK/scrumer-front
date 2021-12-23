@@ -6,7 +6,7 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {SuggestedTeam} from "../../../model/team";
 import {TeamsService} from "../../../services/teams.service";
 import {WebSocketService} from "../../../services/web-socket.service";
-import {ScrumPokerService} from "../../../services/scrum-poker.service";
+import {ScrumPokerService} from "../../services/scrum-poker.service";
 
 @Component({
   selector: 'app-create-scrum-poker',

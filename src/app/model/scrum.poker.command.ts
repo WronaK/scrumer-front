@@ -1,5 +1,3 @@
-import {ScrumPokerService} from "../services/scrum-poker.service";
-
 export class ScrumPokerCommand {
   idTeam: number
 
@@ -63,6 +61,7 @@ export interface VoteCommand {
 }
 
 export interface ResultEstimation {
+  method: string,
   idTask: number,
   idScrumPoker: string,
   estimation: TeamVote[],

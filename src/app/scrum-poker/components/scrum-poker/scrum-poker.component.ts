@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ScrumPokerService} from "../../../services/scrum-poker.service";
 import {ScrumPoker} from "../../../model/scrum.poker.command";
+import {ScrumPokerObservableService} from "../../services/scrum-poker-observable.service";
 
 @Component({
   selector: 'app-scrum-poker',
@@ -10,11 +10,11 @@ import {ScrumPoker} from "../../../model/scrum.poker.command";
 export class ScrumPokerComponent implements OnInit{
 
   scrumPoker!: ScrumPoker
-  constructor(private scrumPokerService: ScrumPokerService) {
+  constructor(private observableScrumPokerService: ScrumPokerObservableService) {
 
   }
 
   ngOnInit() {
-    this.scrumPoker = this.scrumPokerService.scrumPoker;
+    this.scrumPoker = this.observableScrumPokerService.scrumPoker;
   }
 }

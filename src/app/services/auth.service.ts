@@ -4,7 +4,7 @@ import {Router} from "@angular/router";
 import {LoginUser} from "../model/login.user";
 import {DataRegistration} from "../model/data.registration";
 import {WebSocketService} from "./web-socket.service";
-import {LoginUserService} from "./login-user.service";
+import {LoggedUserDataService} from "./logged-user-data.service";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +19,7 @@ export class AuthService {
     private router: Router,
     private backed: HttpBackend,
     private webSocketService: WebSocketService,
-    private loginUserService: LoginUserService
+    private loginUserService: LoggedUserDataService
   ) {
     this.customHttpClient = new HttpClient(backed);
   }

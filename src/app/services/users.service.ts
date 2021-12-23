@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {Observable} from "rxjs";
 import {HttpClient, HttpRequest} from "@angular/common/http";
-import {SuggestedUser} from "../model/user";
+import {SuggestedUser, UserInitialAndIdImage} from "../model/user";
 
 @Injectable({
   providedIn: 'root'
@@ -26,5 +26,9 @@ export class UsersService {
     });
 
     return this.http.request(req);
+  }
+
+  getInitialAndIdImage(idMember: number) {
+    return this.http.get<UserInitialAndIdImage>("api/users/base/" + idMember);
   }
 }

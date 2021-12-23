@@ -1,0 +1,9 @@
+<div class="card-my">
+  <div class="card" [ngClass]="{'isActive': isActive==true, 'selected': selectedValue===value}">
+    {{value}}
+  </div>
+  <app-picture-user class="img-card" *ngIf="isMember==false"
+    [idImage]=idImage
+    [initial]=initial>
+  </app-picture-user>
+</div>

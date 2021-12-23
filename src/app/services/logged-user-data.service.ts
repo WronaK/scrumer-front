@@ -4,7 +4,7 @@ import {LoginUser} from "../model/login.user";
 @Injectable({
   providedIn: 'root'
 })
-export class LoginUserService {
+export class LoggedUserDataService {
 
   loginUser!: LoginUser;
 

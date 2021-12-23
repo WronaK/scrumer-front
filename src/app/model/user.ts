@@ -10,3 +10,8 @@ export interface SuggestedUser {
   email: string;
   username: string;
 }
+
+export interface UserInitialAndIdImage {
+  idImage: number;
+  initial: string;
+}

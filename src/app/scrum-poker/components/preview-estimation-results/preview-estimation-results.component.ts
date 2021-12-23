@@ -1,17 +1,18 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {ScrumPokerService} from "../../../services/scrum-poker.service";
+import {Component, Input} from '@angular/core';
+import {ScrumPokerService} from "../../services/scrum-poker.service";
 import {TeamVote} from "../../../model/scrum.poker.command";
-import {LoginUserService} from "../../../services/login-user.service";
+import {LoggedUserDataService} from "../../../services/logged-user-data.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {tap} from "rxjs/operators";
 import {AcceptEstimationComponent} from "../../dialogs/accept-estimation/accept-estimation.component";
+import {ScrumPokerObservableService} from "../../services/scrum-poker-observable.service";
 
 @Component({
-  selector: 'app-team-estimation',
-  templateUrl: './team-estimation.component.html',
-  styleUrls: ['./team-estimation.component.scss']
+  selector: 'app-preview-estimation-results',
+  templateUrl: './preview-estimation-results.component.html',
+  styleUrls: ['./preview-estimation-results.component.scss']
 })
-export class TeamEstimationComponent implements OnInit {
+export class PreviewEstimationResultsComponent {
   @Input()
   teamEstimation!: TeamVote[];
 
@@ -21,14 +22,12 @@ export class TeamEstimationComponent implements OnInit {
   result: string = "???";
 
   constructor(
+    private observableScrumPokerService: ScrumPokerObservableService,
     private scrumPokerService: ScrumPokerService,
-    public loginUserService: LoginUserService,
+    public loginUserService: LoggedUserDataService,
     private dialog: MatDialog
   ) {
-    this.scrumPokerService.resultChange.subscribe((value) => this.result = value);
-  }
-
-  ngOnInit(): void {
+    this.observableScrumPokerService.resultChange.subscribe((value) => this.result = value);
   }
 
   startEstimation() {
@@ -40,16 +39,16 @@ export class TeamEstimationComponent implements OnInit {
   }
 
   searchTypeTask() {
-    return this.scrumPokerService.scrumPoker.tasks.filter(task => task.idTask == this.scrumPokerService.scrumPoker.currentTask)[0].typeTask;
+    return this.observableScrumPokerService.scrumPoker.tasks.filter(task => task.idTask == this.observableScrumPokerService.scrumPoker.currentTask)[0].typeTask;
   }
 
-  acceptResult() {
+  saveResult() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     dialogConfig.data = {
       result: this.result,
-      idTask: this.scrumPokerService.scrumPoker.currentTask,
+      idTask: this.observableScrumPokerService.scrumPoker.currentTask,
       typeTask: this.searchTypeTask()
     }
     this.dialog.open(AcceptEstimationComponent, dialogConfig)

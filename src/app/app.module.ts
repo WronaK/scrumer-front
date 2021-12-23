@@ -54,7 +54,6 @@ import {AddIssueComponent} from './dialog/add-issue/add-issue.component';
 import {ShowUserStoryInSprintBoardComponent} from './dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component';
 import {AssigmToYourselfComponent} from './dialog/assigm-to-yourself/assigm-to-yourself.component';
 import {ShowIssueComponent} from './dialog/show-issue/show-issue.component';
-import {PictureUserComponent} from './component-elements/picture-user/picture-user.component';
 import {AttachmentsElementComponent} from './component-elements/attachments-element/attachments-element.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MenuTeamComponent} from "./components/menu-team/menu-team.component";
@@ -109,7 +108,6 @@ import {ScrumPokerModule} from "./scrum-poker/scrum-poker.module";
     ShowUserStoryInSprintBoardComponent,
     AssigmToYourselfComponent,
     ShowIssueComponent,
-    PictureUserComponent,
     AttachmentsElementComponent
   ],
   imports: [

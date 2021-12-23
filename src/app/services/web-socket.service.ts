@@ -10,9 +10,8 @@ import {tap} from "rxjs/operators";
 import {ChannelsService} from "./channels.service";
 import {MessageService} from "./message.service";
 import {Channel} from "../model/chat.dto";
-import {ScrumPokerService} from "./scrum-poker.service";
-import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
-import {ScrumPokerCommand} from "../model/scrum.poker.command";
+import {ScrumPokerService} from "../scrum-poker/services/scrum-poker.service";
+import {ScrumPokerNotificationService} from "../scrum-poker/services/scrum-poker-notification.service";
 
 @Injectable({
   providedIn: 'root'
@@ -26,23 +25,14 @@ export class WebSocketService {
   user!: LoginUser;
   activeChannelId!: number;
   channels: Channel[] = [];
-  horizontalPosition: MatSnackBarHorizontalPosition = "center";
-  verticalPosition: MatSnackBarVerticalPosition = "bottom";
 
   constructor(
     private channelService: ChannelsService,
     private messageService: MessageService,
     private channelsSubscriberService: ChannelsSubscribeService,
     private scrumPokerService: ScrumPokerService,
-    private _snackBar: MatSnackBar
+    private scrumPokerEventService: ScrumPokerNotificationService
   ) {}
-
-  openSnackBar(message: string) {
-    this._snackBar.open(message, 'Close', {
-      horizontalPosition: this.horizontalPosition,
-      verticalPosition: this.verticalPosition,
-    });
-  }
 
   setConnected(connected: boolean) {
     this.disabled = !connected;
@@ -79,44 +69,10 @@ export class WebSocketService {
         }
       } );
 
-      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/scrum`, (message: any) => {
-        const m = JSON.parse(message.body);
-        console.log("Scrum ppoker is: " + m );
-        this.scrumPokerService.notificationStartScrumPoker(m.idScrumPoker);
+      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/scrum`, (response: any) => {
+        this.scrumPokerEventService.executionEvent(JSON.parse(response.body));
       });
-
-      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/join`, (message: any) => {
-        console.log("MMM: ", message)
-        this.scrumPokerService.setScrumPoker(JSON.parse(message.body));
-        // this.scrumPokerService.addUser(message.id);
-      });
-
-      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/start`,(message: any) => {
-        const result = JSON.parse(message.body);
-        this.scrumPokerService.resultChange.next("???");
-        this.scrumPokerService.setScrumPoker(result);
-        this.openSnackBar("Start estimating for the task number " + result.currentTask);
-        this.scrumPokerService.setStartEstimation(true);
-        this.scrumPokerService.selectedDeck.next("");
-        this.scrumPokerService.setCurrentTask(this.scrumPokerService.scrumPoker.currentTask)
-      } );
-
-      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/vote`,(message: any) => {
-        const result = JSON.parse(message.body);
-        this.scrumPokerService.newVote(result.idUser);
-      } );
-
-      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/st`,(message: any) => {
-        const result = JSON.parse(message.body);
-        this.scrumPokerService.setResult(result);
-        this.openSnackBar("Stop estimating for the task number " + result.idTask);
-        this.scrumPokerService.setStartEstimation(false);
-      } );
-
     });
-
-
-
   }
 
   getChannels() {
@@ -126,23 +82,17 @@ export class WebSocketService {
 
   disconnect() {
     if (this.stompClient != null) {
-      // this.stompClient.unsubscribe()
-      // this.stompClient.removeAllListeners();
       this.stompClient.disconnect();
     }
 
     if (!!this.webSocket) {
-      // @ts-ignore
-      // this.webSocket.removeAllListeners(`/api/topic/${this.user.id}/queue/join`);
       this.webSocket.close();
     }
 
     this.setConnected(false);
-    console.log('Disconnected!');
   }
 
   public sendMessage(message: CreateMessageCommand) {
-    console.log("send");
     this.stompClient.send(
       '/api/app/chat', {}, JSON.stringify(message));
     this.chatMessages.push(message)
@@ -178,6 +128,4 @@ export class WebSocketService {
       }
     })
   }
-
-
 }

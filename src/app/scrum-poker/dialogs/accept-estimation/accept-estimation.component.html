@@ -3,7 +3,7 @@
   <div class="content" content>
     <mat-grid-list cols="6" rowHeight="fit">
       <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of value">
-        <app-my-card [slectDeck]="selectedDeck" [disabled]="true" [value]="v" [my]="true" (click)="accept(v)"></app-my-card>
+        <app-vote-card [selectedValue]="selectedDeck" [isActive]="true" [value]="v" [isMember]="true" (click)="accept(v)"></app-vote-card>
       </mat-grid-tile>
     </mat-grid-list>
   </div>

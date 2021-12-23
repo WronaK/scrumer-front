@@ -20,6 +20,7 @@ export class PictureUserComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log("Id image picut: ", this.idImage);
     if (this.idImage != undefined) {
       console.log("Picytu..")
       this.uploadService.getImage(this.idImage).subscribe(

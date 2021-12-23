@@ -4,8 +4,8 @@ import {UserStoryService} from "../../../services/user-story.service";
 import {IssueService} from "../../../services/issue.service";
 import {FormControl} from "@angular/forms";
 import {IssueCommand, UserStory} from "../../../model/task";
-import {ScrumPokerService} from "../../../services/scrum-poker.service";
-import {LoginUserService} from "../../../services/login-user.service";
+import {LoggedUserDataService} from "../../../services/logged-user-data.service";
+import {ScrumPokerObservableService} from "../../services/scrum-poker-observable.service";
 
 @Component({
   selector: 'app-task-view',
@@ -41,8 +41,8 @@ export class TaskViewComponent implements OnInit {
   constructor(
     private userStoryService: UserStoryService,
     private issueService: IssueService,
-    private scrumPokerService: ScrumPokerService,
-    public loginService: LoginUserService
+    private observableScrumPokerService: ScrumPokerObservableService,
+    public loginService: LoggedUserDataService
   ) {
   }
 
@@ -51,7 +51,7 @@ export class TaskViewComponent implements OnInit {
     this.initForm();
     if (this.tasks.length >= this.index) {
       this.currentTask = this.tasks[this.index];
-      this.scrumPokerService.setCurrentTask(this.currentTask.idTask);
+      this.observableScrumPokerService.setCurrentTask(this.currentTask.idTask);
 
      this.loadData();
     }
@@ -61,7 +61,7 @@ export class TaskViewComponent implements OnInit {
     if (this.index + 1 <= this.tasks.length) {
       this.index += 1;
       this.currentTask = this.tasks[this.index];
-      this.scrumPokerService.setCurrentTask(this.currentTask.idTask);
+      this.observableScrumPokerService.setCurrentTask(this.currentTask.idTask);
       this.loadData();
       console.log("next", this.index)
     }
@@ -71,7 +71,7 @@ export class TaskViewComponent implements OnInit {
     if (this.index - 1 >= 0) {
       this.index -= 1;
       this.currentTask = this.tasks[this.index];
-      this.scrumPokerService.setCurrentTask(this.currentTask.idTask);
+      this.observableScrumPokerService.setCurrentTask(this.currentTask.idTask);
       this.loadData()
       console.log("previews", this.index)
 
