@@ -5,7 +5,7 @@ import {AddIssueComponent} from "../../dialog/add-issue/add-issue.component";
 import {tap} from "rxjs/operators";
 import {TeamsDetailsService} from "../../services/teams-details.service";
 import {IssueService} from "../../services/issue.service";
-import {AuthService} from "../../services/auth.service";
+import {AuthService} from "../../login/services/auth.service";
 import {AssigmToYourselfComponent} from "../../dialog/assigm-to-yourself/assigm-to-yourself.component";
 import {ShowIssueComponent} from "../../dialog/show-issue/show-issue.component";
 import {ShowUserStoryInSprintBoardComponent} from "../../dialog/show-user-story-in-sprint-board/show-user-story-in-sprint-board.component";

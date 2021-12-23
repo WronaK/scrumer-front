@@ -1,10 +1,10 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
-import {LoginPageComponent} from "./views/login-page/login-page.component";
-import {RegistrationPageComponent} from "./views/registration-page/registration-page.component";
+import {LoginPageComponent} from "./login/components/login-page/login-page.component";
+import {RegistrationPageComponent} from "./login/components/registration-page/registration-page.component";
 import {MainLayoutComponent} from "./components/main-layout/main-layout.component";
 import {DashboardComponent} from "./views/dashboard/dashboard.component";
-import {AuthGuard} from "./services/auth.guard";
+import {AuthGuard} from "./login/services/auth.guard";
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
 import {ScrumPokerComponent} from "./scrum-poker/components/scrum-poker/scrum-poker.component";
 import {MyProjectsComponent} from "./views/my-projects/my-projects.component";

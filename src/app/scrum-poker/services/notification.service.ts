@@ -4,7 +4,7 @@ import {NotificationStartScrumPokerComponent} from "../dialogs/notification-star
 import {JoinScrumPoker, ScrumPoker, ScrumPokerStatus} from "../model/scrum.poker.command";
 import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
-import {LoggedUserDataService} from "../../services/logged-user-data.service";
+import {LoggedUserDataService} from "../../login/services/logged-user-data.service";
 import {ScrumPokerObservableService} from "./scrum-poker-observable.service";
 
 @Injectable({

@@ -1,4 +1,4 @@
-@import "../../../main-styles";
+@import "../../../../main-styles";
 
 :host {
   height: 100%;
@@ -24,7 +24,7 @@
     grid-column-end: 2;
     grid-row-start: 1;
     grid-row-end: 3;
-    background-image: url("../../../assets/login.jpg");
+    background-image: url("../../../../assets/login.jpg");
     border-radius: 20px 0 0 0;
     display: flex;
     justify-content: center;
@@ -45,7 +45,7 @@
     grid-column-end: 2;
     grid-row-start: 3;
     grid-row-end: 5;
-    background-image: url("../../../assets/registration.jpg");
+    background-image: url("../../../../assets/registration.jpg");
     border-radius: 0 0 0 20px;
     background-position: center;
     background-repeat: no-repeat;

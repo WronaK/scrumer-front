@@ -1,7 +1,7 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {FormGroupErrorMatcher} from "../../../form.group.error.matcher";
-import {PasswordValidator} from "../../../password.validator";
+import {FormGroupErrorMatcher} from "../../../../form.group.error.matcher";
+import {PasswordValidator} from "../../../../password.validator";
 import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {DataRegistration} from "../../model/data.registration";
@@ -60,7 +60,9 @@ export class RegistrationPageComponent {
       password: this.password.value,
     } as DataRegistration).subscribe(
       () => this.goToLogin(), (err) => {
-        this.error = err.err, this.password.reset(), this.repeatPassword.reset();
+        this.error = err.err;
+        this.password.reset();
+        this.repeatPassword.reset();
       }
     )
   }

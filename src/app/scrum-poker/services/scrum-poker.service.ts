@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {ChangeEstimationStatus, CreateScrumPoker, ScrumPoker, VoteCommand} from "../model/scrum.poker.command";
 import {Router} from "@angular/router";
-import {LoggedUserDataService} from "../../services/logged-user-data.service";
+import {LoggedUserDataService} from "../../login/services/logged-user-data.service";
 import {tap} from "rxjs/operators";
 import {ScrumPokerObservableService} from "./scrum-poker-observable.service";
 

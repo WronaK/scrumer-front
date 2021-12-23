@@ -3,12 +3,10 @@ import {BrowserModule} from '@angular/platform-browser';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {LoginPageComponent} from './views/login-page/login-page.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
-import {RegistrationPageComponent} from './views/registration-page/registration-page.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
-import {AuthInterceptor} from "./services/auth.interceptor";
+import {AuthInterceptor} from "./login/services/auth.interceptor";
 import {MainLayoutComponent} from './components/main-layout/main-layout.component';
 import {HeaderComponent} from './components/header/header.component';
 import {DashboardComponent} from './views/dashboard/dashboard.component';
@@ -40,7 +38,6 @@ import {CreateTeamComponent} from './dialog/create-team/create-team.component';
 import {MaterialModule} from "./material.module";
 import {AddTeamMemberComponent} from './dialog/add-team-member/add-team-member.component';
 import {DashboardElementComponent} from './component-elements/dashboard-element/dashboard-element.component';
-import {FormLoginTemplateComponent} from './templates/form-login-template/form-login-template.component';
 import {InformationCardComponent} from './component-elements/information-card/information-card.component';
 import {JoinTeamToProjectComponent} from './dialog/join-team-to-project/join-team-to-project.component';
 import {JoinTheTeamComponent} from './dialog/join-the-team/join-the-team.component';
@@ -59,12 +56,11 @@ import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MenuTeamComponent} from "./components/menu-team/menu-team.component";
 import {TemplatesModule} from "./templates/templates.module";
 import {ScrumPokerModule} from "./scrum-poker/scrum-poker.module";
+import {LoginModule} from "./login/login.module";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginPageComponent,
-    RegistrationPageComponent,
     MainLayoutComponent,
     HeaderComponent,
     DashboardComponent,
@@ -94,7 +90,6 @@ import {ScrumPokerModule} from "./scrum-poker/scrum-poker.module";
     CreateTeamComponent,
     AddTeamMemberComponent,
     DashboardElementComponent,
-    FormLoginTemplateComponent,
     InformationCardComponent,
     JoinTeamToProjectComponent,
     JoinTheTeamComponent,
@@ -122,7 +117,8 @@ import {ScrumPokerModule} from "./scrum-poker/scrum-poker.module";
     MaterialModule,
     MatSnackBarModule,
     ScrumPokerModule,
-    TemplatesModule
+    TemplatesModule,
+    LoginModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

@@ -4,7 +4,7 @@ import {UserStoryService} from "../../../services/user-story.service";
 import {IssueService} from "../../../services/issue.service";
 import {FormControl} from "@angular/forms";
 import {IssueCommand, UserStory} from "../../../model/task";
-import {LoggedUserDataService} from "../../../services/logged-user-data.service";
+import {LoggedUserDataService} from "../../../login/services/logged-user-data.service";
 import {ScrumPokerObservableService} from "../../services/scrum-poker-observable.service";
 
 @Component({

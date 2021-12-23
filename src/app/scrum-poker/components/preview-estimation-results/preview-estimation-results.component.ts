@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ScrumPokerService} from "../../services/scrum-poker.service";
 import {TeamVote} from "../../model/scrum.poker.command";
-import {LoggedUserDataService} from "../../../services/logged-user-data.service";
+import {LoggedUserDataService} from "../../../login/services/logged-user-data.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {tap} from "rxjs/operators";
 import {AcceptEstimationComponent} from "../../dialogs/accept-estimation/accept-estimation.component";

@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {AuthService} from "../../services/auth.service";
-import {LoginUser} from "../../model/login.user";
+import {AuthService} from "../../login/services/auth.service";
+import {LoginUser} from "../../login/model/login.user";
 import {UploadsService} from "../../services/uploads.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {AssigmToYourselfComponent} from "../../dialog/assigm-to-yourself/assigm-to-yourself.component";
-import {tap} from "rxjs/operators";
 import {CreateScrumPokerComponent} from "../../scrum-poker/dialogs/create-scrum-poker/create-scrum-poker.component";
 
 @Component({
@@ -59,14 +57,6 @@ export class HeaderComponent implements OnInit {
       this.user = user;
       this.isAdmin = user.roles.includes("ROLE_ADMIN");
       console.log(user)});
-  }
-
-  toProjects() {
-    this.router.navigate(['projects']);
-  }
-
-  toTeams() {
-    this.router.navigate(['teams']);
   }
 
   toYourTeams() {

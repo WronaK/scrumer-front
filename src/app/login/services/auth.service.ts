@@ -3,7 +3,7 @@ import {HttpBackend, HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {LoginUser} from "../model/login.user";
 import {DataRegistration} from "../model/data.registration";
-import {WebSocketService} from "./web-socket.service";
+import {WebSocketService} from "../../services/web-socket.service";
 import {LoggedUserDataService} from "./logged-user-data.service";
 
 @Injectable({
@@ -62,7 +62,6 @@ export class AuthService {
 
   logout() {
     const removeToken = localStorage.removeItem('access_token');
-    // this.webSocketService.webSocket.
     this.webSocketService.disconnect();
     if (removeToken === null) {
       this.router.navigate(['login']);

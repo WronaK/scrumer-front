@@ -3,7 +3,7 @@ import {CreateMessageCommand} from "../model/createMessageCommand";
 
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
-import {LoginUser} from "../model/login.user";
+import {LoginUser} from "../login/model/login.user";
 import {MessageCommand} from "../model/messageCommand";
 import {ChannelsSubscribeService} from "./channels-subscribe.service";
 import {tap} from "rxjs/operators";
