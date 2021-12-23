@@ -1,10 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {WebSocketService} from "../../services/web-socket.service";
+import {WebSocketService} from "../../../services/web-socket.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {LoginUser} from "../../login/model/login.user";
-import {AuthService} from "../../login/services/auth.service";
+import {LoginUser} from "../../../login/model/login.user";
+import {AuthService} from "../../../login/services/auth.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {NewConversationComponent} from "../../dialog/new-conversation/new-conversation.component";
+import {NewConversationComponent} from "../new-conversation/new-conversation.component";
 import {CreateMessageCommand} from "../../model/createMessageCommand";
 import {ChannelsSubscribeService} from "../../services/channels-subscribe.service";
 import {tap} from "rxjs/operators";

@@ -1,15 +1,15 @@
 import {Injectable} from '@angular/core';
-import {CreateMessageCommand} from "../model/createMessageCommand";
+import {CreateMessageCommand} from "../chat/model/createMessageCommand";
 
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {LoginUser} from "../login/model/login.user";
 import {MessageCommand} from "../model/messageCommand";
-import {ChannelsSubscribeService} from "./channels-subscribe.service";
+import {ChannelsSubscribeService} from "../chat/services/channels-subscribe.service";
 import {tap} from "rxjs/operators";
-import {ChannelsService} from "./channels.service";
+import {ChannelsService} from "../chat/services/channels.service";
 import {MessageService} from "./message.service";
-import {Channel} from "../model/chat.dto";
+import {Channel} from "../chat/model/chat.dto";
 import {ScrumPokerService} from "../scrum-poker/services/scrum-poker.service";
 import {ScrumPokerNotificationService} from "../scrum-poker/services/scrum-poker-notification.service";
 

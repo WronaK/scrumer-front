@@ -11,7 +11,7 @@ import {MyProjectsComponent} from "./views/my-projects/my-projects.component";
 import {MyTeamsComponent} from "./views/my-teams/my-teams.component";
 import {ProjectComponent} from "./views/project/project.component";
 import {TeamComponent} from "./views/team/team.component";
-import {ChatComponent} from "./views/chat/chat.component";
+import {ChatComponent} from "./chat/components/chat/chat.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [

@@ -28,8 +28,6 @@ import {SprintBacklogComponent} from './components/sprint-backlog/sprint-backlog
 import {ProjectsComponent} from './components/projects/projects.component';
 import {MembersTeamComponent} from './components/members-team/members-team.component';
 import {DragDropModule} from "@angular/cdk/drag-drop";
-import {ChatComponent} from './views/chat/chat.component';
-import {NewConversationComponent} from './dialog/new-conversation/new-conversation.component';
 import {ResourceHashComponent} from './component-elements/resource-hash/resource-hash.component';
 import {ResourceDescriptionComponent} from './component-elements/resource-description/resource-description.component';
 import {BaseViewTemplateComponent} from './templates/base-view-template/base-view-template.component';
@@ -57,6 +55,7 @@ import {MenuTeamComponent} from "./components/menu-team/menu-team.component";
 import {TemplatesModule} from "./templates/templates.module";
 import {ScrumPokerModule} from "./scrum-poker/scrum-poker.module";
 import {LoginModule} from "./login/login.module";
+import {ChatModule} from "./chat/chat.module";
 
 @NgModule({
   declarations: [
@@ -81,8 +80,6 @@ import {LoginModule} from "./login/login.module";
     MenuTeamComponent,
     ProjectsComponent,
     MembersTeamComponent,
-    ChatComponent,
-    NewConversationComponent,
     ResourceHashComponent,
     ResourceDescriptionComponent,
     BaseViewTemplateComponent,
@@ -118,7 +115,8 @@ import {LoginModule} from "./login/login.module";
     MatSnackBarModule,
     ScrumPokerModule,
     TemplatesModule,
-    LoginModule
+    LoginModule,
+    ChatModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
