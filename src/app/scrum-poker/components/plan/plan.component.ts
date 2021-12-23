@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TaskCommand} from "../model/scrum.poker.command";
+import {TaskCommand} from "../../../model/scrum.poker.command";
 
 @Component({
   selector: 'app-plan',

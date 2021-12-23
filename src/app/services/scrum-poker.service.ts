@@ -1,6 +1,6 @@
 import {Injectable, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {NotificationStartScrumPokerComponent} from "../notification-start-scrum-poker/notification-start-scrum-poker.component";
+import {NotificationStartScrumPokerComponent} from "../scrum-poker/dialogs/notification-start-scrum-poker/notification-start-scrum-poker.component";
 import {HttpClient} from "@angular/common/http";
 import {
   ChangeEstimationStatus,

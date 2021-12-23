@@ -1,11 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ScrumPokerService} from "../services/scrum-poker.service";
-import {TaskCommand, TeamVote} from "../model/scrum.poker.command";
-import {LoginUserService} from "../services/login-user.service";
+import {ScrumPokerService} from "../../../services/scrum-poker.service";
+import {TeamVote} from "../../../model/scrum.poker.command";
+import {LoginUserService} from "../../../services/login-user.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {UpdateProjectComponent} from "../dialog/update-project/update-project.component";
 import {tap} from "rxjs/operators";
-import {AcceptEstimationComponent} from "../dialog/accept-estimation/accept-estimation.component";
+import {AcceptEstimationComponent} from "../../dialogs/accept-estimation/accept-estimation.component";
 
 @Component({
   selector: 'app-team-estimation',
@@ -21,7 +20,6 @@ export class TeamEstimationComponent implements OnInit {
 
   result: string = "???";
 
-  // teamEstimate: string[] = ['?', '?', '?', '?', '?', '?', '?', '?', '?','?', '?', '?'];
   constructor(
     private scrumPokerService: ScrumPokerService,
     public loginUserService: LoginUserService,

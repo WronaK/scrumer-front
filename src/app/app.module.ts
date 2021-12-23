@@ -35,7 +35,6 @@ import {NewConversationComponent} from './dialog/new-conversation/new-conversati
 import {ResourceHashComponent} from './component-elements/resource-hash/resource-hash.component';
 import {ResourceDescriptionComponent} from './component-elements/resource-description/resource-description.component';
 import {BaseViewTemplateComponent} from './templates/base-view-template/base-view-template.component';
-import {DialogTemplateComponent} from './templates/dialog-template/dialog-template.component';
 import {CreateProjectComponent} from './dialog/create-project/create-project.component';
 import {CreateTeamComponent} from './dialog/create-team/create-team.component';
 import {MaterialModule} from "./material.module";
@@ -58,16 +57,9 @@ import {ShowIssueComponent} from './dialog/show-issue/show-issue.component';
 import {PictureUserComponent} from './component-elements/picture-user/picture-user.component';
 import {AttachmentsElementComponent} from './component-elements/attachments-element/attachments-element.component';
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import {ScrumPokerComponent} from "./scrum-poker/scrum-poker.component";
-import {TeamEstimationComponent} from "./team-estimation/team-estimation.component";
-import {NotificationStartScrumPokerComponent} from "./notification-start-scrum-poker/notification-start-scrum-poker.component";
-import {DeckOfCardsComponent} from "./deck-of-cards/deck-of-cards.component";
-import {TaskViewComponent} from "./task-view/task-view.component";
 import {MenuTeamComponent} from "./components/menu-team/menu-team.component";
-import {MyCardComponent} from "./my-card/my-card.component";
-import {PlanComponent} from "./plan/plan.component";
-import { CreateScrumPokerComponent } from './dialog/create-scrum-poker/create-scrum-poker.component';
-import { AcceptEstimationComponent } from './dialog/accept-estimation/accept-estimation.component';
+import {TemplatesModule} from "./templates/templates.module";
+import {ScrumPokerModule} from "./scrum-poker/scrum-poker.module";
 
 @NgModule({
   declarations: [
@@ -96,15 +88,9 @@ import { AcceptEstimationComponent } from './dialog/accept-estimation/accept-est
     MembersTeamComponent,
     ChatComponent,
     NewConversationComponent,
-    ScrumPokerComponent,
-    TeamEstimationComponent,
-    DeckOfCardsComponent,
-    TaskViewComponent,
-    NotificationStartScrumPokerComponent,
     ResourceHashComponent,
     ResourceDescriptionComponent,
     BaseViewTemplateComponent,
-    DialogTemplateComponent,
     CreateProjectComponent,
     CreateTeamComponent,
     AddTeamMemberComponent,
@@ -124,11 +110,7 @@ import { AcceptEstimationComponent } from './dialog/accept-estimation/accept-est
     AssigmToYourselfComponent,
     ShowIssueComponent,
     PictureUserComponent,
-    AttachmentsElementComponent,
-    MyCardComponent,
-    PlanComponent,
-    CreateScrumPokerComponent,
-    AcceptEstimationComponent
+    AttachmentsElementComponent
   ],
   imports: [
     BrowserModule,
@@ -140,13 +122,17 @@ import { AcceptEstimationComponent } from './dialog/accept-estimation/accept-est
     DragDropModule,
     FormsModule,
     MaterialModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ScrumPokerModule,
+    TemplatesModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
   }],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

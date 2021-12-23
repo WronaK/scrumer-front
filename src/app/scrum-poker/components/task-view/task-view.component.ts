@@ -1,11 +1,11 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {TaskCommand, TypeTask} from "../model/scrum.poker.command";
-import {UserStoryService} from "../services/user-story.service";
-import {IssueService} from "../services/issue.service";
+import {TaskCommand, TypeTask} from "../../../model/scrum.poker.command";
+import {UserStoryService} from "../../../services/user-story.service";
+import {IssueService} from "../../../services/issue.service";
 import {FormControl} from "@angular/forms";
-import {IssueCommand, UserStory} from "../model/task";
-import {ScrumPokerService} from "../services/scrum-poker.service";
-import {LoginUserService} from "../services/login-user.service";
+import {IssueCommand, UserStory} from "../../../model/task";
+import {ScrumPokerService} from "../../../services/scrum-poker.service";
+import {LoginUserService} from "../../../services/login-user.service";
 
 @Component({
   selector: 'app-task-view',

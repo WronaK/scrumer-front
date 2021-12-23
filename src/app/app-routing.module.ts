@@ -6,7 +6,7 @@ import {MainLayoutComponent} from "./components/main-layout/main-layout.componen
 import {DashboardComponent} from "./views/dashboard/dashboard.component";
 import {AuthGuard} from "./services/auth.guard";
 import {UserProfileComponent} from "./views/user-profile/user-profile.component";
-import {ScrumPokerComponent} from "./scrum-poker/scrum-poker.component";
+import {ScrumPokerComponent} from "./scrum-poker/components/scrum-poker/scrum-poker.component";
 import {MyProjectsComponent} from "./views/my-projects/my-projects.component";
 import {MyTeamsComponent} from "./views/my-teams/my-teams.component";
 import {ProjectComponent} from "./views/project/project.component";

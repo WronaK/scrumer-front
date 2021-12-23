@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {ScrumPokerService} from "../services/scrum-poker.service";
-import {ScrumPoker} from "../model/scrum.poker.command";
-import {Observable} from "rxjs";
+import {Component, OnInit} from '@angular/core';
+import {ScrumPokerService} from "../../../services/scrum-poker.service";
+import {ScrumPoker} from "../../../model/scrum.poker.command";
 
 @Component({
   selector: 'app-scrum-poker',

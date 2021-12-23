@@ -6,7 +6,7 @@ import {UploadsService} from "../../services/uploads.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AssigmToYourselfComponent} from "../../dialog/assigm-to-yourself/assigm-to-yourself.component";
 import {tap} from "rxjs/operators";
-import {CreateScrumPokerComponent} from "../../dialog/create-scrum-poker/create-scrum-poker.component";
+import {CreateScrumPokerComponent} from "../../scrum-poker/dialogs/create-scrum-poker/create-scrum-poker.component";
 
 @Component({
   selector: 'app-header',

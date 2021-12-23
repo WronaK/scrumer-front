@@ -1,4 +1,4 @@
-@import "../../main-styles";
+@import "../../../../main-styles";
 
 :host {
   @include fullPage;
@@ -22,5 +22,15 @@ mat-grid-list {
   height: 80%;
   width: 100%;
   display: flex;
-}
 
+  .task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $spot-color;
+    width: 90%;
+    height: 80%;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px black;
+  }
+}

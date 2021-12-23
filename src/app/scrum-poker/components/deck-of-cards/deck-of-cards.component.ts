@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ScrumPokerService} from "../services/scrum-poker.service";
+import {ScrumPokerService} from "../../../services/scrum-poker.service";
 
 @Component({
   selector: 'app-deck-of-cards',
