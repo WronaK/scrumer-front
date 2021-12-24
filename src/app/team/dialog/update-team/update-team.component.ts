@@ -1,10 +1,10 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SuggestedUser} from "../../../model/user";
+import {SuggestedUser} from "../../../user/model/user";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TeamsService} from "../../../services/teams.service";
-import {UsersService} from "../../../services/users.service";
-import {TeamInformation, UpdateTeam} from "../../../model/team";
+import {TeamsService} from "../../services/teams.service";
+import {UsersService} from "../../../user/services/users.service";
+import {TeamInformation, UpdateTeam} from "../../model/team";
 
 @Component({
   selector: 'app-update-team',

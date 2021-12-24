@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ProjectDetailsService} from "../../../services/project-details.service";
+import {ProjectDetailsService} from "../../services/project-details.service";
 import {JoinTeamToProjectComponent} from "../../dialog/join-team-to-project/join-team-to-project.component";
 import {tap} from "rxjs/operators";
 import {UpdateProjectComponent} from "../../dialog/update-project/update-project.component";

@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {ProjectsService} from "../../../services/projects.service";
-import {ProductBacklogService} from "../../../services/product-backlog.service";
-import {ProjectDetailsService} from "../../../services/project-details.service";
-import {ProjectDetails, ProjectInformation} from "../../../model/project";
+import {ProjectsService} from "../../services/projects.service";
+import {ProductBacklogService} from "../../services/product-backlog.service";
+import {ProjectDetailsService} from "../../services/project-details.service";
+import {ProjectInformation} from "../../model/project";
 
 @Component({
   selector: 'app-project',

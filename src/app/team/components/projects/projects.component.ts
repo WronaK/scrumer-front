@@ -1,9 +1,9 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {Project} from "../../../model/project";
+import {Project} from "../../../project/model/project";
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {TeamsService} from "../../../services/teams.service";
-import {TeamsDetailsService} from "../../../services/teams-details.service";
+import {TeamsService} from "../../services/teams.service";
+import {TeamsDetailsService} from "../../services/teams-details.service";
 
 @Component({
   selector: 'app-projects',

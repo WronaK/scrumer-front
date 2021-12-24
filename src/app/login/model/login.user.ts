@@ -1,4 +1,4 @@
-import {User} from "../../model/user";
+import {User} from "../../user/model/user";
 
 export interface LoginUser extends User {
   roles: string

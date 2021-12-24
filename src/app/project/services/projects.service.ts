@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {JoinTeam, Team} from "../model/team";
-import {CreateUserStory, UserStory} from "../model/task";
+import {JoinTeam, Team} from "../../team/model/team";
+import {CreateUserStory, UserStory} from "../user-story/model/task";
 import {CreateProject, ProjectDetails, ProjectInformation, SuggestedProject, UpdateProject} from "../model/project";
 
 @Injectable({

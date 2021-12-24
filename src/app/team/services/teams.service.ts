@@ -2,9 +2,9 @@ import {Injectable} from '@angular/core';
 import {HttpClient, HttpEvent, HttpRequest} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {JoinTeam, SuggestedTeam, Team, TeamDetails, TeamInformation, UpdateTeam} from "../model/team";
-import {JoinProject, Project} from "../model/project";
-import {User} from "../model/user";
-import {SprintBacklog} from "../model/sprint.backlog";
+import {JoinProject, Project} from "../../project/model/project";
+import {User} from "../../user/model/user";
+import {SprintBacklog} from "../sprint-board/model/sprint.backlog";
 
 class CreateTeam {
 }

@@ -1,10 +1,10 @@
 import {Component, ElementRef, Input, OnInit, Renderer2, ViewChild} from '@angular/core';
-import {IssueCommand, NameColumnScrumBoard, PBICommand} from "../../../../model/task";
+import {IssueCommand, NameColumnScrumBoard, PBICommand} from "../../../../project/user-story/model/task";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {AddIssueComponent} from "../../../issue/dialog/add-issue/add-issue.component";
 import {tap} from "rxjs/operators";
-import {TeamsDetailsService} from "../../../../services/teams-details.service";
-import {IssueService} from "../../../../services/issue.service";
+import {TeamsDetailsService} from "../../../services/teams-details.service";
+import {IssueService} from "../../../issue/services/issue.service";
 import {AuthService} from "../../../../login/services/auth.service";
 import {AssigmToYourselfComponent} from "../../../issue/dialog/assigm-to-yourself/assigm-to-yourself.component";
 import {ShowIssueComponent} from "../../../issue/dialog/show-issue/show-issue.component";

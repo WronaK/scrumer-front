@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
-import {PriorityStatus, PriorityStatusLabelMapping, UpdateUserStory} from "../../../../model/task";
+import {PriorityStatus, PriorityStatusLabelMapping, UpdateUserStory} from "../../model/task";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {UserStoryService} from "../../../../services/user-story.service";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-update-user-story',

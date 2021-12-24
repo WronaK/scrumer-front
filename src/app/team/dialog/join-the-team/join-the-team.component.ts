@@ -1,8 +1,8 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SuggestedTeam} from "../../../model/team";
+import {SuggestedTeam} from "../../model/team";
 import {MatDialogRef} from "@angular/material/dialog";
-import {TeamsService} from "../../../services/teams.service";
+import {TeamsService} from "../../services/teams.service";
 
 @Component({
   selector: 'app-join-the-team',

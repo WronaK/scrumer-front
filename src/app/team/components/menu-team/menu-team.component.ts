@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {TeamsDetailsService} from "../../../services/teams-details.service";
+import {TeamsDetailsService} from "../../services/teams-details.service";
 import {tap} from "rxjs/operators";
 import {AddTeamMemberComponent} from "../../dialog/add-team-member/add-team-member.component";
 import {JoinProjectToTeamComponent} from "../../dialog/join-project-to-team/join-project-to-team.component";

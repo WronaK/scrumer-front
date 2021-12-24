@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ResourceDescription} from "../../../model/resource";
+import {ResourceDescription} from "../../model/resource";
 import {FormControl} from "@angular/forms";
-import {UploadsService} from "../../../services/uploads.service";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-resource-description',

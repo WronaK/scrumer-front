@@ -1,8 +1,8 @@
 import {Component, Inject, OnInit} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {TypeTask} from "../../model/scrum.poker.command";
-import {UserStoryService} from "../../../services/user-story.service";
-import {IssueService} from "../../../services/issue.service";
+import {UserStoryService} from "../../../project/user-story/services/user-story.service";
+import {IssueService} from "../../../team/issue/services/issue.service";
 
 @Component({
   selector: 'app-accept-estimation',

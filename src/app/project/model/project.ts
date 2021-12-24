@@ -1,4 +1,4 @@
-import {Attachment} from "./resource";
+import {Attachment} from "../../shared/model/resource";
 
 export interface Project {
   id: number;

@@ -6,11 +6,11 @@ import {
   StatusIssue,
   Type,
   TypeLabelMapping
-} from "../../../../model/task";
+} from "../../../../project/user-story/model/task";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {IssueService} from "../../../../services/issue.service";
-import {UserStoryService} from "../../../../services/user-story.service";
+import {IssueService} from "../../services/issue.service";
+import {UserStoryService} from "../../../../project/user-story/services/user-story.service";
 
 @Component({
   selector: 'app-add-issue',

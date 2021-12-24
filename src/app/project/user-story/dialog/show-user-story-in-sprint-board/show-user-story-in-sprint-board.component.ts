@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {UserStory} from "../../../../model/task";
+import {UserStory} from "../../model/task";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {UserStoryService} from "../../../../services/user-story.service";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-show-user-story-in-sprint-board',

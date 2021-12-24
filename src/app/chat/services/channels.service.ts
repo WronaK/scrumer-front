@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {MessageCommand} from "../../model/messageCommand";
+import {MessageCommand} from "../model/messageCommand";
 import {Channel, CreateChannel} from "../model/chat.dto";
 
 @Injectable({

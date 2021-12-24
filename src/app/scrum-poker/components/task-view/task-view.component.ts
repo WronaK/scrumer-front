@@ -1,9 +1,9 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {TaskCommand, TypeTask} from "../../model/scrum.poker.command";
-import {UserStoryService} from "../../../services/user-story.service";
-import {IssueService} from "../../../services/issue.service";
+import {UserStoryService} from "../../../project/user-story/services/user-story.service";
+import {IssueService} from "../../../team/issue/services/issue.service";
 import {FormControl} from "@angular/forms";
-import {IssueCommand, UserStory} from "../../../model/task";
+import {IssueCommand, UserStory} from "../../../project/user-story/model/task";
 import {LoggedUserDataService} from "../../../login/services/logged-user-data.service";
 import {ScrumPokerObservableService} from "../../services/scrum-poker-observable.service";
 

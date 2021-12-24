@@ -1,11 +1,11 @@
 import {Component, Input} from '@angular/core';
-import {Attachment} from "../../../model/resource";
+import {Attachment} from "../../model/resource";
 import {saveAs} from "file-saver";
-import {UploadsService} from "../../../services/uploads.service";
-import {ProjectsService} from "../../../services/projects.service";
-import {TeamsService} from "../../../services/teams.service";
-import {IssueService} from "../../../services/issue.service";
-import {UserStoryService} from "../../../services/user-story.service";
+import {UploadsService} from "../../services/uploads.service";
+import {ProjectsService} from "../../../project/services/projects.service";
+import {TeamsService} from "../../../team/services/teams.service";
+import {IssueService} from "../../../team/issue/services/issue.service";
+import {UserStoryService} from "../../../project/user-story/services/user-story.service";
 import {HttpResponse} from "@angular/common/http";
 import {MatSnackBar, MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition} from "@angular/material/snack-bar";
 

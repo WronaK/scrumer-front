@@ -1,4 +1,4 @@
-import {IssueCommand, PBICommand} from "./task";
+import {IssueCommand, PBICommand} from "../../../project/user-story/model/task";
 
 export interface SprintBacklog {
   tasksPBI: PBICommand[],

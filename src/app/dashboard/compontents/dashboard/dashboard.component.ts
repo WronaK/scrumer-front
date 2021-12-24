@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
-import {TeamDetails} from "../../../model/team";
-import {ProjectDetails} from "../../../model/project";
+import {TeamDetails} from "../../../team/model/team";
+import {ProjectDetails} from "../../../project/model/project";
 import {tap} from "rxjs/operators";
-import {TeamsSubscribeService} from "../../../services/teams-subscribe.service";
-import {ProjectsSubscribeService} from "../../../services/projects-subscribe.service";
+import {TeamsSubscribeService} from "../../../team/services/teams-subscribe.service";
+import {ProjectsSubscribeService} from "../../../project/services/projects-subscribe.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {CreateTeamComponent} from "../../../team/dialog/create-team/create-team.component";
 import {CreateProjectComponent} from "../../../project/dialog/create-project/create-project.component";

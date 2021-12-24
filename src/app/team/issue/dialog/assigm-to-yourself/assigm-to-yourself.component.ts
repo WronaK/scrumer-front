@@ -1,9 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SuggestedUser} from "../../../../model/user";
+import {SuggestedUser} from "../../../../user/model/user";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {UsersService} from "../../../../services/users.service";
-import {IssueService} from "../../../../services/issue.service";
+import {UsersService} from "../../../../user/services/users.service";
+import {IssueService} from "../../services/issue.service";
 
 @Component({
   selector: 'app-assigm-to-yourself',

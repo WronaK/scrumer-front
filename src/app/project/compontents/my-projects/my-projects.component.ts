@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ProjectsService} from "../../../services/projects.service";
+import {ProjectsService} from "../../services/projects.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ProjectsSubscribeService} from "../../../services/projects-subscribe.service";
+import {ProjectsSubscribeService} from "../../services/projects-subscribe.service";
 import {tap} from "rxjs/operators";
 import {Router} from "@angular/router";
-import {ProjectDetails} from "../../../model/project";
+import {ProjectDetails} from "../../model/project";
 import {CreateProjectComponent} from "../../dialog/create-project/create-project.component";
 import {ResourceDescriptionComponent} from "../../../shared/components/resource-description/resource-description.component";
 

@@ -1,10 +1,10 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SuggestedUser} from "../../../model/user";
+import {SuggestedUser} from "../../../user/model/user";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ProjectsService} from "../../../services/projects.service";
-import {UsersService} from "../../../services/users.service";
-import {ProjectInformation, UpdateProject} from "../../../model/project";
+import {ProjectsService} from "../../services/projects.service";
+import {UsersService} from "../../../user/services/users.service";
+import {ProjectInformation, UpdateProject} from "../../model/project";
 
 @Component({
   selector: 'app-update-project',

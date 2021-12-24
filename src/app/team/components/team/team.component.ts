@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {TeamsDetailsService} from "../../../services/teams-details.service";
-import {TeamInformation} from "../../../model/team";
-import {TeamsService} from "../../../services/teams.service";
+import {TeamsDetailsService} from "../../services/teams-details.service";
+import {TeamInformation} from "../../model/team";
+import {TeamsService} from "../../services/teams.service";
 
 @Component({
   selector: 'app-team',

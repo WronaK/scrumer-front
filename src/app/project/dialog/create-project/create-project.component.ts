@@ -1,10 +1,10 @@
 import {Component} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {SuggestedUser} from "../../../model/user";
-import {CreateProject} from "../../../model/project";
+import {SuggestedUser} from "../../../user/model/user";
+import {CreateProject} from "../../model/project";
 import {MatDialogRef} from "@angular/material/dialog";
-import {ProjectsService} from "../../../services/projects.service";
-import {UsersService} from "../../../services/users.service";
+import {ProjectsService} from "../../services/projects.service";
+import {UsersService} from "../../../user/services/users.service";
 
 @Component({
   selector: 'app-create-project',

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ResourceHash} from "../../../model/resource";
-import {UploadsService} from "../../../services/uploads.service";
+import {ResourceHash} from "../../model/resource";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-resource-hash',

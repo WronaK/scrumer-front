@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator} from "@angular/material/paginator";
-import {ProductBacklogService} from "../../../services/product-backlog.service";
-import {UserStory} from "../../../model/task";
+import {ProductBacklogService} from "../../services/product-backlog.service";
+import {UserStory} from "../../user-story/model/task";
 
 @Component({
   selector: 'app-product-backlog',

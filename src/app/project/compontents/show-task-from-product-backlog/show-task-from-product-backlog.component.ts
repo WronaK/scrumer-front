@@ -1,8 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
-import {ProjectsService} from "../../../services/projects.service";
-import {ProductBacklogService} from "../../../services/product-backlog.service";
-import {PriorityStatus, UserStory} from "../../../model/task";
+import {ProjectsService} from "../../services/projects.service";
+import {ProductBacklogService} from "../../services/product-backlog.service";
+import {PriorityStatus, UserStory} from "../../user-story/model/task";
 
 @Component({
   selector: 'app-show-task-from-product-backlog',

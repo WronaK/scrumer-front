@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {ResourceHash} from "../../../model/resource";
+import {ResourceHash} from "../../../shared/model/resource";
 import {Router} from "@angular/router";
 
 @Component({

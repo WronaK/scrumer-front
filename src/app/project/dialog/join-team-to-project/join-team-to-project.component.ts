@@ -1,9 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {TeamsService} from "../../../services/teams.service";
-import {SuggestedTeam} from "../../../model/team";
-import {ProjectsService} from "../../../services/projects.service";
+import {TeamsService} from "../../../team/services/teams.service";
+import {SuggestedTeam} from "../../../team/model/team";
+import {ProjectsService} from "../../services/projects.service";
 
 @Component({
   selector: 'app-join-team-to-project',

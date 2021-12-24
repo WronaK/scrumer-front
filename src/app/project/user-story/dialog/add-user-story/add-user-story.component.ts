@@ -1,9 +1,9 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ProjectsService} from "../../../../services/projects.service";
-import {PriorityStatus, PriorityStatusLabelMapping} from "../../../../model/task";
-import {UserStoryService} from "../../../../services/user-story.service";
+import {ProjectsService} from "../../../services/projects.service";
+import {PriorityStatus, PriorityStatusLabelMapping} from "../../model/task";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-add-user-story',

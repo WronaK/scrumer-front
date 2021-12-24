@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
-import {TeamsDetailsService} from "../../../../services/teams-details.service";
-import {IssueCommand, NameColumnScrumBoard, PBICommand} from "../../../../model/task";
+import {TeamsDetailsService} from "../../../services/teams-details.service";
+import {IssueCommand, NameColumnScrumBoard, PBICommand} from "../../../../project/user-story/model/task";
 
 @Component({
   selector: 'app-sprint-backlog',

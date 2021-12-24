@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UsersService} from "../../../services/users.service";
+import {UsersService} from "../../../user/services/users.service";
 
 @Component({
   selector: 'app-vote-card',

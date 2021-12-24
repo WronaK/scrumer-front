@@ -1,8 +1,8 @@
 import {Component, Inject} from '@angular/core';
 import {FormControl} from "@angular/forms";
-import {IssueService} from "../../../../services/issue.service";
+import {IssueService} from "../../services/issue.service";
 import {MAT_DIALOG_DATA} from "@angular/material/dialog";
-import {IssueCommand} from "../../../../model/task";
+import {IssueCommand} from "../../../../project/user-story/model/task";
 
 @Component({
   selector: 'app-show-issue',

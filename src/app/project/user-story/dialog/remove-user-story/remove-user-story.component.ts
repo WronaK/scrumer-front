@@ -1,7 +1,7 @@
 import {Component, Inject} from '@angular/core';
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {FormControl} from "@angular/forms";
-import {UserStoryService} from "../../../../services/user-story.service";
+import {UserStoryService} from "../../services/user-story.service";
 
 @Component({
   selector: 'app-remove-user-story',

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {Team} from "../model/team";
+import {Team} from "../../team/model/team";
 import {ProjectsService} from "./projects.service";
 import {tap} from "rxjs/operators";
 import {ProjectDetails} from "../model/project";

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
-import {SprintBacklog} from "../model/sprint.backlog";
-import {Project} from "../model/project";
-import {User} from "../model/user";
+import {SprintBacklog} from "../sprint-board/model/sprint.backlog";
+import {Project} from "../../project/model/project";
+import {User} from "../../user/model/user";
 import {TeamsService} from "./teams.service";
 import {tap} from "rxjs/operators";
 import {TeamDetails} from "../model/team";

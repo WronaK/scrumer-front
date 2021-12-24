@@ -1,10 +1,10 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ResourceInformation} from "../../../model/resource";
+import {ResourceInformation} from "../../model/resource";
 import {FormControl} from "@angular/forms";
-import {UploadsService} from "../../../services/uploads.service";
+import {UploadsService} from "../../services/uploads.service";
 import {HttpResponse} from "@angular/common/http";
-import {ProjectsService} from "../../../services/projects.service";
-import {TeamsService} from "../../../services/teams.service";
+import {ProjectsService} from "../../../project/services/projects.service";
+import {TeamsService} from "../../../team/services/teams.service";
 import { saveAs } from "file-saver";
 
 @Component({

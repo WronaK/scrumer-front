@@ -1,9 +1,9 @@
 import {Component, Inject, OnInit} from '@angular/core';
-import {Team} from "../../../../model/team";
+import {Team} from "../../../../team/model/team";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
-import {ProjectsService} from "../../../../services/projects.service";
-import {ProjectDetailsService} from "../../../../services/project-details.service";
-import {IssueService} from "../../../../services/issue.service";
+import {ProjectsService} from "../../../services/projects.service";
+import {ProjectDetailsService} from "../../../services/project-details.service";
+import {IssueService} from "../../../../team/issue/services/issue.service";
 
 @Component({
   selector: 'app-move-task',

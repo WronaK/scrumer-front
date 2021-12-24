@@ -1,10 +1,10 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl} from "@angular/forms";
 import {AuthService} from "../../../login/services/auth.service";
-import {UsersService} from "../../../services/users.service";
+import {UsersService} from "../../services/users.service";
 import {HttpResponse} from "@angular/common/http";
 import {LoginUser} from "../../../login/model/login.user";
-import {UploadsService} from "../../../services/uploads.service";
+import {UploadsService} from "../../../shared/services/uploads.service";
 
 @Component({
   selector: 'app-user-profile',

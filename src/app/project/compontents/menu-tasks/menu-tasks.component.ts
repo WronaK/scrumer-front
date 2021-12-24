@@ -1,6 +1,6 @@
 import {Component} from '@angular/core';
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {ProductBacklogService} from "../../../services/product-backlog.service";
+import {ProductBacklogService} from "../../services/product-backlog.service";
 import {AddUserStory} from "../../user-story/dialog/add-user-story/add-user-story.component";
 import {tap} from "rxjs/operators";
 import {RemoveUserStoryComponent} from "../../user-story/dialog/remove-user-story/remove-user-story.component";

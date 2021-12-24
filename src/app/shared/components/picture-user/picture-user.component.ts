@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {UploadsService} from "../../../services/uploads.service";
+import {UploadsService} from "../../services/uploads.service";
 
 @Component({
   selector: 'app-picture-user',

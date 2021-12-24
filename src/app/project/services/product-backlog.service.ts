@@ -2,8 +2,8 @@ import {Injectable} from '@angular/core';
 import {BehaviorSubject, Observable} from "rxjs";
 import {ProjectsService} from "./projects.service";
 import {tap} from "rxjs/operators";
-import {UserStory} from "../model/task";
-import {UserStoryService} from "./user-story.service";
+import {UserStory} from "../user-story/model/task";
+import {UserStoryService} from "../user-story/services/user-story.service";
 
 @Injectable({
   providedIn: 'root'
