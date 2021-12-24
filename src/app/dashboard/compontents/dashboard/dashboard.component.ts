@@ -5,8 +5,8 @@ import {tap} from "rxjs/operators";
 import {TeamsSubscribeService} from "../../../services/teams-subscribe.service";
 import {ProjectsSubscribeService} from "../../../services/projects-subscribe.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {CreateTeamComponent} from "../../../dialog/create-team/create-team.component";
-import {CreateProjectComponent} from "../../../dialog/create-project/create-project.component";
+import {CreateTeamComponent} from "../../../team/dialog/create-team/create-team.component";
+import {CreateProjectComponent} from "../../../project/dialog/create-project/create-project.component";
 
 @Component({
   selector: 'app-dashboard',

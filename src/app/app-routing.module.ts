@@ -5,12 +5,12 @@ import {RegistrationPageComponent} from "./login/components/registration-page/re
 import {MainLayoutComponent} from "./templates/compontents/main-layout/main-layout.component";
 import {DashboardComponent} from "./dashboard/compontents/dashboard/dashboard.component";
 import {AuthGuard} from "./login/services/auth.guard";
-import {UserProfileComponent} from "./views/user-profile/user-profile.component";
+import {UserProfileComponent} from "./user/components/user-profile/user-profile.component";
 import {ScrumPokerComponent} from "./scrum-poker/components/scrum-poker/scrum-poker.component";
-import {MyProjectsComponent} from "./views/my-projects/my-projects.component";
-import {MyTeamsComponent} from "./views/my-teams/my-teams.component";
-import {ProjectComponent} from "./views/project/project.component";
-import {TeamComponent} from "./views/team/team.component";
+import {MyProjectsComponent} from "./project/compontents/my-projects/my-projects.component";
+import {MyTeamsComponent} from "./team/components/my-teams/my-teams.component";
+import {ProjectComponent} from "./project/compontents/project/project.component";
+import {TeamComponent} from "./team/components/team/team.component";
 import {ChatComponent} from "./chat/components/chat/chat.component";
 
 const routes: Routes = [

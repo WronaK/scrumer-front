@@ -5,12 +5,14 @@ import {MaterialModule} from "../material.module";
 import {MainLayoutComponent} from "./compontents/main-layout/main-layout.component";
 import {SharedModule} from "../shared/shared.module";
 import {RouterModule} from "@angular/router";
+import {BaseViewTemplateComponent} from "./compontents/base-view-template/base-view-template.component";
 
 
 @NgModule({
   declarations: [
     DialogTemplateComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    BaseViewTemplateComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +22,8 @@ import {RouterModule} from "@angular/router";
   ],
   exports: [
     DialogTemplateComponent,
-    MainLayoutComponent
+    MainLayoutComponent,
+    BaseViewTemplateComponent
   ]
 })
 export class TemplatesModule { }

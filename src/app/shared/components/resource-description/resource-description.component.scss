@@ -1,0 +1,46 @@
+@import "../../../../main-styles";
+
+.belt {
+  min-height: 30px;
+  width: 100%;
+  background-color: $secondary-spot-color;
+  box-shadow: 0 2px 2px black;
+}
+
+.image {
+  height: 10vh;
+  width: 100%;
+  padding: 0;
+  background: $secondary-spot-color;
+  box-shadow: 0 2px 2px black;
+}
+
+.card {
+  padding: 1em;
+  background-color: $secondary-spot-color;
+  border-radius: 0;
+
+  .header {
+    .title {
+      font-weight: bolder;
+      font-size: 1.5em;
+      line-height: 1.5em;
+      color: $primary-color;
+    }
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+
+    .mat-input-element:disabled {
+      color: $primary-color !important;
+    }
+  }
+}
+
+.image-upload {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
