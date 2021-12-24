@@ -12,6 +12,7 @@ import {AcceptEstimationComponent} from "./dialogs/accept-estimation/accept-esti
 import {MaterialModule} from "../material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import {TemplatesModule} from "../templates/templates.module";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   declarations: [
@@ -25,12 +26,13 @@ import {TemplatesModule} from "../templates/templates.module";
     CreateScrumPokerComponent,
     AcceptEstimationComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    ReactiveFormsModule,
-    TemplatesModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        ReactiveFormsModule,
+        TemplatesModule,
+        SharedModule
+    ],
   exports: [
     ScrumPokerComponent
   ]

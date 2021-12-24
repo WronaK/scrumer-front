@@ -1,8 +1,8 @@
 import {Component, ElementRef, OnInit, Renderer2, ViewChild} from '@angular/core';
 import {Router} from "@angular/router";
-import {IssueCommand} from "../../model/task";
+import {IssueCommand} from "../../../model/task";
 import {tap} from "rxjs/operators";
-import {IssueService} from "../../services/issue.service";
+import {IssueService} from "../../../services/issue.service";
 
 @Component({
   selector: 'app-my-tasks',

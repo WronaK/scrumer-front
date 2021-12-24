@@ -1,23 +1,26 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import {DialogTemplateComponent} from "./dialog-template/dialog-template.component";
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {DialogTemplateComponent} from "./compontents/dialog-template/dialog-template.component";
 import {MaterialModule} from "../material.module";
-import {PictureUserComponent} from "./picture-user/picture-user.component";
-
+import {MainLayoutComponent} from "./compontents/main-layout/main-layout.component";
+import {SharedModule} from "../shared/shared.module";
+import {RouterModule} from "@angular/router";
 
 
 @NgModule({
   declarations: [
     DialogTemplateComponent,
-    PictureUserComponent
+    MainLayoutComponent
   ],
   imports: [
     CommonModule,
-    MaterialModule
+    MaterialModule,
+    SharedModule,
+    RouterModule
   ],
   exports: [
     DialogTemplateComponent,
-    PictureUserComponent
+    MainLayoutComponent
   ]
 })
 export class TemplatesModule { }

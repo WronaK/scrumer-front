@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
-import {Team, TeamDetails} from "../../model/team";
-import {Project, ProjectDetails} from "../../model/project";
+import {TeamDetails} from "../../../model/team";
+import {ProjectDetails} from "../../../model/project";
 import {tap} from "rxjs/operators";
-import {TeamsSubscribeService} from "../../services/teams-subscribe.service";
-import {ProjectsSubscribeService} from "../../services/projects-subscribe.service";
+import {TeamsSubscribeService} from "../../../services/teams-subscribe.service";
+import {ProjectsSubscribeService} from "../../../services/projects-subscribe.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
-import {CreateTeamComponent} from "../../dialog/create-team/create-team.component";
-import {CreateProjectComponent} from "../../dialog/create-project/create-project.component";
+import {CreateTeamComponent} from "../../../dialog/create-team/create-team.component";
+import {CreateProjectComponent} from "../../../dialog/create-project/create-project.component";
 
 @Component({
   selector: 'app-dashboard',
