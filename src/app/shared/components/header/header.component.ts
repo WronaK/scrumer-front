@@ -72,7 +72,7 @@ export class HeaderComponent implements OnInit {
   }
 
   toYourProfile() {
-    this.router.navigate(['my-profile'])
+    this.router.navigate(['my-profile']);
   }
 
   createScrumPoker() {
@@ -83,5 +83,9 @@ export class HeaderComponent implements OnInit {
       idUser: this.authService.loginUser.id,
     };
     this.dialog.open(CreateScrumPokerComponent, dialogConfig);
+  }
+
+  toDaily() {
+    this.router.navigate(['selected-team']);
   }
 }

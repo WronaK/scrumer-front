@@ -12,6 +12,8 @@ import {MyTeamsComponent} from "./team/components/my-teams/my-teams.component";
 import {ProjectComponent} from "./project/compontents/project/project.component";
 import {TeamComponent} from "./team/components/team/team.component";
 import {ChatComponent} from "./chat/components/chat/chat.component";
+import {DailyComponent} from "./daily/componenents/daily/daily.component";
+import {SelectTeamComponent} from "./daily/componenents/select-team/select-team.component";
 
 const routes: Routes = [
   { path: '', component: MainLayoutComponent, children: [
@@ -22,7 +24,9 @@ const routes: Routes = [
       { path: 'team/:id', component: TeamComponent, canActivate: [AuthGuard] },
       { path: 'scrum-poker/:id', component: ScrumPokerComponent, canActivate: [AuthGuard]},
       { path: 'chat', component: ChatComponent, canActivate: [AuthGuard]},
-      { path: 'my-profile', component: UserProfileComponent, canActivate: [AuthGuard]}
+      { path: 'my-profile', component: UserProfileComponent, canActivate: [AuthGuard]},
+      { path: "selected-team", component: SelectTeamComponent, canActivate: [AuthGuard]},
+      { path: "daily/:id", component: DailyComponent, canActivate: [AuthGuard]}
     ]
   },
   { path: 'login', component: LoginPageComponent},

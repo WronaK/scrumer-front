@@ -1,0 +1,63 @@
+:host {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.element {
+  width: 90%;
+}
+
+.header {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #845EC2;
+}
+
+.element-content {
+  width: 90%;
+  display: grid;
+  grid-gap: 1em;
+  grid-template-columns: 1fr 5fr 5fr;
+}
+
+.tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+.task {
+  background: #B0A8B9;
+  height: 50px;
+  width: 100%;
+  margin-top: 1em;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+}
+
+app-picture-user {
+  //width:35px;
+  //height: 35px;
+  display: flex;
+  align-self: center;
+  justify-self: center;
+  height: 80px;
+  width: 80px;
+  border-radius: 100%;
+  background: #00C0A3;
+}
+
+.date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

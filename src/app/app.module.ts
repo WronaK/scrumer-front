@@ -20,6 +20,7 @@ import {DashboardModule} from "./dashboard/dashboard.module";
 import {UserModule} from "./user/user.module";
 import {TeamModule} from "./team/team.module";
 import {ProjectModule} from "./project/project.module";
+import {DailyModule} from "./daily/daily.module";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import {ProjectModule} from "./project/project.module";
     DashboardModule,
     UserModule,
     TeamModule,
-    ProjectModule
+    ProjectModule,
+    DailyModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

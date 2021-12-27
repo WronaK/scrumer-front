@@ -1,0 +1,55 @@
+.container {
+  height: 100%;
+}
+
+.header {
+  height: 50px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 4px;
+
+  .title {
+    width: 40%;
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+
+  .form {
+    width: 60%;
+    height: 50px;
+
+    form {
+      width: 95%;
+      height: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 2em;
+
+      mat-form-field {
+        width: 50%;
+        height: 50px;
+        background: #B0A8B9 !important;
+
+        input {
+          margin-left: 1em;
+        }
+      }
+
+      button {
+        height: 50px;
+        border-radius: 0;
+      }
+    }
+  }
+}
+
+.content {
+  height: 90%;
+
+  app-daily-element {
+    margin-bottom: 1em;
+  }
+}
