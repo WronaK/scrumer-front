@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {MessageCommand} from "../model/messageCommand";
 import {Channel, CreateChannel} from "../model/chat.dto";
+import {CreateMessageCommand} from "../model/createMessageCommand";
 
 @Injectable({
   providedIn: 'root'
@@ -27,5 +28,9 @@ export class ChannelsService {
 
   clearNotification(idChannel: number) {
     return this.http.post(this.url + idChannel + "/clear/notification", null).subscribe();
+  }
+
+  sendMessage(message: CreateMessageCommand) {
+    return this.http.post("api/channels/send", message);
   }
 }

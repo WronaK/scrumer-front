@@ -1,17 +1,15 @@
 import {Injectable} from '@angular/core';
-import {CreateMessageCommand} from "../chat/model/createMessageCommand";
 
 import * as Stomp from 'stompjs';
 import * as SockJS from 'sockjs-client';
 import {LoginUser} from "../login/model/login.user";
 import {MessageCommand} from "../chat/model/messageCommand";
 import {ChannelsSubscribeService} from "../chat/services/channels-subscribe.service";
-import {tap} from "rxjs/operators";
 import {ChannelsService} from "../chat/services/channels.service";
 import {MessageService} from "../chat/services/message.service";
-import {Channel} from "../chat/model/chat.dto";
 import {ScrumPokerService} from "../scrum-poker/services/scrum-poker.service";
 import {ScrumPokerNotificationService} from "../scrum-poker/services/scrum-poker-notification.service";
+import {ChatEventService} from "../chat/services/chat-event.service";
 
 @Injectable({
   providedIn: 'root'
@@ -24,14 +22,14 @@ export class WebSocketService {
   disabled = true;
   user!: LoginUser;
   activeChannelId!: number;
-  channels: Channel[] = [];
 
   constructor(
     private channelService: ChannelsService,
     private messageService: MessageService,
     private channelsSubscriberService: ChannelsSubscribeService,
     private scrumPokerService: ScrumPokerService,
-    private scrumPokerEventService: ScrumPokerNotificationService
+    private scrumPokerEventService: ScrumPokerNotificationService,
+    private channelEventService: ChatEventService
   ) {}
 
   setConnected(connected: boolean) {
@@ -56,17 +54,8 @@ export class WebSocketService {
       _this.setConnected(true);
       console.log('Connected: ' + frame);
 
-      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/messages`, (message: any) => {
-        const notification = JSON.parse(message.body);
-        if(this.activeChannelId == notification.channelId) {
-          this.messageService.getMessage(notification.messageId)
-            .subscribe(message => {
-              this.chatMessages.push(message);
-              this.setLastMessage(message.content)
-            });
-        } else {
-          this.incrementNumbersNewMessages(notification.channelId);
-        }
+      _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/chat`, (message: any) => {
+        this.channelEventService.executionEvent(message);
       } );
 
       _this.stompClient.subscribe(`/api/topic/${this.user.id}/queue/scrum`, (response: any) => {
@@ -75,10 +64,6 @@ export class WebSocketService {
     });
   }
 
-  getChannels() {
-    this.channelsSubscriberService.uploadChannels();
-    this.channelsSubscriberService.getChannels().pipe(tap(channels => this.channels = channels)).subscribe();
-  }
 
   disconnect() {
     if (this.stompClient != null) {
@@ -90,42 +75,5 @@ export class WebSocketService {
     }
 
     this.setConnected(false);
-  }
-
-  public sendMessage(message: CreateMessageCommand) {
-    this.stompClient.send(
-      '/api/app/chat', {}, JSON.stringify(message));
-    this.chatMessages.push(message)
-  }
-
-  public loadsMessageActiveChannel() {
-    if (this.activeChannelId != null) {
-      this.channelService.getChatMessages(this.activeChannelId).subscribe(messages =>
-        this.chatMessages = messages);
-    }
-  }
-
-  public setLastMessage(message: string) {
-    this.channels.forEach(channel => {
-      if (channel.idChannel == this.activeChannelId) {
-        channel.lastMessage = message
-      }
-    });
-  }
-
-  public clearNotificationNumberNewMessage() {
-    this.channels.forEach(channel => {
-      if (channel.idChannel == this.activeChannelId) {
-        channel.numberNewMessage = 0;
-      }
-    })
-  }
-
-  public incrementNumbersNewMessages(idChannel: number) {
-    this.channels.forEach(channel => {
-      if (channel.idChannel == idChannel) {
-        channel.numberNewMessage += 1;
-      }
-    })
   }
 }
