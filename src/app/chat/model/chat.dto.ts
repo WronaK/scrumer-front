@@ -3,16 +3,10 @@ export interface ChatNotification {
   messageId: string
 }
 
-export class CreateChannel {
+export interface CreateChannel {
   channelName: string
-  members: string[]
-  channelType: string
-
-  constructor(channelName: string, members: string[], channelType: string) {
-    this.channelName = channelName;
-    this.members = members;
-    this.channelType = channelType
-  }
+  members: number[]
+  channelType: ChannelType
 }
 
 export interface Channel {
@@ -21,4 +15,9 @@ export interface Channel {
   lastMessage: string,
   channelType: string
   numberNewMessage: number,
+}
+
+export enum ChannelType {
+  PRIVATE_MESSAGES = "PRIVATE_MESSAGES",
+  GROUP_CHANNEL = "GROUP_CHANNEL"
 }

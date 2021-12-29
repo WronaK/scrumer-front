@@ -1,0 +1,8 @@
+<div class="container">
+<div class="img-user">
+  <app-picture-user class="img-u" [initial]="channel.channelName | chanelName"></app-picture-user>
+</div>
+<div class="user-name">{{channel.channelName}}</div>
+<div class="content-message" *ngIf="channel.numberNewMessage==0">{{channel.lastMessage}}</div>
+<div class="content-message" *ngIf="channel.numberNewMessage">You have {{channel.numberNewMessage}} new messages.</div>
+</div>

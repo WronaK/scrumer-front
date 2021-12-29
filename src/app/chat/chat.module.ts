@@ -5,19 +5,29 @@ import {NewConversationComponent} from "./components/new-conversation/new-conver
 import {MaterialModule} from "../material.module";
 import {TemplatesModule} from "../templates/templates.module";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { SidePanelComponent } from './components/side-panel/side-panel.component';
+import { MessagePanelComponent } from './components/message-panel/message-panel.component';
+import { ChannelComponent } from './components/channel/channel.component';
+import {SharedModule} from "../shared/shared.module";
+import {PipesModule} from "../pipes/pipes.module";
 
 @NgModule({
   declarations: [
     ChatComponent,
-    NewConversationComponent
+    NewConversationComponent,
+    SidePanelComponent,
+    MessagePanelComponent,
+    ChannelComponent
   ],
-  imports: [
-    CommonModule,
-    MaterialModule,
-    TemplatesModule,
-    ReactiveFormsModule,
-    FormsModule
-  ],
+    imports: [
+        CommonModule,
+        MaterialModule,
+        TemplatesModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        PipesModule
+    ],
   exports: [
     ChatComponent
   ]

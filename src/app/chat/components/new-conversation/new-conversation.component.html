@@ -2,30 +2,26 @@
   <h2 title>Create new conversation</h2>
 
   <form content [formGroup]="newConversationForm">
-    <section>
-      <mat-label>
-        Channel Type:
-      </mat-label>
-      <mat-radio-group [(ngModel)]="groupChannel"  [ngModelOptions]="{standalone: true}" >
-        <mat-radio-button *ngFor="let group of groupsChannel" [value]="group"> {{group}}</mat-radio-button>
-      </mat-radio-group>
-    </section>
-    <mat-form-field *ngIf="groupChannel=='GROUP CHANNEL'">
+    <mat-form-field>
       <mat-label>Enter channel name: </mat-label>
       <input [formControl]="channelName" matInput />
     </mat-form-field>
-    <div class="item" *ngFor="let member of members">
-      <mat-form-field>
-        <mat-label>Enter email:</mat-label>
-        <input [value]="member" matInput [disabled]="true">
+    <div class="input" *ngFor="let control of membersFormControl.controls; index as i">
+      <mat-form-field >
+        <mat-label>Enter name and surname member</mat-label>
+        <input [formControl]="control"
+               [matAutocomplete]="auto"
+               matInput
+               type="text">
       </mat-form-field>
-      <button action mat-button (click)="deleteMembers(member)">X</button>
-      </div>
-    <mat-form-field>
-      <mat-label>Enter email: </mat-label>
-      <input [formControl]="emailRecipient" matInput />
-    </mat-form-field>
-    <button *ngIf="groupChannel=='GROUP CHANNEL'" action (click)="addNewItem()">Add new item</button>
+      <mat-icon (click)="removeMember(i)">delete</mat-icon>
+    </div>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
+        {{item.username}}
+      </mat-option>
+    </mat-autocomplete>
+    <button action (click)="addNewItem()">Add new item</button>
   </form>
   <button action mat-raised-button (click)="createConversation()">Create conversation</button>
 </app-dialog-template>
