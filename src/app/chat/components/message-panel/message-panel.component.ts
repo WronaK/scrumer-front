@@ -45,7 +45,9 @@ export class MessagePanelComponent {
     if (this.idActiveChannel != null) {
       const messageDto = new CreateMessageCommand(this.idActiveChannel, this.messageInput.value, this.user.id, this.user.name + " " + this.user.surname);
       this.chatEventService.setLastMessage(messageDto.content);
-      this.channelService.sendMessage(messageDto)
+      this.channelService.sendMessage(messageDto).subscribe(
+        () => this.observableChatService.chatMessages.push(messageDto)
+      );
       this.messageForm.reset();
     }
   }

@@ -60,19 +60,19 @@
       justify-content: space-evenly;
 
       form {
-        width: 100%;
+        width: 88%;
         height: 100%;
-
+        background: $spot-color;
+        border-radius: 5px !important;
+        box-shadow: 2px 2px 2px black;
       }
 
       mat-form-field {
-        padding: 0 5px;
+        padding: 0 10px;
         width: 95%;
         height: 80%;
-        border-radius: 5px;
         background: $spot-color;
         border: none;
-        box-shadow: 2px 2px 2px black;
         &:focus {
           border: none;
         }

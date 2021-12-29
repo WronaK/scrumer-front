@@ -9,6 +9,7 @@ import { SidePanelComponent } from './components/side-panel/side-panel.component
 import { MessagePanelComponent } from './components/message-panel/message-panel.component';
 import { ChannelComponent } from './components/channel/channel.component';
 import {SharedModule} from "../shared/shared.module";
+import {PipesModule} from "../pipes/pipes.module";
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {SharedModule} from "../shared/shared.module";
         TemplatesModule,
         ReactiveFormsModule,
         FormsModule,
-        SharedModule
+        SharedModule,
+        PipesModule
     ],
   exports: [
     ChatComponent

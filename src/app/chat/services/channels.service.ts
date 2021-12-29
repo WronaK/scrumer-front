@@ -4,6 +4,7 @@ import {Observable} from "rxjs";
 import {MessageCommand} from "../model/messageCommand";
 import {Channel, CreateChannel} from "../model/chat.dto";
 import {CreateMessageCommand} from "../model/createMessageCommand";
+import {InfoChannel} from "../model/infoChannel";
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +20,7 @@ export class ChannelsService {
   }
 
   createNewChannel(createChannel : CreateChannel) {
-    return this.http.post(this.url, createChannel);
+    return this.http.post<InfoChannel>(this.url, createChannel);
   }
 
   getChatMessages(idChannel: number): Observable<any> {

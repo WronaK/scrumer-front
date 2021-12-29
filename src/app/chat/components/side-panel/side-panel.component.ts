@@ -9,6 +9,7 @@ import {ChatEventService} from "../../services/chat-event.service";
 import {SuggestedUser} from "../../../user/model/user";
 import {FormControl, Validators} from "@angular/forms";
 import {UsersService} from "../../../user/services/users.service";
+import {ChannelType, CreateChannel} from "../../model/chat.dto";
 
 @Component({
   selector: 'app-side-panel',
@@ -44,6 +45,8 @@ export class SidePanelComponent implements OnInit {
             )
         }
         this.filterData(response);
+        if (this.member.value instanceof Object)
+        this.createConversation()
       })
   }
 
@@ -51,6 +54,21 @@ export class SidePanelComponent implements OnInit {
     this.filteredOption = this.suggestedUser.filter(item => {
       return item.username.toLowerCase().indexOf(enteredData.toString().toLowerCase()) > -1;
     })
+  }
+
+  createConversation() {
+    let channelCommand = {channelName: this.member.value.username, members: [this.member.value.id], channelType: ChannelType.PRIVATE_MESSAGES};
+
+    this.channelsService.createNewChannel(channelCommand).subscribe( ch => {
+      this.observableChatService.setActivatedChannel(ch.idChannel);
+      this.observableChatService.setActiveChannelName(ch.channelName);
+      this.channelEventService.loadsMessageActiveChannel();
+
+
+      this.channelsSubscribe.uploadChannels();
+      this.member.reset('');
+    }
+  )
   }
 
   ngOnInit(): void {
