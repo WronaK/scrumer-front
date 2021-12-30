@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="header">
+    <div class="title">
+      DAILY
+    </div>
+    <div class="form">
+      <form [formGroup]="formGroup">
+        <mat-form-field>
+          <mat-label>Enter title task</mat-label>
+          <input [formControl]="title" matInput required>
+        </mat-form-field>
+        <button mat-raised-button [disabled]="!formGroup.valid" (click)="addTask()"> Add task</button>
+      </form>
+    </div>
+  </div>
+  <div class="content">
+    <app-daily-element *ngFor="let element of daily.elements" [data]="element"></app-daily-element>
+  </div>
+</div>

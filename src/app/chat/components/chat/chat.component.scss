@@ -1,0 +1,23 @@
+@import "../../../../main-styles";
+
+:host {
+  @include fullPage;
+}
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 5fr 1fr;
+
+  app-message-panel {
+    width: 100%;
+    height: 100%;
+  }
+
+  app-side-panel {
+    width: 100%;
+    height: 100%;
+  }
+}

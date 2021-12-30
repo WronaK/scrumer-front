@@ -1,0 +1,29 @@
+<div class="element">
+  <div class="header">{{data.username}}</div>
+  <div class="element-content">
+  <app-picture-user [initial]="data.username | chanelName"></app-picture-user>
+  <div class="tasks yesterday">
+    <div class="date">{{data.yesterdayTasks.date | date:'longDate'}}  </div>
+    <div class="content">
+    <div class="task" *ngFor="let task of data.yesterdayTasks.tasks">
+      <div>{{task.title}}</div>
+    </div>
+      <div class="no-data" *ngIf="data.todayTasks.tasks.length == 0">
+        NO DATA
+      </div>
+    </div>
+  </div>
+  <div class="tasks today">
+    <div class="date">{{data.todayTasks.date  | date:'longDate'}}</div>
+    <div class="content">
+      <div class="task" *ngFor="let task of data.todayTasks.tasks">
+        <div>{{task.title}}</div>
+      </div>
+
+      <div class="no-data" *ngIf="data.todayTasks.tasks.length == 0">
+        NO DATA
+      </div>
+    </div>
+  </div>
+  </div>
+</div>

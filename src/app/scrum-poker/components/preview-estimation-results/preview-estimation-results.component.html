@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="header-card">
+    <div class="header">
+      Team estimation results
+    </div>
+    <div *ngIf="idCreator==loginUserService.loginUser.id" class="button">
+      <button mat-raised-button (click)="startEstimation()">Start of task estimation</button>
+      <button mat-raised-button (click)="stopEstimation()">Stop of task estimation</button>
+      <button mat-raised-button (click)="saveResult()">Save of the estimation result</button>
+    </div>
+  </div>
+  <mat-grid-list cols="6" rowHeight="fit">
+    <mat-grid-tile [colspan]="2" [rowspan]="2">
+      <app-vote-card [value]="result" [isMember]="true"></app-vote-card>
+    </mat-grid-tile>
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of teamEstimation">
+      <app-vote-card [value]="v.estimation" [idMember]="v.idUser" [isMember]="false"></app-vote-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

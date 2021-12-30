@@ -1,0 +1,42 @@
+@import "../../../../main-styles";
+
+:host {
+  @include fullPage;
+}
+
+.container {
+  @include fullPage;
+  display: flex;
+  flex-direction: column;
+}
+.header-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .header {
+    display: flex;
+    align-items: center;
+    align-self: flex-start;
+    font-size: 1.5em;
+    color: $spot-color;
+    margin-left: 3em;
+  }
+}
+
+mat-grid-list {
+  height: 80%;
+  width: 100%;
+  display: flex;
+}
+
+.button {
+  button {
+    width: 200px;
+    margin-right: 10px;
+    background: $secondary-detail-color;
+    color: $spot-color;
+  }
+}
+

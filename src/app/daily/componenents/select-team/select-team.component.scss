@@ -1,0 +1,33 @@
+:host {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  height: 95%;
+  width: 95%;
+
+  display: grid;
+  grid-template-rows: 1fr 8fr;
+  row-gap: 10px;
+
+  .content {
+    width: 100%;
+    height: 100%;
+
+
+    mat-grid-list {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+app-resource-hash {
+  width: 100%;
+  height: 100%;
+  padding: 0 10px;
+}

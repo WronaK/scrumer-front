@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="header">
+    <div class="header-card">Current task</div>
+    <div *ngIf="idCreator==loginService.loginUser.id" class="buttons">
+      <button mat-raised-button (click)="previewsTask()" [disabled]="index < 1">previews task</button>
+      <button mat-raised-button (click)="nextTask()" [disabled]="index>=tasks.length-1">next task</button>
+    </div>
+  </div>
+
+  <mat-card>
+    <form *ngIf="currentTask.typeTask === typeTask.ISSUE">
+      <mat-form-field>
+        <mat-label>Enter a title for the issue</mat-label>
+        <input [formControl]="title" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter a issue description</mat-label>
+        <textarea [formControl]="description"
+                  matInput
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="5"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Give priority</mat-label>
+        <input [formControl]="priorityFC" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Give type issue</mat-label>
+        <input [formControl]="typeIssue" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter a story points</mat-label>
+        <input [formControl]="storyPoints" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Give status issue</mat-label>
+        <input [formControl]="statusIssue" matInput>
+      </mat-form-field>
+      <mat-form-field *ngIf="issue.idUserStory">
+        <mat-label>Connection with</mat-label>
+        <input [formControl]="userStory" matInput>
+      </mat-form-field>
+    </form>
+
+    <form *ngIf="currentTask.typeTask===typeTask.USER_STORY">
+      <mat-form-field>
+        <mat-label>Enter a title for the user story</mat-label>
+        <input [formControl]="title" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter a user story description</mat-label>
+        <textarea [formControl]="description"
+                  matInput
+                  cdkTextareaAutosize
+                  cdkAutosizeMinRows="5"></textarea>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Give priority</mat-label>
+        <input [formControl]="priorityFC" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Enter a story points</mat-label>
+        <input [formControl]="storyPoints" matInput>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Give status user story</mat-label>
+        <input [formControl]="statusUserStory" matInput>
+      </mat-form-field>
+    </form>
+
+
+  </mat-card>
+
+</div>

@@ -1,0 +1,21 @@
+<div class="container">
+    <mat-form-field class="search">
+      <mat-label>Search channel</mat-label>
+      <input [formControl]="member"
+             [matAutocomplete]="auto"
+             matInput required
+             type="text">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="getUsername">
+      <mat-option *ngFor="let item of filteredOption" [value]="item">
+        {{item.username}}
+      </mat-option>
+    </mat-autocomplete>
+
+  <div class="users">
+    <app-channel *ngFor="let channel of observableChatService.channels" (click)="setActiveChannel(channel.idChannel, channel.channelName)"  [channel]="channel"></app-channel>
+  </div>
+  <div class="new">
+    <button mat-raised-button (click)="createNewConversation()">Create new group conversation</button>
+  </div>
+</div>

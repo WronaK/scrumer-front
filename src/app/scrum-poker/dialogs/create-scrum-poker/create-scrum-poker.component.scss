@@ -1,0 +1,15 @@
+@import "../../../../assets/styles/dialog-styles";
+
+.input {
+  display: flex;
+  align-items: center;
+
+  mat-form-field {
+    width: 95%;
+  }
+
+  mat-icon {
+    width: 5%;
+  }
+}
+

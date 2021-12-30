@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="name">
+    {{activeChannelName}}
+  </div>
+  <div class="content">
+    <div *ngFor="let chatMessage of observableChatService.chatMessages" [ngClass]="chatMessage.senderId === user.id? 'my' : 'other'">
+      <div *ngIf="chatMessage.senderId !== user.id">{{chatMessage.senderName}}</div>
+      <div>{{chatMessage.content}}</div>
+    </div>
+  </div>
+  <div class="send">
+    <form content [formGroup]="messageForm">
+      <mat-form-field>
+        <mat-label>Enter your message....</mat-label>
+        <input [formControl]="messageInput" matInput>
+      </mat-form-field>
+    </form>
+    <button action mat-raised-button (click)="sendMessage()">SEND</button>
+  </div>
+</div>

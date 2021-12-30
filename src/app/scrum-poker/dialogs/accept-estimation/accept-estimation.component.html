@@ -1,0 +1,12 @@
+<app-dialog-template>
+  <h2 title>Record the estimated value</h2>
+  <div class="content" content>
+    <mat-grid-list cols="6" rowHeight="fit">
+      <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of value">
+        <app-vote-card [selectedValue]="selectedDeck" [isActive]="true" [value]="v" [isMember]="true" (click)="accept(v)"></app-vote-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+  <button action mat-raised-button (click)="save()">SAVE</button>
+</app-dialog-template>
+

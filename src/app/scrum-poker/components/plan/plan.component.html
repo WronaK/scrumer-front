@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="header-card">Plan</div>
+  <mat-grid-list cols="3" rowHeight="fit">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let t of tasksId">
+      <div class="task">Task {{t.idTask}}</div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

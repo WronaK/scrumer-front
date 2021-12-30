@@ -1,0 +1,36 @@
+@import "../../../../main-styles";
+
+:host {
+  @include fullPage;
+}
+
+.container {
+  @include fullPage;
+  display: flex;
+  flex-direction: column;
+}
+.header-card {
+  display: flex;
+  align-items: center;
+  align-self: flex-start;
+  font-size: 1.5em;
+  color: $secondary-detail-color;
+  margin-left: 3em;
+}
+
+mat-grid-list {
+  height: 80%;
+  width: 100%;
+  display: flex;
+
+  .task {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $spot-color;
+    width: 90%;
+    height: 80%;
+    border-radius: 5px;
+    box-shadow: 0 3px 6px black;
+  }
+}

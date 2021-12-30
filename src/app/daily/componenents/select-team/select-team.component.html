@@ -1,0 +1,12 @@
+<div class="container">
+  <h2 class="header">
+    Select team
+  </h2>
+  <div class="content">
+    <mat-grid-list cols="3" rowHeight="20vh">
+      <mat-grid-tile *ngFor="let team of teams">
+        <app-resource-hash (selectedItemEvent)="selectedTeam(team.id)" [resource]="team"></app-resource-hash>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

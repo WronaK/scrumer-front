@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="header-card">Submit estimate</div>
+  <mat-grid-list cols="6" rowHeight="fit">
+    <mat-grid-tile [colspan]="1" [rowspan]="1" *ngFor="let v of value">
+      <app-vote-card [selectedValue]="selectedValue" [isActive]="isActive" [value]="v" [isMember]="true" (click)="vote(v)"></app-vote-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

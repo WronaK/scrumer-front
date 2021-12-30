@@ -1,0 +1,90 @@
+@import "../../../../main-styles";
+
+:host {
+  width: 100%;
+  height: 100%;
+}
+
+
+.container {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: 50px auto 70px;
+  color: $primary-color;
+
+
+
+    .content {
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      max-height: 85vh;
+
+      .other {
+        background: $secondary-spot-color;
+        max-width: 60%;
+        align-self: flex-start;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+
+      .my {
+        background: $spot-color;
+        max-width: 60%;
+        align-self: flex-end;
+        padding: 10px;
+        margin: 10px;
+        border-radius: 5px;
+      }
+    }
+
+    .name {
+      background: $secondary-detail-color;
+      color: $primary-color;
+      font-size: 1.2em;
+      display: flex;
+      align-items: center;
+      padding-left: 10px;
+      font-weight: bold;
+      box-shadow: 0 3px 3px black;
+    }
+
+    .send {
+      padding: 1em;
+      background: $detail-color;
+      box-shadow: 3px 0 3px black;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly;
+
+      form {
+        width: 88%;
+        height: 100%;
+        background: $spot-color;
+        border-radius: 5px !important;
+        box-shadow: 2px 2px 2px black;
+      }
+
+      mat-form-field {
+        padding: 0 10px;
+        width: 95%;
+        height: 80%;
+        background: $spot-color;
+        border: none;
+        &:focus {
+          border: none;
+        }
+      }
+
+      button {
+        width: 10%;
+        height: 80%;
+        border-radius: 5px;
+        background: $secondary-detail-color;
+
+      }
+
+    }
+}
