@@ -10,14 +10,14 @@ import {
   Val,
   Value
 } from "../../model/importCsv";
-import {SuggestedTeam} from "../../model/team";
 import {FormControl, Validators} from "@angular/forms";
-import {TeamsService} from "../../services/teams.service";
-import {SuggestedUser} from "../../model/user";
-import {UsersService} from "../../services/users.service";
-import {SuggestedProject} from "../../model/project";
-import {ProjectsService} from "../../services/projects.service";
 import {MatDialogRef} from "@angular/material/dialog";
+import {SuggestedTeam} from "../../team/model/team";
+import {SuggestedUser} from "../../user/model/user";
+import {SuggestedProject} from "../../project/model/project";
+import {TeamsService} from "../../team/services/teams.service";
+import {UsersService} from "../../user/services/users.service";
+import {ProjectsService} from "../../project/services/projects.service";
 
 @Component({
   selector: 'app-import-from-csv-file',

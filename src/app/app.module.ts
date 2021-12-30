@@ -27,7 +27,6 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
 @NgModule({
   declarations: [
     AppComponent,
-    ImportIssueFromCsvComponent,
     ImportFromCsvFileComponent,
   ],
   imports: [
@@ -50,8 +49,7 @@ import {MatCheckboxModule} from "@angular/material/checkbox";
     UserModule,
     TeamModule,
     ProjectModule,
-    DailyModule
-    MatSnackBarModule,
+    DailyModule,
     MatCheckboxModule
   ],
   providers: [{

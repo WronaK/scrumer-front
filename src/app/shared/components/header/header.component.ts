@@ -5,7 +5,7 @@ import {LoginUser} from "../../../login/model/login.user";
 import {UploadsService} from "../../services/uploads.service";
 import {MatDialog, MatDialogConfig} from "@angular/material/dialog";
 import {CreateScrumPokerComponent} from "../../../scrum-poker/dialogs/create-scrum-poker/create-scrum-poker.component";
-import {ImportFromCsvFileComponent} from "../../dialog/import-from-csv-file/import-from-csv-file.component";
+import {ImportFromCsvFileComponent} from "../../../dialog/import-from-csv-file/import-from-csv-file.component";
 
 @Component({
   selector: 'app-header',

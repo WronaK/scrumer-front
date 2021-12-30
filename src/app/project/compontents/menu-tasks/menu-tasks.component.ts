@@ -6,8 +6,8 @@ import {tap} from "rxjs/operators";
 import {RemoveUserStoryComponent} from "../../user-story/dialog/remove-user-story/remove-user-story.component";
 import {MoveUserStoryComponent} from "../../user-story/dialog/move-user-story/move-user-story.component";
 import {UpdateUserStoryComponent} from "../../user-story/dialog/update-user-story/update-user-story.component";
-import {ReportService} from "../../services/report.service";
 import {saveAs} from "file-saver";
+import {ReportService} from "../../../services/report.service";
 
 @Component({
   selector: 'app-menu-tasks',

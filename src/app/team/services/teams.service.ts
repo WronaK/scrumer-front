@@ -5,6 +5,7 @@ import {JoinTeam, SuggestedTeam, Team, TeamDetails, TeamInformation, UpdateTeam}
 import {JoinProject, Project} from "../../project/model/project";
 import {User} from "../../user/model/user";
 import {SprintBacklog} from "../sprint-board/model/sprint.backlog";
+import {ImportResult} from "../../model/importResult";
 
 class CreateTeam {
 }
