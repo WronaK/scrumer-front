@@ -19,7 +19,7 @@ export class ChannelsService {
     return this.http.get<Channel[]>('api/users/' + "channels");
   }
 
-  createNewChannel(createChannel : CreateChannel) {
+  createNewChannel(createChannel: CreateChannel) {
     return this.http.post<InfoChannel>(this.url, createChannel);
   }
 

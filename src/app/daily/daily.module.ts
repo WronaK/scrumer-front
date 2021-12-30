@@ -6,6 +6,7 @@ import {SharedModule} from "../shared/shared.module";
 import {MaterialModule} from "../material.module";
 import {ReactiveFormsModule} from "@angular/forms";
 import { SelectTeamComponent } from './componenents/select-team/select-team.component';
+import {PipesModule} from "../pipes/pipes.module";
 
 
 
@@ -20,7 +21,8 @@ import { SelectTeamComponent } from './componenents/select-team/select-team.comp
         CommonModule,
         SharedModule,
         MaterialModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        PipesModule
     ],
   exports: [
     DailyComponent,

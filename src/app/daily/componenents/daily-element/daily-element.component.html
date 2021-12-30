@@ -1,7 +1,7 @@
 <div class="element">
   <div class="header">{{data.username}}</div>
   <div class="element-content">
-  <app-picture-user [initial]="'AK'"></app-picture-user>
+  <app-picture-user [initial]="data.username | chanelName"></app-picture-user>
   <div class="tasks yesterday">
     <div class="date">{{data.yesterdayTasks.date}}</div>
     <div class="content">
@@ -9,6 +9,9 @@
       <div>{{task.title}}</div>
       <div>10.02.2021</div>
     </div>
+      <div *ngIf="data.todayTasks.tasks.length == 0">
+        No data
+      </div>
     </div>
   </div>
   <div class="tasks today">
@@ -17,6 +20,10 @@
       <div class="task" *ngFor="let task of data.todayTasks.tasks">
         <div>{{task.title}}</div>
         <div>10.02.2021</div>
+      </div>
+
+      <div *ngIf="data.todayTasks.tasks.length == 0">
+        No data
       </div>
     </div>
   </div>
