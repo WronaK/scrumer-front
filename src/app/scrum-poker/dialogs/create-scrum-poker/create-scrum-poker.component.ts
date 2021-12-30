@@ -1,6 +1,6 @@
 import {Component, Inject} from '@angular/core';
 import {SuggestedUser} from "../../../user/model/user";
-import {FormControl, FormGroup} from "@angular/forms";
+import {FormArray, FormControl, FormGroup} from "@angular/forms";
 import {UsersService} from "../../../user/services/users.service";
 import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 import {SuggestedTeam} from "../../../team/model/team";
@@ -16,8 +16,6 @@ import {ScrumPokerService} from "../../services/scrum-poker.service";
 export class CreateScrumPokerComponent {
 
   formGroup!: FormGroup;
-  member!: FormControl;
-  team!: FormControl;
 
   members: SuggestedUser[] = [];
   teams: SuggestedTeam[] = [];
@@ -29,6 +27,8 @@ export class CreateScrumPokerComponent {
   suggestedTeam: SuggestedTeam[] = [];
 
   idCreator!: number;
+  membersFormControl = new FormArray([]);
+  teamsFormControl = new FormArray([]);
 
   constructor(
     private dialogRef: MatDialogRef<CreateScrumPokerComponent>,
@@ -43,12 +43,13 @@ export class CreateScrumPokerComponent {
   }
 
   private initForm(): void {
-    this.member = new FormControl('');
-    this.team = new FormControl('');
+    this.membersFormControl.push(new FormControl(''))
+    this.teamsFormControl.push(new FormControl(''))
+
 
     this.formGroup = new FormGroup({
-      member: this.member,
-      team: this.team
+      member: this.membersFormControl,
+      team: this.teamsFormControl
     });
 
     this.filterUser();
@@ -56,18 +57,20 @@ export class CreateScrumPokerComponent {
   }
 
   private filterUser(): void {
-    this.member.valueChanges
-      .subscribe(response => {
-        if (response.length >= 3) {
-          this.usersService.getSuggestedUser(response)
-            .subscribe(list => {
-                this.suggestedUser = list;
-                this.filteredOptionUser = list;
-              }
-            )
-        }
-        this.filterDataUser(response);
-      })
+    this.membersFormControl.controls.forEach(control => {
+      control.valueChanges
+        .subscribe(response => {
+          if (response.length >= 3) {
+            this.usersService.getSuggestedUser(response)
+              .subscribe(list => {
+                  this.suggestedUser = list;
+                  this.filteredOptionUser = list;
+                }
+              )
+          }
+          this.filterDataUser(response);
+        })
+    })
   }
 
   private filterDataUser(enteredData: String) {
@@ -83,17 +86,19 @@ export class CreateScrumPokerComponent {
   }
 
   private filterTeam(): void {
-    this.team.valueChanges
-      .subscribe(response => {
-        if (response.length >= 3) {
-          this.teamService.getSuggestedTeam(response)
-            .subscribe(list => {
-              this.suggestedTeam = list;
-              this.filteredOptionTeam = list;
-            })
-        }
-        this.filterDataTeam(response);
-      })
+    this.teamsFormControl.controls.forEach(control => {
+      control.valueChanges
+        .subscribe(response => {
+          if (response.length >= 3) {
+            this.teamService.getSuggestedTeam(response)
+              .subscribe(list => {
+                this.suggestedTeam = list;
+                this.filteredOptionTeam = list;
+              })
+          }
+          this.filterDataTeam(response);
+        })
+    })
   }
 
   private filterDataTeam(enteredData: String) {
@@ -109,25 +114,44 @@ export class CreateScrumPokerComponent {
   }
 
   addUser() {
-    console.log(this.member.value)
-    if (this.member.value != null) {
-      this.members.push({id: this.member.value.id, username: this.member.value.username, email: this.member.value.email});
-      this.member.reset()
-    }
+    this.membersFormControl.push(new FormControl(''));
+    this.filterUser();
   }
 
   addTeam() {
-    if (this.team.value != null) {
-      this.teams.push({id: this.team.value.id, name: this.team.value.name});
-      this.team.reset();
-    }
+    this.teamsFormControl.push(new FormControl(''));
+    this.filterTeam();
   }
 
   startScrumPoker() {
+
+    let users: number[] = [];
+
+    this.membersFormControl.controls.forEach(formControl => {
+      if (formControl.value.id !=undefined) {
+        users.push(formControl.value.id)
+      }
+    })
+
+    let teams: number[] = [];
+
+    this.membersFormControl.controls.forEach(formControl => {
+      if (formControl.value.id !=undefined) {
+        teams.push(formControl.value.id)
+      }
+    })
     this.scrumPokerService.startScrumPoker({
       idCreator: this.idCreator,
-      invitedTeams: this.teams.map(team => team.id),
-      invitedMembers: this.members.map(member => member.id)
+      invitedTeams: teams,
+      invitedMembers: users
     }).subscribe(() => this.dialogRef.close());
+  }
+
+  removeMember(i: number) {
+    this.membersFormControl.removeAt(i);
+  }
+
+  removeTeam(i: number) {
+    this.teamsFormControl.removeAt(i);
   }
 }

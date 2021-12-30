@@ -1,6 +1,6 @@
 <div class="container">
     <mat-form-field class="search">
-      <mat-label>Enter name and surname member</mat-label>
+      <mat-label>Search channel</mat-label>
       <input [formControl]="member"
              [matAutocomplete]="auto"
              matInput required
@@ -16,6 +16,6 @@
     <app-channel *ngFor="let channel of observableChatService.channels" (click)="setActiveChannel(channel.idChannel, channel.channelName)"  [channel]="channel"></app-channel>
   </div>
   <div class="new">
-    <button mat-raised-button (click)="createNewConversation()">Start a new conversation</button>
+    <button mat-raised-button (click)="createNewConversation()">Create new group conversation</button>
   </div>
 </div>
